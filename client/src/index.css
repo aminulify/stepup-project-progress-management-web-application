@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Outfit", sans-serif;
+}
+:root{
+    --primaryFontColor: #001942;
+    --secondaryFontColor: #001942ce;
+    --gradientFirstColor: #f60be6;
+    --gradientSecondColor: #7919ff;
+    --gradientThirdColor: #48bdfa;
+    color: #0000001c;
+
+}
+
+.carve {
+    position: relative;
+    border: none;
+    height: 2px;
+    background: transparent;
+  }
+.carve::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 10px;
+    background: linear-gradient(to right, var(--gradientFirstColor), var(--gradientThirdColor));
+    border-radius: 50%;
+  }
