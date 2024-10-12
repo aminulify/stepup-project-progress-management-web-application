@@ -11,10 +11,11 @@
 :root{
     --primaryFontColor: #001942;
     --secondaryFontColor: #001942ce;
+    --whiteFontColor: #ffffffea;
     --gradientFirstColor: #f60be6;
     --gradientSecondColor: #7919ff;
     --gradientThirdColor: #48bdfa;
-    color: #0000001c;
+    color: #00000057;
 
 }
 

@@ -21,7 +21,7 @@ const ContactSupport = ({setContact, contact}) => {
         form.reset();
     }
     return (
-        <section onSubmit={handleContactSubmit} className='contact-section top-0 w-screen h-screen -z-[40] fixed bg-[#0000001c]'>
+        <section onSubmit={handleContactSubmit} className='contact-section top-0 w-screen h-screen z-[40] fixed bg-[#0000001c]'>
             
                         <div className='md:w-[500px] w-[90%] md:h-[520px] h-[650px] absolute left-[50%] translate-x-[-50%] text-[var(--primaryFontColor)] p-10 rounded-lg mt-5] bg-white overflow-y-scroll mt-10'>
                             <h2 className='text-center font-bold text-2xl'>Contact For Support</h2>

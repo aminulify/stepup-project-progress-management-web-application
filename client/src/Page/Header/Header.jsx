@@ -1,6 +1,8 @@
 import React from 'react';
 import { FaArrowRight } from "react-icons/fa6";
 import ClientSection from '../ClientSection/ClientSection';
+import Reviews from '../Reviews/Reviews';
+import Features from '../Features/Features';
 
 const Header = () => {
     return (
@@ -15,11 +17,20 @@ const Header = () => {
                 <p className="text-center py-1 font-medium text-slate-500">Free Forever. No Credit Card.</p>
             </div>
 
-
             {/* client section  */}
             {/* client section  */}
             {/* client section  */}
             <ClientSection/>
+
+            {/* reviews  */}
+            {/* reviews  */}
+            {/* reviews  */}
+            <Reviews/>
+
+            {/* Features  */}
+            {/* Features  */}
+            {/* Features  */}
+            <Features/>
         </section>
     );
 };

@@ -6,7 +6,7 @@ const Navbar = () => {
     const [contact, setContact] = useState(false);
     
     return (
-        <header className='backdrop-blur-md bg-[#ffffff58] shadow-sm lg:rounded-b-[100px] md:rounded-b-[50px] fixed top-0 w-full'>
+        <header className='backdrop-blur-md bg-[#ffffff58] shadow-sm lg:rounded-b-[100px] md:rounded-b-[50px] fixed top-0 w-full z-10'>
              <nav className='max-w-[1000px] lg:mx-auto md:mx-10 mx-5 py-5 flex justify-between items-center'>
                 <Link to='/'>
                 <div className='w-[150px]'>

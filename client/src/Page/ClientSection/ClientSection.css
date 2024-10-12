@@ -38,6 +38,7 @@
 
 .logos:hover .logo-slide{
     animation-play-state: paused;
+    cursor: grab;
 }
 
 .logo-slide{ 

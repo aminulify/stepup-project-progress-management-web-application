@@ -40,5 +40,89 @@
       "position_subtitle": "Chief Product Officer",
       "review": "Streamlined product launches and kept the team aligned on project goals.",
       "img": "/reviews/6.jpg"
+    },
+    {
+      "company_name": "Creative Solutions",
+      "name": "Emily Johnson",
+      "position_subtitle": "Lead Project Manager",
+      "review": "The interface is user-friendly and makes project management smooth.",
+      "img": "/reviews/1.jpg"
+    },
+    {
+      "company_name": "NextGen Ventures",
+      "name": "Michael Brown",
+      "position_subtitle": "Chief Executive Officer",
+      "review": "Real-time progress tracking with excellent project visibility for executives.",
+      "img": "/reviews/2.jpg"
+    },  
+    {
+      "company_name": "Enterprise Corp",
+      "name": "James Davis",
+      "position_subtitle": "Operations Manager",
+      "review": "Flexible customization and seamless integration with our existing operational tools.",
+      "img": "/reviews/3.jpg"
+    },
+    {
+      "company_name": "Bright Future Tech",
+      "name": "Olivia Martinez",
+      "position_subtitle": "Head of Product Development",
+      "review": "Improved team collaboration and task management, especially during sprint planning.",
+      "img": "/reviews/4.jpg"
+    },
+    {
+      "company_name": "Quantum Dynamics",
+      "name": "Emma Garcia",
+      "position_subtitle": "Senior Program Manager",
+      "review": "Easy task assignment and clear project progress tracking.",
+      "img": "/reviews/5.jpg"
+    },
+    {
+      "company_name": "Global Tech Services",
+      "name": "Charlotte Thompson",
+      "position_subtitle": "Chief Product Officer",
+      "review": "Streamlined product launches and kept the team aligned on project goals.",
+      "img": "/reviews/6.jpg"
+    },
+    {
+      "company_name": "Creative Solutions",
+      "name": "Emily Johnson",
+      "position_subtitle": "Lead Project Manager",
+      "review": "The interface is user-friendly and makes project management smooth.",
+      "img": "/reviews/1.jpg"
+    },
+    {
+      "company_name": "NextGen Ventures",
+      "name": "Michael Brown",
+      "position_subtitle": "Chief Executive Officer",
+      "review": "Real-time progress tracking with excellent project visibility for executives.",
+      "img": "/reviews/2.jpg"
+    },  
+    {
+      "company_name": "Enterprise Corp",
+      "name": "James Davis",
+      "position_subtitle": "Operations Manager",
+      "review": "Flexible customization and seamless integration with our existing operational tools.",
+      "img": "/reviews/3.jpg"
+    },
+    {
+      "company_name": "Bright Future Tech",
+      "name": "Olivia Martinez",
+      "position_subtitle": "Head of Product Development",
+      "review": "Improved team collaboration and task management, especially during sprint planning.",
+      "img": "/reviews/4.jpg"
+    },
+    {
+      "company_name": "Quantum Dynamics",
+      "name": "Emma Garcia",
+      "position_subtitle": "Senior Program Manager",
+      "review": "Easy task assignment and clear project progress tracking.",
+      "img": "/reviews/5.jpg"
+    },
+    {
+      "company_name": "Global Tech Services",
+      "name": "Charlotte Thompson",
+      "position_subtitle": "Chief Product Officer",
+      "review": "Streamlined product launches and kept the team aligned on project goals.",
+      "img": "/reviews/6.jpg"
     }
   ]
