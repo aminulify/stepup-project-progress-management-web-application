@@ -3,6 +3,7 @@ import { FaArrowRight } from "react-icons/fa6";
 import ClientSection from '../ClientSection/ClientSection';
 import Reviews from '../Reviews/Reviews';
 import Features from '../Features/Features';
+import ProjectPreview from '../ProjectPreview/ProjectPreview';
 
 const Header = () => {
     return (
@@ -21,6 +22,11 @@ const Header = () => {
             {/* client section  */}
             {/* client section  */}
             <ClientSection/>
+
+            {/* preject Preview  */}
+            {/* preject Preview  */}
+            {/* preject Preview  */}
+            <ProjectPreview/>
 
             {/* reviews  */}
             {/* reviews  */}

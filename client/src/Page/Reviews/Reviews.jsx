@@ -13,9 +13,9 @@ const Reviews = () => {
     return (
         <div className='text-[var(--primaryFontColor)] bg-white'>
             <div className='text-center mb-5 max-w-[1000px] lg:mx-auto md:mx-10 mx-5'>
-                <h2 className='font-bold text-5xl'>Perfect fit for every team</h2>
-                <h4 className='font-semibold text-xl mt-2'>Get started fast with out-of-the-box solutions.</h4>
-                <h4 className='text-xl'>Easily customize ClickUp as team needs grow!</h4>
+                <h2 className='font-bold md:text-5xl text-4xl'>Perfect fit for every team</h2>
+                <h4 className='font-semibold md:text-xl text-lg mt-2'>Get started fast with out-of-the-box solutions.</h4>
+                <h4 className='md:text-xl text-lg'>Easily customize ClickUp as team needs grow!</h4>
             </div>
 
             <aside className='overflow-hidden'>
@@ -35,7 +35,7 @@ const Reviews = () => {
                                         
                                         <h2 className='text-[var(--whiteFontColor)] leading-tight flex gap-1'><BiSolidQuoteAltLeft className='text-2xl'/>{client.review}</h2>
                                         <h4 className='mt-2 text-sm'>{client.name}</h4>
-                                        <h4 className='text-sm'>{client.position_subtitle}</h4>
+                                        <h4 className='text-[12px]'>{client.position_subtitle}</h4>
                                     </div>
                                 </div>
                             </div>

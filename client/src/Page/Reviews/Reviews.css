@@ -1,13 +1,11 @@
 @keyframes sliding {
     0%{
-        transform: translateX(-300%);
+        transform: translateX(-200%);
     }
-    50%{
+    100%{
         transform: translateX(0%);
     }
-    to{
-        transform: translateX(-300%);
-    }
+    
 }
 
 .img-slide:hover .img-slide-rolling{
@@ -16,7 +14,7 @@
 }
 
 .img-slide-rolling{ 
-    animation: 10s sliding infinite linear;
+    animation: 5s sliding infinite linear;
 }
 
 .img-slide:before{

@@ -11,10 +11,10 @@ import img8 from '../../../public/clients/10.png';
 const ClientSection = () => {
     
     return (
-        <section className='mb-16 -z-10'>
+        <section className='mb-10 -z-10'>
             <h2 className="text-center font-medium text-[var(--primaryFontColor)] text-xl">Trusted by 2 million+ teams</h2>
-            <div className='absolute md:top-[200px] top-[180px] md:w-[200px] w-[100px] h-[200px] lighting-effect -z-20'></div>
-            <div className='absolute -z-20 md:top-[100px] top-[90px] right-0 md:w-[200px] w-[100px] h-[200px] lighting2-effect'></div>
+            <div className='absolute md:top-[200px] top-[180px] md:w-[300px] w-[100px] h-[100px] lighting-effect -z-20'></div>
+            <div className='absolute -z-20 md:top-[100px] top-[90px] right-0 md:w-[250px] w-[100px] h-[100px] lighting2-effect'></div>
             
             <div className="logos">
                 <div className='py-8 border-t-[1.5px] border-b-[1.5px] border-purple-200'>
