@@ -15,14 +15,14 @@
     --gradientFirstColor: #f60be6;
     --gradientSecondColor: #7919ff;
     --gradientThirdColor: #48bdfa;
-    color: #00000057;
+    color: #ffffff27;
 
 }
 
 .carve {
     position: relative;
     border: none;
-    height: 2px;
+    height: 1px;
     background: transparent;
   }
 .carve::before {

@@ -124,6 +124,51 @@ const ProjectPreview = () => {
                             )
                         }
                     </div>
+                    <div className='mt-8 shadow-lg'>
+                        {
+                            task && (
+                                <div className='p-5 rounded-lg backdrop-blur-2xl border-[1.5px] border-purple-500 z-10'>
+                                    <img src="../../../public/project/section1.png" className='rounded-md shadow-md' alt="Project Preview Image" />
+                                </div>
+                            )
+                        }
+                    </div>
+                    <div className='mt-8 shadow-lg'>
+                        {
+                            progress && (
+                                <div className='p-5 rounded-lg backdrop-blur-2xl border-[1.5px] border-purple-500 z-10'>
+                                    <img src="../../../public/project/section1.png" className='rounded-md shadow-md' alt="Project Preview Image" />
+                                </div>
+                            )
+                        }
+                    </div>
+                    <div className='mt-8 shadow-lg'>
+                        {
+                            todo && (
+                                <div className='p-5 rounded-lg backdrop-blur-2xl border-[1.5px] border-purple-500 z-10'>
+                                    <img src="../../../public/project/section1.png" className='rounded-md shadow-md' alt="Project Preview Image" />
+                                </div>
+                            )
+                        }
+                    </div>
+                    <div className='mt-8 shadow-lg'>
+                        {
+                            team && (
+                                <div className='p-5 rounded-lg backdrop-blur-2xl border-[1.5px] border-purple-500 z-10'>
+                                    <img src="../../../public/project/section1.png" className='rounded-md shadow-md' alt="Project Preview Image" />
+                                </div>
+                            )
+                        }
+                    </div>
+                    <div className='mt-8 shadow-lg'>
+                        {
+                            trash && (
+                                <div className='p-5 rounded-lg backdrop-blur-2xl border-[1.5px] border-purple-500 z-10'>
+                                    <img src="../../../public/project/section1.png" className='rounded-md shadow-md' alt="Project Preview Image" />
+                                </div>
+                            )
+                        }
+                    </div>
                 </section>
 
             </div>
