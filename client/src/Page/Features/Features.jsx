@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { IoMdCheckboxOutline } from "react-icons/io";
 import { IoSettingsOutline } from "react-icons/io5";
 import { GrDocumentText } from "react-icons/gr";
 import { GrWorkshop } from "react-icons/gr";
 import { GiSpeedometer } from "react-icons/gi";
 import { FaArrowRight } from "react-icons/fa6";
+import { Link } from 'react-router-dom';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const Features = () => {
+    const {user} = useContext(AuthContext);
     return (
         <div className='relative'>
             <div className='absolute md:w-[200px] top-10 w-[100px] h-[100px] lighting-effect -z-2'></div>
@@ -66,7 +69,9 @@ const Features = () => {
                         <GiSpeedometer className='text-purple-500 md:text-2xl text-xl'/>
                         <h2>Dashboards and insights</h2>
                     </div>
-                    <button className='flex justify-center items-center gap-1 mx-auto py-3 w-full bg-gradient-to-tr from-[var(--gradientFirstColor)] via-[var(--gradientSecondColor)] to-[var(--gradientThirdColor)] text-white hover:bg-gradient-to-tl duration-300 rounded-md font-semibold md:text-xl text-md'>Get Started <FaArrowRight className="text-md md:text-lg"/></button>
+                    {
+                        user ? <Link to="/dashboard"><button className='flex justify-center items-center gap-1 mx-auto py-3 w-full bg-gradient-to-tr from-[var(--gradientFirstColor)] via-[var(--gradientSecondColor)] to-[var(--gradientThirdColor)] text-white hover:bg-gradient-to-tl duration-300 rounded-md font-semibold md:text-xl text-md'>Get Started <FaArrowRight className="text-md md:text-lg"/></button></Link> : <Link to="/login"><button className='flex justify-center items-center gap-1 mx-auto py-3 w-full bg-gradient-to-tr from-[var(--gradientFirstColor)] via-[var(--gradientSecondColor)] to-[var(--gradientThirdColor)] text-white hover:bg-gradient-to-tl duration-300 rounded-md font-semibold md:text-xl text-md'>Get Started <FaArrowRight className="text-md md:text-lg"/></button></Link>
+                    }
                 </section>
         </section>
         </div>

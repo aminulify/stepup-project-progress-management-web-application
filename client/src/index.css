@@ -7,6 +7,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Outfit", sans-serif;
+    scroll-behavior: smooth;
 }
 :root{
     --primaryFontColor: #001942;
@@ -15,7 +16,7 @@
     --gradientFirstColor: #f60be6;
     --gradientSecondColor: #7919ff;
     --gradientThirdColor: #48bdfa;
-    color: #ffffff27;
+    color: #ffffff71;
 
 }
 

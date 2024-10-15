@@ -5,11 +5,19 @@ import Header from "../Page/Header/Header";
 import PrivacyPolicy from "../Page/PrivacyPolicy/PrivacyPolicy";
 import SignUp from "../Page/SignInOut/SignUp";
 import SignIn from "../Page/SignInOut/SignIn";
+import Dashboard from "../Dashboard Pages/Dashboard";
+import Task from "../Dashboard Pages/Task";
+import Progress from "../Dashboard Pages/Progress";
+import Todo from "../Dashboard Pages/Todo";
+import Team from "../Dashboard Pages/Team";
+import Trash from "../Dashboard Pages/Trash";
+import DashboardHome from "../Dashboard Pages/DashboardHome";
 
 const router = createBrowserRouter([
     {
       path: "/",
       element: <Home/>,
+      errorElement: <Error/>,
       children:[
         {
             path: "/",
@@ -27,9 +35,36 @@ const router = createBrowserRouter([
           path: "/terms/privacy_policy",
           element: <PrivacyPolicy/>
         }
-    ],
-      // errorElement: <Error/>
-    },
+    ]},
+    {
+      path: "/user",
+      element: <DashboardHome/>,
+      children: [
+        {
+        path: "dashboard",
+        element: <Dashboard/>
+      },
+      {
+        path: "task",
+        element: <Task/>
+      },
+      {
+        path: "Progress",
+        element: <Progress/>
+      },
+      {
+        path: "todo",
+        element: <Todo/>
+      },
+      {
+        path: "team",
+        element: <Team/>
+      },
+      {
+        path: "trash",
+        element: <Trash/>
+      },
+    ]},
   ]);
 
   export default router;
