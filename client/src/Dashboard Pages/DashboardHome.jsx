@@ -4,9 +4,9 @@ import { Outlet } from 'react-router-dom';
 
 const DashboardHome = () => {
     return (
-        <div className='relative'>
+        <div className='relative md:flex md:justify-between'>
             <DashboardNavbar />
-            <Outlet/>
+            <Outlet />
         </div>
     );
 };

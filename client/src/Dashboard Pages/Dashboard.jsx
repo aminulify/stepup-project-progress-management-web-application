@@ -2,8 +2,10 @@ import React from 'react';
 
 const Dashboard = () => {
     return (
-        <div className='z-30 text-[var(--primaryFontColor)] mx-8 md:max-w-[700px] md:mx-auto'>
-            Home
+        <div className='w-full'>
+            <div className='my-24 text-[var(--primaryFontColor)] mx-8 md:max-w-[800px] md:mx-auto'>
+             Dashboard
+            </div>
         </div>
     );
 };

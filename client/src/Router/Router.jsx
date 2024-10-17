@@ -12,6 +12,8 @@ import Todo from "../Dashboard Pages/Todo";
 import Team from "../Dashboard Pages/Team";
 import Trash from "../Dashboard Pages/Trash";
 import DashboardHome from "../Dashboard Pages/DashboardHome";
+import Completed from "../Dashboard Pages/Completed";
+import Chat from "../Dashboard Pages/Chat";
 
 const router = createBrowserRouter([
     {
@@ -45,11 +47,15 @@ const router = createBrowserRouter([
         element: <Dashboard/>
       },
       {
-        path: "task",
+        path: "tasks",
         element: <Task/>
       },
       {
-        path: "Progress",
+        path: "completed",
+        element: <Completed/>
+      },
+      {
+        path: "in-progress",
         element: <Progress/>
       },
       {
@@ -59,6 +65,10 @@ const router = createBrowserRouter([
       {
         path: "team",
         element: <Team/>
+      },
+      {
+        path: "team-chat",
+        element: <Chat/>
       },
       {
         path: "trash",

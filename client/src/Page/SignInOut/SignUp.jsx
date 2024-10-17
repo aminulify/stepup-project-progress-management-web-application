@@ -73,10 +73,14 @@ const SignUp = () => {
                 <div className='mt-5 border-[1.4px] border-purple-500 backdrop-blur-md p-10 rounded-lg shadow-md bg-[#ffffff71]'>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div>
-                            <label>Name:</label>
-                            <input type="text" name='name' {...register("name", {
-                                required: "Name is Required"})} className='p-2 rounded-md w-full outline-none border-[1.4px] border-purple-500 backdrop-blur-lg' placeholder='Enter your name' />
-                            {errors?.name?.message && <p className='text-sm text-red-500 flex gap-1 items-center'><TiWarningOutline/> {errors?.name?.message}</p>}
+                            <label>Username:</label>
+                            <input type="text" name='username' {...register("username", {
+                                pattern: {
+                                    value: /^(?=.*[a-z])/,
+                                    message: "Must be unique and lowercase"
+                                },
+                                required: "Unique username is Required"})} className='p-2 rounded-md w-full outline-none border-[1.4px] border-purple-500 backdrop-blur-lg' placeholder='Enter unique username' />
+                            {errors?.username?.message && <p className='text-sm text-red-500 flex gap-1 items-center'><TiWarningOutline/> {errors?.username?.message}</p>}
                         </div>
                         <div className='mt-2'>
                             <label>Email:</label>
