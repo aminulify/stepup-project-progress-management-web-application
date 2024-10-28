@@ -3,11 +3,13 @@ import mongoose from "mongoose";
 const contactSchema = new mongoose.Schema({
     name:{
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     email:{
         type: String,
-        required: true
+        required: true,
+        lowercase: true,
     },
     phone:{
         type: Number,
@@ -15,15 +17,18 @@ const contactSchema = new mongoose.Schema({
     },
     companyName:{
         type: String,
+        required: true,
+        default: 'N/A'
     },
-    employees:{
+    description:{
         type: String,
         required: true
     },
-    describe:{
+    numberOfEmployee:{
         type: String,
         required: true
-    }
+    },
+    
 }, {timestamps: true})
 
 const Contact = mongoose.model("Contact", contactSchema);

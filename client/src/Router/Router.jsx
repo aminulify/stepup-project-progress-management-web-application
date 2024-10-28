@@ -14,6 +14,7 @@ import Trash from "../Dashboard Pages/Trash";
 import DashboardHome from "../Dashboard Pages/DashboardHome";
 import Completed from "../Dashboard Pages/Completed";
 import Chat from "../Dashboard Pages/Chat";
+import PrivateRoutes from "./PrivateRoutes";
 
 const router = createBrowserRouter([
     {
@@ -44,7 +45,7 @@ const router = createBrowserRouter([
       children: [
         {
         path: "dashboard",
-        element: <Dashboard/>
+        element: <PrivateRoutes><Dashboard/></PrivateRoutes>
       },
       {
         path: "tasks",

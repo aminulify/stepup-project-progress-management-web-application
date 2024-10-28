@@ -5,7 +5,7 @@ const ContactSupport = ({setContact, contact}) => {
     
     const [employeeNum, setEmployeeNum] = useState("");
 
-    const handleContactSubmit = (e) =>{
+    const handleContactSubmit = async(e) =>{
         e.preventDefault();
         const form = e.target;
         const name = form.name.value;
@@ -16,9 +16,29 @@ const ContactSupport = ({setContact, contact}) => {
         const numberOfEmployee = employeeNum;
 
         const supportData = {name, email, phone, companyName, description, numberOfEmployee};
-        console.log(supportData);
+        // console.log(supportData);
 
-        form.reset();
+        try{
+            fetch('http://localhost:3000/api/contact',{
+                method: "POST",
+                headers: {
+                    'Content-Type': "application/json"
+                },
+                body: JSON.stringify(supportData)
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log('success', data);
+                form.reset();
+                setContact(false);
+    
+            })
+            .catch(err => console.log(err))
+
+        }catch(err){
+            console.log(err);
+        }
+
     }
     return (
         <section onSubmit={handleContactSubmit} className='contact-section top-0 w-screen h-screen z-[40] fixed bg-[#0000001c]'>

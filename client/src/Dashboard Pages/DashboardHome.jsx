@@ -1,11 +1,9 @@
 import React from 'react';
-import DashboardNavbar from '../Shared/DashboardNavbar';
 import { Outlet } from 'react-router-dom';
 
 const DashboardHome = () => {
     return (
-        <div className='relative md:flex md:justify-between'>
-            <DashboardNavbar />
+        <div className=''>
             <Outlet />
         </div>
     );
