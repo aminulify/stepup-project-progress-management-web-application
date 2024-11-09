@@ -34,3 +34,13 @@
     background: linear-gradient(to right, var(--gradientFirstColor), var(--gradientThirdColor));
     border-radius: 50%;
   }
+
+@media screen and (max-width: 780px) {
+  .smNone{
+    display: none;
+  }
+}
+
+
+  
+

@@ -1,9 +1,8 @@
 export const summary = {
-  totalTasks: 10,
   last10Task: [
     {
       _id: "65c5f12ab5204a81bde866a9",
-      title: "Test task",
+      title: "Review Code Tests",
       date: "2024-02-09T00:00:00.000Z",
       priority: "high",
       stage: "todo",
@@ -50,7 +49,7 @@ export const summary = {
     },
     {
       _id: "65c5d547660756f6fd453a7a",
-      title: "Duplicate - Duplicate - Review Code Changes",
+      title: "Duplicate - Review Code Changes",
       date: "2024-02-09T00:00:00.000Z",
       priority: "medium",
       stage: "in progress",
@@ -66,8 +65,8 @@ export const summary = {
         {
           _id: "65c3176a0fd860f958baa099",
           name: "Emily Wilson",
-          title: "Data Analyst",
-          role: "Analyst",
+          title: "Data Tester",
+          role: "Tester",
           email: "emily.wilson@example.com",
         },
       ],
@@ -194,7 +193,7 @@ export const summary = {
       _id: "65c45fb6af6ec0118be94052",
       title: "Task Manager Youtube Video",
       date: "2024-02-11T00:00:00.000Z",
-      priority: "medium",
+      priority: "low",
       stage: "completed",
       assets: [
         "https://firebasestorage.googleapis.com/v0/b/taskmanager-557d7.appspot.com/o/1707412043078report.jpg?alt=media&token=41d02b42-c25c-4fbb-90a9-340a45f4bbe1",
@@ -211,8 +210,8 @@ export const summary = {
         {
           _id: "65c3176a0fd860f958baa099",
           name: "Emily Wilson",
-          title: "Data Analyst",
-          role: "Analyst",
+          title: "Tester",
+          role: "Tester",
           email: "emily.wilson@example.com",
         },
       ],
@@ -364,8 +363,8 @@ export const summary = {
         {
           _id: "65c3176a0fd860f958baa099",
           name: "Emily Wilson",
-          title: "Data Analyst",
-          role: "Analyst",
+          title: "Data Tester",
+          role: "Tester",
           email: "emily.wilson@example.com",
         },
       ],
@@ -451,8 +450,8 @@ export const summary = {
         {
           _id: "65c3176a0fd860f958baa099",
           name: "Emily Wilson",
-          title: "Data Analyst",
-          role: "Analyst",
+          title: "Data Tester",
+          role: "Tester",
           email: "emily.wilson@example.com",
         },
       ],
@@ -521,54 +520,61 @@ export const summary = {
       __v: 2,
     },
   ],
-  users: [
-    {
-      _id: "65c5f27fb5204a81bde86833",
-      name: "New User",
-      title: "Designer",
-      role: "Developer",
-      isActive: true,
-      createdAt: "2024-02-09T09:38:07.765Z",
-    },
-    {
-      _id: "65c3176a0fd860f958baa099",
-      name: "Emily Wilson",
-      title: "Data Analyst",
-      role: "Analyst",
-      isActive: true,
-      createdAt: "2024-02-07T05:38:50.816Z",
-    },
-    {
-      _id: "65c317360fd860f958baa08e",
-      name: "Alex Johnson",
-      title: "UX Designer",
-      role: "Designer",
-      isActive: true,
-      createdAt: "2024-02-07T05:37:58.862Z",
-    },
-    {
-      _id: "65c30b96e639681a13def0b5",
-      name: "Jane Smith",
-      title: "Product Manager",
-      role: "Manager",
-      isActive: true,
-      createdAt: "2024-02-07T04:48:22.519Z",
-    },
-    {
-      _id: "65c202d4aa62f32ffd1303cc",
-      name: "Codewave Asante",
-      title: "Administrator",
-      role: "Admin",
-      createdAt: "2024-02-06T09:58:44.794Z",
-      isActive: true,
-    },
-  ],
   tasks: {
     todo: 6,
     "in progress": 3,
     completed: 1,
   },
 };
+
+export const users = [
+  {
+    _id: "65c5f27fb5204a81bde86833",
+    name: "Anas",
+    title: "Frontend Developer",
+    role: "Developer",
+    isActive: true,
+    email: "email@gmail.com",
+    createdAt: "2024-02-09T09:38:07.765Z",
+  },
+  {
+    _id: "65c3176a0fd860f958baa099",
+    name: "Emily Wilson",
+    title: "Data Tester",
+    role: "Tester",
+    isActive: true,
+    email: "email@gmail.com",
+    createdAt: "2024-02-07T05:38:50.816Z",
+  },
+  {
+    _id: "65c317360fd860f958baa08e",
+    name: "Alex Johnson",
+    title: "UX Designer",
+    role: "Designer",
+    isActive: false,
+    email: "email@gmail.com",
+    createdAt: "2024-02-07T05:37:58.862Z",
+  },
+  {
+    _id: "65c30b96e639681a13def0b5",
+    name: "Jane Smith",
+    title: "Product Manager",
+    role: "Manager",
+    isActive: true,
+    email: "email@gmail.com",
+    createdAt: "2024-02-07T04:48:22.519Z",
+  },
+  {
+    _id: "65c202d4aa62f32ffd1303cc",
+    name: "Aminul Islam",
+    title: "Administrator",
+    role: "Admin",
+    createdAt: "2024-02-06T09:58:44.794Z",
+    isActive: true,
+    email: "email@gmail.com",
+  },
+]
+
 
 export const chartData = [
   {
@@ -651,7 +657,7 @@ export const tasks = [
       {
         _id: "65c3176a0fd860f958baa099",
         name: "Emily Wilson",
-        title: "Data Analyst",
+        title: "Data Tester",
         email: "emily.wilson@example.com",
       },
     ],
@@ -791,7 +797,7 @@ export const tasks = [
       {
         _id: "65c3176a0fd860f958baa099",
         name: "Emily Wilson",
-        title: "Data Analyst",
+        title: "Data Tester",
         email: "emily.wilson@example.com",
       },
     ],
@@ -950,7 +956,7 @@ export const tasks = [
       {
         _id: "65c3176a0fd860f958baa099",
         name: "Emily Wilson",
-        title: "Data Analyst",
+        title: "Data Tester",
         email: "emily.wilson@example.com",
       },
     ],
@@ -1032,7 +1038,7 @@ export const tasks = [
       {
         _id: "65c3176a0fd860f958baa099",
         name: "Emily Wilson",
-        title: "Data Analyst",
+        title: "Data Tester",
         email: "emily.wilson@example.com",
       },
     ],

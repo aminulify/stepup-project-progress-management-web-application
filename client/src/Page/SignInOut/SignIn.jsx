@@ -52,23 +52,26 @@ const SignIn = () => {
         })
     }
  
-    const handleGoogleAuth = () =>{
-        setError(false);
-        googleAuthentication()
-        .then(result => {
-            setLoading(false);
-            const user = result.user;
-            toast.success('Successfully Logged in!',{
-                duration: 1000,
-                position: 'top-center',
-            });
-            setTimeout(()=>{
-                navigate('/');
-            },1000);
-            // console.log(user);
-        })
-        .catch(err => setError(true))
-    }
+    // ******** google login ********
+    // ******** google login ********
+
+    // const handleGoogleAuth = () =>{
+    //     setError(false);
+    //     googleAuthentication()
+    //     .then(result => {
+    //         setLoading(false);
+    //         const user = result.user;
+    //         toast.success('Successfully Logged in!',{
+    //             duration: 1000,
+    //             position: 'top-center',
+    //         });
+    //         setTimeout(()=>{
+    //             navigate('/');
+    //         },1000);
+    //         // console.log(user);
+    //     })
+    //     .catch(err => setError(true))
+    // }
     
     return (
         <div className='h-screen w-full text-[var(--primaryFontColor)] flex items-center'>
@@ -101,7 +104,7 @@ const SignIn = () => {
                         <button className={`bg-gradient-to-tr from-[var(--gradientFirstColor)] via-[var(--gradientSecondColor)] to-[var(--gradientThirdColor)] text-white ${check ? "hover:bg-gradient-to-tl" : "cursor-not-allowed"} duration-300 rounded-md font-medium md:text-xl text-lg w-[50%] py-2`} disabled={!check}>Login</button>
                     </form>
 
-                    <div className='flex items-center my-2 gap-5'>
+                    <div className='flex items-center mt-3 mb-2 gap-5'>
                         <div className='h-[1.4px] w-[100%] bg-purple-500'></div>
                         <p className='font-medium'>OR</p>
                         <div className='h-[1.4px] w-[100%] bg-purple-500'></div>
@@ -109,11 +112,11 @@ const SignIn = () => {
                     
 
                     {/* google auth  */}
-                    <div onClick={handleGoogleAuth} className='flex gap-3 items-center p-2 w-full justify-center border-[1.5px] border-purple-500 shadow-md hover:shadow-none duration-300 rounded-md cursor-pointer'>
+                    {/* <div onClick={handleGoogleAuth} className='flex gap-3 items-center p-2 w-full justify-center border-[1.5px] border-purple-500 shadow-md hover:shadow-none duration-300 rounded-md cursor-pointer'>
                         <img src="../../../public/google.png" className='w-[20px]' alt="google logo" />
                         <h4 className='text-md font-medium'>Login With Google</h4>
-                    </div>
-                    <Link onClick={handleScrollup} to="/sign-up"><p className='pt-2 cursor-pointer underline'>Create new account?</p></Link>
+                    </div> */}
+                    <Link onClick={handleScrollup} to="/sign-up"><p className=' cursor-pointer underline'>Create new account?</p></Link>
                 </div>
             </section>
             <div className='z-20'>

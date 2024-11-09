@@ -7,21 +7,27 @@ import { FaCheckCircle } from "react-icons/fa";
 import { GrTasks } from "react-icons/gr";
 import { IoIosChatbubbles } from "react-icons/io";
 import { AuthContext } from '../AuthProvider/AuthProvider';
-import DashboardResponsiveNav from '../AuthProvider/DashboardResponsiveNav';
+import DashboardResponsiveNav from '../Components/DashboardResponsiveNav';
 import useStore from './Zustand';
+import Loading from './Loading';
 
 const DashboardNavbar = () => {
-    const {user} = useContext(AuthContext);
+    const {user, loading} = useContext(AuthContext);
     const {showMenu} = useStore();
+    console.log(user);
 
     const location = useLocation();
     console.log(location.pathname);
     return (
         <div className='text-[var(--primaryFontColor)]'>
 
+            {
+                loading && <Loading/>
+            }
+
             <DashboardResponsiveNav/>
            
-            <div className={`md:block ${showMenu ? "fixed bg-purple-50 shadow-md shadow-purple-300 h-screen top-0 mt-16 md:mt-0" : "hidden"}` }>
+            <div className={`md:block ${showMenu ? "fixed bg-purple-100 h-screen top-0 mt-16 md:mt-0" : "hidden"}` }>
             <nav className='w-[220px] list-none flex flex-col items-center'>
                 <div className=''>
                     <aside className={`w-[180px] px-8 py-5 `}>

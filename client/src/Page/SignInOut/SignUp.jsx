@@ -14,12 +14,12 @@ const SignUp = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     const onSubmit = data => {
-        console.log(data)
+        console.log("userData",data)
         setLoading(false);
         
         createUser(data.email, data.password)
         .then(result => {
-            updateUser(data.name, data.img)
+            updateUser(data.username, data.img)
             const user = result.user;
             console.log(user)
             setLoading(true);
@@ -36,6 +36,10 @@ const SignUp = () => {
         })
         .catch(e => {
             setLoading(false);
+            toast.error('Email or username already exists!',{
+                duration: 3000,
+                position: 'top-center',
+            });
             console.log(e);
         })
         
@@ -89,7 +93,7 @@ const SignUp = () => {
                         </div>
                         <div className='mt-2'>
                             <label>Password:</label>
-                            <input type="text" className='p-2 rounded-md w-full outline-none border-[1.4px] border-purple-500 backdrop-blur-lg' placeholder='Enter your password' name='password' {...register("password", {
+                            <input type="password" className='p-2 rounded-md w-full outline-none border-[1.4px] border-purple-500 backdrop-blur-lg' placeholder='Enter your password' name='password' {...register("password", {
                                 required: "Password must be minimum 8 character",
                                 minLength: {
                                     value: 8,

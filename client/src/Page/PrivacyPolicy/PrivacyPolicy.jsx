@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const PrivacyPolicy = () => {
     return (
-        <div className='max-w-[1000px] md:mx-auto mx-5 text-[var(--secondaryFontColor)] mt-20'>
+        <div className='max-w-[1000px] md:mx-auto mx-5 text-[var(--secondaryFontColor)] mt-24'>
             <h3 className='pt-8 md:text-3xl text-2xl font-bold text-center text-[var(--primaryFontColor)]'>Privacy Policy</h3>
             <p className='py-3'>Your privacy is extremely important to us. To better protect you, we provide this notice explaining our online information practices and the choices you can make about the way your information is collected and used.</p>
             <p>This Privacy Policy relates to information collected by Mango Technologies, Inc. DBA stepup (referred to in this Privacy Policy as "stepup" "we" or "us" or "our") through your use of our website and our Services, features, and information available on our website (which are collectively referred to in this Privacy Policy as the "stepup Service").</p>

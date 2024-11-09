@@ -54,7 +54,7 @@ const Navbar = () => {
 
                     {
                         user ? <div className='flex items-center gap-3 cursor-pointer'>
-                            <div className='hidden md:flex items-center justify-center w-[50px] h-[50px] rounded-lg border-[1.4px] border-blue-700 p-[1px]'>{user.photoURL && validImg ? <img src={user?.photoURL} className='w-full rounded-md p-1 object-center object-cover' alt="" /> : <div className='text-2xl font-bold bg-purple-500 w-[50px] h-[45px] rounded-md flex justify-center items-center text-white'>{user?.displayName[0]}</div>
+                            <div className='hidden md:flex items-center justify-center w-[50px] h-[50px] rounded-lg border-[1.4px] border-blue-700 p-[1px]'>{user.photoURL ? <img src={user?.photoURL} className='w-full rounded-md p-1 object-center object-cover' alt="" /> : <div className='text-2xl font-bold bg-purple-500 w-[50px] h-[45px] rounded-md flex justify-center items-center text-white'>{user?.displayName[0].toUpperCase()}</div>
                             }</div>
 
                             <div className='px-2 py-2 rounded-lg duration-300'>

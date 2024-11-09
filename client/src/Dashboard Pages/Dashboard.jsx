@@ -7,6 +7,7 @@ import { MdAddTask } from "react-icons/md";
 import { BiTask } from "react-icons/bi";
 import { LuUsers2 } from "react-icons/lu";
 import { TbUserShare } from "react-icons/tb";
+import DashboardTaskTable from '../Components/DashboardTaskTable';
 
 const Dashboard = () => {
     const {showMenu} = useStore();
@@ -46,7 +47,7 @@ const Dashboard = () => {
             data: {
               labels: labels,
               datasets: [{
-                label: 'Task Priority',
+                label: 'Available Task',
                 data: data,
                 // borderWidth: 1,
                 backgroundColor: [
@@ -67,66 +68,11 @@ const Dashboard = () => {
   });
       },[])
 
-      // chart data 
-      // chart data 
-      const circleChartData = {
-        labels: labels,
-        datasets: [{
-          label: 'Task Priority',
-          data: data,
-          backgroundColor: [
-            'rgb(168, 85, 247)',
-            'rgb(168, 85, 247, 0.7)',
-            'rgb(168, 85, 247, 0.6)',
-            'rgb(168, 85, 247, 0.4)',
-          ],
-          hoverOffset: 4
-        }]
-      };
-
-      const rightSideData = {
-        labels: labels,
-        datasets: [{
-          label: 'Task Priority',
-          data: data,
-          backgroundColor: [
-           'rgb(168, 85, 247)',
-            'rgb(168, 85, 247, 0.7)',
-            'rgb(168, 85, 247, 0.6)',
-            'rgb(168, 85, 247, 0.4)',
-          ]
-        }]
-      };
-
-      // doughnut chart 
-      // doughnut chart 
-      useEffect(()=>{
-        const ctx = document.getElementById('leftSideChart'); 
-        
-        new Chart(ctx, {
-          type: 'doughnut',
-          data: circleChartData,
-        })
-
-      },[])
-
-      // polarArea chart 
-      // polarArea chart 
-      useEffect(()=>{
-        const ctx = document.getElementById('rightSideChart'); 
-        
-        new Chart(ctx, {
-          type: 'polarArea',
-          data: rightSideData,
-        })
-
-      },[])
-
 
       const lineChartData = {
         labels: labels,
         datasets: [{
-          label: 'Task Priority',
+          label: 'Available Task',
           data: data,
           fill: true,
           borderColor: 'rgb(168, 85, 247)',
@@ -150,7 +96,7 @@ const Dashboard = () => {
     return (
         <section className='md:flex'>
 
-          <div className='z-30 md:h-[980px] bg-purple-50 md:shadow-lg shadow-sm shadow-purple-500'>
+          <div className='z-30 md:h-[980px] bg-purple-50'>
             <DashboardNavbar/>
           </div>
 
@@ -198,15 +144,8 @@ const Dashboard = () => {
                   </div>
                 </div>
 
-                <div className='w-[90%] mx-auto flex flex-col md:flex-row gap-8'>
-
-                  <div className='md:w-[90%] w-[100%] bg-purple-50 md:py-5 px-10 py-3 rounded-lg border-[1.4px] border-purple-500 mx-auto md:mb-10 mt-7'>
-                    <canvas id='leftSideChart'></canvas>
-                  </div>
-                  <div className='md:w-[90%] w-[100%] bg-purple-50 md:py-5 px-10 py-3 rounded-lg border-[1.4px] border-purple-500 mx-auto mb-10 md:mt-7'>
-                    <canvas id='rightSideChart'></canvas>
-                  </div>
-
+                <div className='w-[90%] mx-auto'>
+                  <DashboardTaskTable/>
                 </div>
               </div>
         </section>

@@ -4,6 +4,9 @@ import ContactSupport from '../Page/ContactSupport/ContactSupport';
 
 const Footer = () => {
     const [contact, setContact] = useState(false);
+    const handleTopOfScreen = () =>{
+        window.scrollTo(0,0);
+    }
     return (
         <section>
             <div className='w-full bg-[#f8f8fc] py-5 rounded-t-[100px]'>
@@ -14,7 +17,7 @@ const Footer = () => {
                 </Link>
                 <div className='flex gap-3 text-sm'>
                     <p>&copy; 2024 StepUp</p>
-                    <Link to="/terms/privacy_policy" className='underline'>Privacy Policy</Link>
+                    <Link to="/terms/privacy_policy"  onClick={handleTopOfScreen} className='underline'>Privacy Policy</Link>
                     <button onClick={()=>setContact(!contact)} className='underline'>Contact Sales</button>
                 </div>
                 </div>
