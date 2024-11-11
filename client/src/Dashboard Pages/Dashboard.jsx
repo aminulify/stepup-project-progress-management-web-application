@@ -8,6 +8,7 @@ import { BiTask } from "react-icons/bi";
 import { LuUsers2 } from "react-icons/lu";
 import { TbUserShare } from "react-icons/tb";
 import DashboardTaskTable from '../Components/DashboardTaskTable';
+import CountUp from 'react-countup';
 
 const Dashboard = () => {
     const {showMenu} = useStore();
@@ -108,7 +109,10 @@ const Dashboard = () => {
                     <div className='flex justify-between p-5 border-[1.5px] border-purple-500 rounded-md'>
                       <div>
                         <div>Total Todo</div>
-                        <p className='text-5xl font-medium'>{todo}</p>
+                        <p className='text-5xl font-medium'><CountUp start={0}
+                                end={todo}
+                                duration={2} />
+                                </p>
                         <div className='inline-flex items-center gap-2'><span>Tasks</span> <span className='text-purple-500'><TfiBarChart/></span></div>
                       </div>
                       <div className='w-[40px] h-[40px] border-[1.5px] border-purple-300 text-purple-500 grid place-content-center rounded-md text-2xl'><MdAddTask/></div>
@@ -118,7 +122,9 @@ const Dashboard = () => {
                     <div className='flex justify-between p-5 border-[1.5px] border-slate-200 rounded-md'>
                       <div>
                         <div>Completed Tasks</div>
-                        <p className='text-5xl font-medium'>{completed}</p>
+                        <p className='text-5xl font-medium'><CountUp start={0}
+                                end={completed}
+                                duration={2} /></p>
                         <div className='inline-flex items-center gap-2'><span>Finished</span> <span className='text-purple-500'><AiOutlinePieChart/></span></div>
                       </div>
                       <div className='w-[40px] h-[40px] border-[1.5px] border-purple-300 text-purple-500 grid place-content-center rounded-md text-2xl'><BiTask/></div>
@@ -128,7 +134,9 @@ const Dashboard = () => {
                     <div className='flex justify-between p-5 border-[1.5px] border-slate-200 rounded-md'>
                       <div>
                         <div>Team Members</div>
-                        <p className='text-5xl font-medium'>{teamMember}</p>
+                        <p className='text-5xl font-medium'><CountUp start={0}
+                                end={teamMember}
+                                duration={1} /></p>
                         <div className='inline-flex items-center gap-2'><span>Member</span> <span className='text-purple-500'><TbUserShare/></span></div>
                       </div>
                       <div className='w-[40px] h-[40px] border-[1.5px] border-purple-300 text-purple-500 grid place-content-center rounded-md text-2xl'><LuUsers2 className='text-xl'/></div>

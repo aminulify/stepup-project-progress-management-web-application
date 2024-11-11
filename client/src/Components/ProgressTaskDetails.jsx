@@ -4,8 +4,9 @@ import { GoDot } from 'react-icons/go';
 import { MdKeyboardArrowDown, MdKeyboardArrowUp, MdKeyboardDoubleArrowUp, MdOutlineStickyNote2 } from 'react-icons/md';
 import { TbSubtask } from "react-icons/tb";
 
-const TaskDetails = ({taskData}) => {
+const ProgressTaskDetails = ({taskData}) => {
     console.log("subdata",taskData[0].note.length)
+    const progressDataOnly = taskData.filter(data => data.stage === "in progress");
 
     const ICONS = {
         high: <MdKeyboardDoubleArrowUp/>,
@@ -38,7 +39,7 @@ const TaskDetails = ({taskData}) => {
     return (
         <div className='grid md:grid-cols-3 grid-cols-1 gap-5'>
             {
-                taskData.map(task => (
+                progressDataOnly.map(task => (
                     <div key={task._id} className='p-2 rounded-md border-[1.4px] border-purple-200 hover:border-purple-500 duration-300 cursor-pointer'>
                         <aside className={`flex gap-1 items-center text-sm ${setPriorityColor[task.priority]}`}>
                             <div>{ICONS[task.priority]}</div>
@@ -99,4 +100,4 @@ const TaskDetails = ({taskData}) => {
     );
 };
 
-export default TaskDetails;
+export default ProgressTaskDetails;

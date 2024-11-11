@@ -5,6 +5,7 @@ import { IoListOutline } from "react-icons/io5";
 import { RxDashboard } from "react-icons/rx";
 import { summary } from '../../public/data';
 import TaskDetails from '../Components/TaskDetails';
+import ProgressTaskDetails from '../Components/ProgressTaskDetails';
 
 const Task = () => {
     const [boardView, setBoardView] = useState(true);
@@ -54,7 +55,9 @@ const Task = () => {
              </section>
 
 
-             
+             <section>
+                <ProgressTaskDetails taskData={taskData}/>
+             </section>
             </div>
         </div>
     );

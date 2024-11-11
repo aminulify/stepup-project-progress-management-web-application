@@ -6,7 +6,6 @@ import TeamTable from '../Components/TeamTable';
 
 const Task = () => {
     const userData = users;
-    console.log("aminul",userData);
 
     return (
         <div className='md:flex'>

@@ -12,7 +12,6 @@ const ProjectPreview = () => {
     const [progress, setProgress] = useState(false);
     const [todo, setTodo] = useState(false);
     const [team, setTeam] = useState(false);
-    const [trash, setTrash] = useState(false);
 
     const handleDashboard = () =>{
         setDashboard(true);
@@ -20,7 +19,7 @@ const ProjectPreview = () => {
         setProgress(false);
         setTodo(false);
         setTeam(false);
-        setTrash(false);
+    
     }
     const handleTask = () =>{
         setDashboard(false);
@@ -28,7 +27,7 @@ const ProjectPreview = () => {
         setProgress(false);
         setTodo(false);
         setTeam(false);
-        setTrash(false);
+    
     }
     const handleProgress = () =>{
         setDashboard(false);
@@ -36,7 +35,7 @@ const ProjectPreview = () => {
         setProgress(true);
         setTodo(false);
         setTeam(false);
-        setTrash(false);
+    
     }
     const handleTodo = () =>{
         setDashboard(false);
@@ -44,7 +43,7 @@ const ProjectPreview = () => {
         setProgress(false);
         setTodo(true);
         setTeam(false);
-        setTrash(false);
+    
     }
     const handleTeam = () =>{
         setDashboard(false);
@@ -52,16 +51,9 @@ const ProjectPreview = () => {
         setProgress(false);
         setTodo(false);
         setTeam(true);
-        setTrash(false);
+    
     }
-    const handleTrash = () =>{
-        setDashboard(false);
-        setTask(false);
-        setProgress(false);
-        setTodo(false);
-        setTeam(false);
-        setTrash(true);
-    }
+    
     return (
         <section className='max-w-[1000px] lg:mx-auto md:mx-10 mx-5 relative'>
             <div className='text-[var(--primaryFontColor)] mb-16'>
@@ -105,13 +97,7 @@ const ProjectPreview = () => {
                         </div>
                         <p className='text-sm font-semibold mt-1 md:block hidden'>Team</p>
                     </aside>
-                    <aside className='text-center flex flex-col'>
-                        <div onClick={handleTrash} className={`text-2xl md:text-4xl md:h-[70px] h-[50px] md:w-[70px] w-[50px] flex justify-center items-center rounded-lg border-[2px] hover:text-purple-500 hover:border-purple-500 duration-300 cursor-pointer ${trash ? "text-purple-500 border-purple-500":"border-[var(--primaryFontColor)]"}`}>
-                            <FiTrash2 />
-                            
-                        </div>
-                        <p className='text-sm font-semibold mt-1 md:block hidden'>Trash</p>
-                    </aside>
+                    
                 </nav>
 
                 <section>
@@ -119,7 +105,7 @@ const ProjectPreview = () => {
                         {
                             dashboard && (
                                 <div className='p-5 rounded-lg backdrop-blur-2xl border-[1.5px] border-purple-500 z-10'>
-                                    <img src="../../../public/project/section1.png" className='rounded-md shadow-md' alt="Project Preview Image" />
+                                    <img src="../../../public/project/1.jpg" className='rounded-md shadow-md' alt="Project Preview Image" />
                                 </div>
                             )
                         }
@@ -128,7 +114,7 @@ const ProjectPreview = () => {
                         {
                             task && (
                                 <div className='p-5 rounded-lg backdrop-blur-2xl border-[1.5px] border-purple-500 z-10'>
-                                    <img src="../../../public/project/section1.png" className='rounded-md shadow-md' alt="Project Preview Image" />
+                                    <img src="../../../public/project/2.jpg" className='rounded-md shadow-md' alt="Project Preview Image" />
                                 </div>
                             )
                         }
@@ -137,7 +123,7 @@ const ProjectPreview = () => {
                         {
                             progress && (
                                 <div className='p-5 rounded-lg backdrop-blur-2xl border-[1.5px] border-purple-500 z-10'>
-                                    <img src="../../../public/project/section1.png" className='rounded-md shadow-md' alt="Project Preview Image" />
+                                    <img src="../../../public/project/4.jpg" className='rounded-md shadow-md' alt="Project Preview Image" />
                                 </div>
                             )
                         }
@@ -146,7 +132,7 @@ const ProjectPreview = () => {
                         {
                             todo && (
                                 <div className='p-5 rounded-lg backdrop-blur-2xl border-[1.5px] border-purple-500 z-10'>
-                                    <img src="../../../public/project/section1.png" className='rounded-md shadow-md' alt="Project Preview Image" />
+                                    <img src="../../../public/project/5.jpg" className='rounded-md shadow-md' alt="Project Preview Image" />
                                 </div>
                             )
                         }
@@ -155,20 +141,12 @@ const ProjectPreview = () => {
                         {
                             team && (
                                 <div className='p-5 rounded-lg backdrop-blur-2xl border-[1.5px] border-purple-500 z-10'>
-                                    <img src="../../../public/project/section1.png" className='rounded-md shadow-md' alt="Project Preview Image" />
+                                    <img src="../../../public/project/6.jpg" className='rounded-md shadow-md' alt="Project Preview Image" />
                                 </div>
                             )
                         }
                     </div>
-                    <div className='mt-8 shadow-lg'>
-                        {
-                            trash && (
-                                <div className='p-5 rounded-lg backdrop-blur-2xl border-[1.5px] border-purple-500 z-10'>
-                                    <img src="../../../public/project/section1.png" className='rounded-md shadow-md' alt="Project Preview Image" />
-                                </div>
-                            )
-                        }
-                    </div>
+                    
                 </section>
 
             </div>

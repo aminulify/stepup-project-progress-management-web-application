@@ -5,6 +5,7 @@ import { IoListOutline } from "react-icons/io5";
 import { RxDashboard } from "react-icons/rx";
 import { summary } from '../../public/data';
 import TaskDetails from '../Components/TaskDetails';
+import CompletedTaskDetails from '../Components/CompletedTaskDetails';
 
 const Task = () => {
     const [boardView, setBoardView] = useState(true);
@@ -55,7 +56,7 @@ const Task = () => {
 
 
              <section>
-                <TaskDetails taskData={taskData}/>
+                <CompletedTaskDetails taskData={taskData}/>
              </section>
             </div>
         </div>

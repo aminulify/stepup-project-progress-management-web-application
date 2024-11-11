@@ -23,7 +23,7 @@ const TeamTable = ({userData}) => {
                                 <td className='py-2 pl-3'>{user.name.length > 12 ? user.name.slice(0,12) + "." : user.name}</td>
                                 <td className='py-2 smNone'>{user.title}</td>
                                 <td className='py-2 smNone'>{user.email}</td>
-                                <td className='py-2'>{user.role}</td>
+                                <td className={`py-2 ${user.role === "Admin" && "font-semibold"}`}>{user.role}</td>
                                 <td className='py-2'>{user.isActive ? <div className='text-sm font-semibold text-purple-500'>Active</div> : <div className='text-sm font-semibold text-red-500'>Disable</div>}</td>
                                 <td className='flex gap-1 py-2 justify-center'>
                                     <div className='text-xl p-1 rounded-sm bg-purple-50 hover:bg-purple-200 cursor-pointer duration-300'><RiEditBoxLine/></div>

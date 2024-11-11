@@ -33,6 +33,14 @@ export const summary = {
           email: "alex.johnson@example.com",
         },
       ],
+      note: [
+        {
+          comment: "Complete this task as soon as possible"
+        },
+        {
+          comment: "Ready to work"
+        }, 
+      ],
       isTrashed: false,
       activities: [],
       subTasks: [
@@ -69,6 +77,14 @@ export const summary = {
           role: "Tester",
           email: "emily.wilson@example.com",
         },
+      ],
+      note: [
+        {
+          comment: "Complete this task as soon as possible"
+        },
+        {
+          comment: "Ready to work"
+        }, 
       ],
       isTrashed: false,
       activities: [
@@ -215,6 +231,14 @@ export const summary = {
           email: "emily.wilson@example.com",
         },
       ],
+      note: [
+        {
+          comment: "Complete this task as soon as possible"
+        },
+        {
+          comment: "Ready to work"
+        }, 
+      ],
       isTrashed: false,
       activities: [
         {
@@ -273,6 +297,14 @@ export const summary = {
           email: "alex.johnson@example.com",
         },
       ],
+      note: [
+        {
+          comment: "Complete this task as soon as possible"
+        },
+        {
+          comment: "Ready to work"
+        }, 
+      ],
       isTrashed: false,
       activities: [
         {
@@ -325,6 +357,14 @@ export const summary = {
           email: "jane.smith@example.com",
         },
       ],
+      note: [
+        {
+          comment: "Complete this task as soon as possible"
+        },
+        {
+          comment: "Ready to work"
+        }, 
+      ],
       isTrashed: false,
       activities: [],
       subTasks: [
@@ -367,6 +407,14 @@ export const summary = {
           role: "Tester",
           email: "emily.wilson@example.com",
         },
+      ],
+      note: [
+        {
+          comment: "Complete this task as soon as possible"
+        },
+        {
+          comment: "Ready to work"
+        }, 
       ],
       isTrashed: false,
       activities: [],
@@ -412,6 +460,14 @@ export const summary = {
           email: "jane.smith@example.com",
         },
       ],
+      note: [
+        {
+          comment: "Complete this task as soon as possible"
+        },
+        {
+          comment: "Ready to work"
+        }, 
+      ],
       isTrashed: false,
       activities: [],
       subTasks: [
@@ -455,6 +511,14 @@ export const summary = {
           email: "emily.wilson@example.com",
         },
       ],
+      note: [
+        {
+          comment: "Complete this task as soon as possible"
+        },
+        {
+          comment: "Ready to work"
+        }, 
+      ],
       isTrashed: false,
       activities: [],
       subTasks: [
@@ -474,7 +538,7 @@ export const summary = {
       title: "Website Project Proposal",
       date: "2024-02-07T00:00:00.000Z",
       priority: "high",
-      stage: "todo",
+      stage: "completed",
       assets: [],
       team: [
         {
@@ -498,6 +562,14 @@ export const summary = {
           role: "Manager",
           email: "jane.smith@example.com",
         },
+      ],
+      note: [
+        {
+          comment: "Complete this task as soon as possible"
+        },
+        {
+          comment: "Ready to work"
+        }, 
       ],
       isTrashed: false,
       activities: [],

@@ -11,7 +11,8 @@ const Task = () => {
     const [listView, setListView] = useState(false);
 
     const taskData = summary.last10Task;
-    console.log(taskData);
+    console.log("taskdata",taskData);
+    console.log("taskNote",taskData[0].note);
 
     const handleBoardView = () =>{
         setBoardView(true);
@@ -45,23 +46,23 @@ const Task = () => {
                     <div className='flex justify-between gap-2 items-center py-1.5 px-2 bg-purple-50'>
                         <aside className='flex items-center gap-2'>
                             <div className='w-3 h-3 rounded-full bg-blue-500'></div>
-                            <div className=''>To Do</div>
+                            <div className='text-sm font-medium'>To Do</div>
                         </aside>
-                        <div className='text-right'><FiPlus/></div>
+                        <div className='text-right md:block hidden'><FiPlus/></div>
                     </div>
-                    <div className='flex justify-between gap-2 items-center py-1.5 px-2 bg-purple-50'>
+                    <div className='flex flex-wrap justify-between gap-2 items-center py-1.5 px-2 bg-purple-50'>
                         <aside className='flex items-center gap-2'>
                             <div className='w-3 h-3 rounded-full bg-orange-500'></div>
-                            <div className=''>In Progress</div>
+                            <div className='text-sm font-medium'>In Progress</div>
                         </aside>
-                        <div className='text-right'><FiPlus/></div>
+                        <div className='text-right md:block hidden'><FiPlus/></div>
                     </div>
                     <div className='flex justify-between gap-2 items-center py-1.5 px-2 bg-purple-50'>
                         <aside className='flex items-center gap-2'>
                             <div className='w-3 h-3 rounded-full bg-green-500'></div>
-                            <div className=''>Completed</div>
+                            <div className='text-sm font-medium'>Completed</div>
                         </aside>
-                        <div className='text-right'><FiPlus/></div>
+                        <div className='text-right md:block hidden'><FiPlus/></div>
                     </div>
                 </div>
 
