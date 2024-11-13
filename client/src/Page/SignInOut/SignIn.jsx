@@ -49,6 +49,7 @@ const SignIn = () => {
                 duration: 2000,
                 position: 'top-center',
             });
+            setLoading(false);
         })
     }
  

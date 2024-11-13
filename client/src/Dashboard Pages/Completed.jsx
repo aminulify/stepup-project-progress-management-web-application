@@ -6,13 +6,14 @@ import { RxDashboard } from "react-icons/rx";
 import { summary } from '../../public/data';
 import TaskDetails from '../Components/TaskDetails';
 import CompletedTaskDetails from '../Components/CompletedTaskDetails';
+import TaskListView from '../Components/TaskListView';
 
 const Task = () => {
     const [boardView, setBoardView] = useState(true);
     const [listView, setListView] = useState(false);
 
     const taskData = summary.last10Task;
-    console.log(taskData);
+    const completedDataOnly = taskData.filter(data => data.stage === "completed");
 
     const handleBoardView = () =>{
         setBoardView(true);
@@ -29,7 +30,7 @@ const Task = () => {
             <div className='z-30 md:h-[980px] bg-purple-50'>
             <DashboardNavbar/>
             </div>
-            <div className='md:my-20 my-5 text-[var(--primaryFontColor)] mx-5 md:w-[800px] md:mx-auto'>
+            <div className='md:my-20 my-5 text-[var(--primaryFontColor)] mx-5 md:w-[900px] md:mx-auto'>
              <header className='w-full'>
                 <h2 className='text-xl font-medium'>Completed</h2>
              </header>
@@ -54,10 +55,14 @@ const Task = () => {
 
              </section>
 
-
-             <section>
+            {
+                listView ? <section>
+                <TaskListView taskData={completedDataOnly}/>
+             </section> : <section>
                 <CompletedTaskDetails taskData={taskData}/>
              </section>
+            }
+             
             </div>
         </div>
     );

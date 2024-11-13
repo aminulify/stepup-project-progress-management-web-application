@@ -4,15 +4,15 @@ import { FiPlus } from "react-icons/fi";
 import { IoListOutline } from "react-icons/io5";
 import { RxDashboard } from "react-icons/rx";
 import { summary } from '../../public/data';
-import TaskDetails from '../Components/TaskDetails';
 import ProgressTaskDetails from '../Components/ProgressTaskDetails';
+import TaskListView from '../Components/TaskListView';
 
 const Task = () => {
     const [boardView, setBoardView] = useState(true);
     const [listView, setListView] = useState(false);
 
     const taskData = summary.last10Task;
-    console.log(taskData);
+    const progressDataOnly = taskData.filter(data => data.stage === "in progress");
 
     const handleBoardView = () =>{
         setBoardView(true);
@@ -29,7 +29,7 @@ const Task = () => {
             <div className='z-30 md:h-[980px] bg-purple-50'>
             <DashboardNavbar/>
             </div>
-            <div className='md:my-20 my-5 text-[var(--primaryFontColor)] mx-5 md:w-[800px] md:mx-auto'>
+            <div className='md:my-20 my-5 text-[var(--primaryFontColor)] mx-5 md:w-[900px] md:mx-auto'>
              <header className='w-full'>
                 <h2 className='text-xl font-medium'>In Progress</h2>
              </header>
@@ -54,10 +54,14 @@ const Task = () => {
 
              </section>
 
-
-             <section>
+            {
+                listView ? <section>
+                <TaskListView taskData={progressDataOnly}/>
+             </section> : <section>
                 <ProgressTaskDetails taskData={taskData}/>
              </section>
+            }
+             
             </div>
         </div>
     );

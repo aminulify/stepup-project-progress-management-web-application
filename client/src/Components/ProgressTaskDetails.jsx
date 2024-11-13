@@ -1,11 +1,12 @@
 import React from 'react';
 import { BiPlus } from 'react-icons/bi';
+import { CgDetailsMore } from 'react-icons/cg';
 import { GoDot } from 'react-icons/go';
 import { MdKeyboardArrowDown, MdKeyboardArrowUp, MdKeyboardDoubleArrowUp, MdOutlineStickyNote2 } from 'react-icons/md';
 import { TbSubtask } from "react-icons/tb";
 
 const ProgressTaskDetails = ({taskData}) => {
-    console.log("subdata",taskData[0].note.length)
+    // console.log("subdata",taskData[0].note.length)
     const progressDataOnly = taskData.filter(data => data.stage === "in progress");
 
     const ICONS = {
@@ -40,11 +41,15 @@ const ProgressTaskDetails = ({taskData}) => {
         <div className='grid md:grid-cols-3 grid-cols-1 gap-5'>
             {
                 progressDataOnly.map(task => (
-                    <div key={task._id} className='p-2 rounded-md border-[1.4px] border-purple-200 hover:border-purple-500 duration-300 cursor-pointer'>
+                    <div key={task._id} className='-z-10 p-2 rounded-md border-[1.4px] border-purple-200 hover:border-purple-500 duration-300 cursor-pointer relative'>
                         <aside className={`flex gap-1 items-center text-sm ${setPriorityColor[task.priority]}`}>
                             <div>{ICONS[task.priority]}</div>
                             <p className={`${task.ICONS} text-[12px] font-medium`}>{task.priority.toUpperCase()} PRIORITY</p>
                         </aside>
+
+                        <div className='absolute top-2 z-20 p-1.5 right-2 text-purple-700 bg-purple-50 hover:bg-purple-200 duration-300 rounded-full'>
+                            <CgDetailsMore />
+                        </div>
                         
                         <div className='flex items-center gap-1 pt-1 text-sm font-medium'>
                             <div className={`w-2 h-2 rounded-full ${StageColor[task.stage]}`}></div>
@@ -88,9 +93,16 @@ const ProgressTaskDetails = ({taskData}) => {
                             </div>
                         </div>
 
-                        <div className='flex items-center gap-1 text-purple-900 hover:text-purple-500 duration-300'>
-                            <BiPlus/>
-                            <p className='text-[14px]'>ADD SUBTASK</p>
+                        <div className='grid grid-cols-2 gap-3 place-items-center w-full'>
+                            <div className='flex items-center gap-1 w-full bg-purple-100 hover:bg-purple-300 duration-200 justify-center rounded-md border-[1px] border-purple-50'>
+                                <BiPlus/>
+                                <p className='text-[14px] font-medium'>Add Subtask</p>
+                            </div>
+                                
+                            <div className='flex items-center gap-1 border-[1px] border-purple-500 hover:border-purple-700 duration-300 w-full justify-center rounded-md'>
+                                <CgDetailsMore/>
+                                <p className='text-[14px] font-medium'>Read More</p>
+                            </div>
                         </div>
 
                     </div>
