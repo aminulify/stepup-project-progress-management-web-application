@@ -37,18 +37,15 @@ const TaskDetails = ({taskData}) => {
     }
 
     return (
-        <div className='grid md:grid-cols-3 grid-cols-1 gap-5'>
+        <section>
+            <div className='grid md:grid-cols-3 grid-cols-1 gap-5'>
             {
                 taskData.map(task => (
-                    <div key={task._id} className='-z-10 p-2 rounded-md border-[1.4px] border-purple-200 hover:border-purple-500 duration-300 cursor-pointer relative'>
+                    <div key={task._id} className=' p-2 rounded-md border-[1.4px] border-purple-200 hover:border-purple-500 duration-300 cursor-pointer'>
                         <aside className={`flex gap-1 items-center text-sm ${setPriorityColor[task.priority]}`}>
                             <div>{ICONS[task.priority]}</div>
                             <p className={`${task.ICONS} text-[12px] font-medium`}>{task.priority.toUpperCase()} PRIORITY</p>
                         </aside>
-
-                        <div className='absolute top-2 z-20 p-1.5 right-2 text-purple-700 bg-purple-50 hover:bg-purple-200 duration-300 rounded-full'>
-                            <CgDetailsMore />
-                        </div>
                         
                         <div className='flex items-center gap-1 pt-1 text-sm font-medium'>
                             <div className={`w-2 h-2 rounded-full ${StageColor[task.stage]}`}></div>
@@ -98,7 +95,7 @@ const TaskDetails = ({taskData}) => {
                                 <p className='text-[14px] font-medium'>Add Subtask</p>
                             </div>
                                 
-                            <div className='flex items-center gap-1 border-[1px] border-purple-500 hover:border-purple-700 duration-300 w-full justify-center rounded-md'>
+                            <div className='flex items-center gap-1 border-[1.4px] border-purple-300 hover:border-purple-500 duration-300 w-full justify-center rounded-md'>
                                 <CgDetailsMore/>
                                 <p className='text-[14px] font-medium'>Read More</p>
                             </div>
@@ -108,6 +105,7 @@ const TaskDetails = ({taskData}) => {
                 ))
             }
         </div>
+        </section>
     );
 };
 
