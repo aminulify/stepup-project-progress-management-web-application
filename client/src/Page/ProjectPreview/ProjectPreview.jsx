@@ -5,6 +5,8 @@ import { RiProgress3Line } from "react-icons/ri";
 import { LuClipboardCheck } from "react-icons/lu";
 import { FaUsers } from "react-icons/fa6";
 import { FiTrash2 } from "react-icons/fi";
+import { BiSolidDashboard } from "react-icons/bi";
+import { MdAddTask } from "react-icons/md";
 
 const ProjectPreview = () => {
     const [dashboard, setDashboard] = useState(true);
@@ -64,14 +66,14 @@ const ProjectPreview = () => {
                 <nav className='flex gap-4 justify-center'>
                     <aside className='text-center flex flex-col'>
                         <div onClick={handleDashboard} className={`text-2xl md:text-4xl md:h-[70px] h-[50px] md:w-[70px] w-[50px] flex justify-center items-center rounded-lg border-[2px] hover:text-purple-500 hover:border-purple-500 duration-300 cursor-pointer ${dashboard ? "text-purple-500 border-purple-500":"border-[var(--primaryFontColor)]"}`}>
-                            <MdDashboard />
+                            <BiSolidDashboard />
                             
                         </div>
                         <p className='text-sm font-semibold mt-1 md:block hidden'>Dashboard</p>
                     </aside>
                     <aside className='text-center flex flex-col'>
                         <div onClick={handleTask} className={`text-2xl md:text-4xl md:h-[70px] h-[50px] md:w-[70px] w-[50px] flex justify-center items-center rounded-lg border-[2px] hover:text-purple-500 hover:border-purple-500 duration-300 cursor-pointer ${task ? "text-purple-500 border-purple-500":"border-[var(--primaryFontColor)]"}`}>
-                            <FaTasks />
+                            <MdAddTask />
                             
                         </div>
                         <p className='text-sm font-semibold mt-1 md:block hidden'>Task</p>

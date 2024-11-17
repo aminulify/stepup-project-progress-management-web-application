@@ -5,7 +5,8 @@ import { GoDot } from "react-icons/go";
 
 const DashboardTaskTable = () => {
     const tasks = summary.last10Task;
-    console.log("total",tasks);
+    const withoutDeleteTask = tasks.filter(data => data.stage !== "delete")
+    // console.log("total",tasks);
 
     const ICONS = {
         high: <MdKeyboardDoubleArrowUp/>,
@@ -30,7 +31,7 @@ const DashboardTaskTable = () => {
     return (
         <section className="mb-10 mt-8 rounded-lg">
 
-            <div className='w-full h-[450px] overflow-y-auto bg-white shadow-md rounded md:px-4 px-2 md:py-4 py-2 border-[1.4px] border-purple-500'>
+            <div className='w-full h-[400px] overflow-y-auto bg-white shadow-md rounded md:px-4 px-2 md:py-4 py-2 border-[1.4px] border-purple-500'>
                 <table className='w-full'>
 
                 <thead className='px-4'>
@@ -43,7 +44,7 @@ const DashboardTaskTable = () => {
                 </thead>
 
                 <tbody>
-                    {tasks?.map((task, id) => (
+                    {withoutDeleteTask?.map((task, id) => (
                         
                         <tr key={id} className='text-[var(--primaryFontColor)] bg-white text-left border-b pb-2'>
                             <td className='py-2 md:text-md text-sm'>

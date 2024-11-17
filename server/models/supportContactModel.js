@@ -26,7 +26,8 @@ const contactSchema = new mongoose.Schema({
     },
     numberOfEmployee:{
         type: String,
-        required: true
+        required: true,
+        default: 0
     },
     
 }, {timestamps: true})

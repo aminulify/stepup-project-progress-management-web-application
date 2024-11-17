@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const ContactSupport = ({setContact, contact}) => {
     
-    const [employeeNum, setEmployeeNum] = useState("");
+    const [employeeNum, setEmployeeNum] = useState("1-10");
 
     const handleContactSubmit = async(e) =>{
         e.preventDefault();
@@ -16,9 +16,8 @@ const ContactSupport = ({setContact, contact}) => {
         const numberOfEmployee = employeeNum;
 
         const supportData = {name, email, phone, companyName, description, numberOfEmployee};
-        // console.log(supportData);
 
-        try{
+     
             fetch('http://localhost:3000/api/contact',{
                 method: "POST",
                 headers: {
@@ -34,10 +33,6 @@ const ContactSupport = ({setContact, contact}) => {
     
             })
             .catch(err => console.log(err))
-
-        }catch(err){
-            console.log(err);
-        }
 
     }
     return (

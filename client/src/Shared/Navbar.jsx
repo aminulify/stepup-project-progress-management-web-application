@@ -7,20 +7,20 @@ import Loading from './Loading';
 const Navbar = () => {
     const [contact, setContact] = useState(false);
     const {user, logOut, loading, setLoading} = useContext(AuthContext);
-    const [validImg, setValidImg] = useState(false);
+    // const [validImg, setValidImg] = useState(false);
     console.log(user);
 
     const navigation = useNavigation();
 
-    useEffect(()=>{
-        if(!user?.photoURL){
-            return setValidImg(false);
-        }
+    // useEffect(()=>{
+    //     if(!user?.photoURL){
+    //         return setValidImg(false);
+    //     }
 
-        const img = new Image();
-        img.onload = () => setValidImg(true);
-        img.onerror = () => setValidImg(false);
-    },[user?.photoURL])
+    //     const img = new Image();
+    //     img.onload = () => setValidImg(true);
+    //     img.onerror = () => setValidImg(false);
+    // },[user?.photoURL])
 
     const handleScrollup = () =>{
         window.scrollTo(0,0)

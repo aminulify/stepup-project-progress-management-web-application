@@ -1,12 +1,14 @@
 import React from 'react';
-import { BiPlus } from 'react-icons/bi';
-import { CgDetailsMore } from 'react-icons/cg';
 import { GoDot } from 'react-icons/go';
 import { MdKeyboardArrowDown, MdKeyboardArrowUp, MdKeyboardDoubleArrowUp, MdOutlineStickyNote2 } from 'react-icons/md';
 import { TbSubtask } from "react-icons/tb";
+import { TbRotate } from "react-icons/tb";
+import { RiDeleteBinLine } from "react-icons/ri";
 
-const TaskDetails = ({taskData}) => {
+const TrashTaskDetails = ({taskData}) => {
     // console.log("subdata",taskData[0].note.length)
+    const trashDataOnly = taskData.filter(data => data.stage === "delete");
+    console.log("data have",taskData);
 
     const ICONS = {
         high: <MdKeyboardDoubleArrowUp/>,
@@ -37,11 +39,11 @@ const TaskDetails = ({taskData}) => {
     }
 
     return (
-        <section>
-            <div className='grid md:grid-cols-3 grid-cols-1 gap-5'>
+        <div className='grid md:grid-cols-3 grid-cols-1 gap-5'>
             {
-                taskData.map(task => (
-                    <div key={task._id} className=' p-2 rounded-md border-[1.4px] border-purple-200 hover:border-purple-500 duration-300 cursor-pointer'>
+                trashDataOnly.map(task => (
+                    <div key={task._id} className={`p-2 rounded-md border-[1.4px] border-purple-200`}>
+
                         <aside className={`flex gap-1 items-center text-sm ${setPriorityColor[task.priority]}`}>
                             <div>{ICONS[task.priority]}</div>
                             <p className={`${task.ICONS} text-[12px] font-medium`}>{task.priority.toUpperCase()} PRIORITY</p>
@@ -90,14 +92,14 @@ const TaskDetails = ({taskData}) => {
                         </div>
 
                         <div className='grid grid-cols-2 gap-3 place-items-center w-full'>
-                            <div className='flex items-center gap-1 w-full bg-purple-100 hover:bg-purple-300 duration-200 justify-center rounded-md border-[1px] border-purple-50'>
-                                <BiPlus/>
-                                <p className='text-[14px] font-medium'>Add Subtask</p>
+                            <div className='flex items-center gap-1 w-full bg-purple-100 hover:bg-purple-300 duration-200 justify-center rounded-md border-[1px] border-purple-50 cursor-pointer'>
+                                <TbRotate/>
+                                <p className='text-[14px] font-medium'>Restore</p>
                             </div>
                                 
-                            <div className='flex items-center gap-1 border-[1.4px] border-purple-300 hover:border-purple-500 duration-300 w-full justify-center rounded-md'>
-                                <CgDetailsMore/>
-                                <p className='text-[14px] font-medium'>Read More</p>
+                            <div className='flex items-center gap-1 border-[1.4px] border-purple-300 hover:border-purple-500 duration-300 w-full justify-center rounded-md cursor-pointer'>
+                                <RiDeleteBinLine/>
+                                <p className='text-[14px] font-medium'>Delete</p>
                             </div>
                         </div>
 
@@ -105,8 +107,7 @@ const TaskDetails = ({taskData}) => {
                 ))
             }
         </div>
-        </section>
     );
 };
 
-export default TaskDetails;
+export default TrashTaskDetails;

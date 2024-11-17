@@ -108,9 +108,9 @@ const SignUp = () => {
                                 <p className='text-sm text-red-500 flex gap-1 items-center'><TiWarningOutline/> {errors?.password?.message}</p>
                             </div>}
                         </div>
-                        <div className='mt-2'>
-                            <label>Photo URL: (optional)</label>
-                            <input type="text" className='p-2 rounded-md w-full outline-none border-[1.4px] border-purple-500 backdrop-blur-lg' placeholder='Enter your photo url' name='photo' {...register("img")} />
+                        <div className='mt-2 w-full'>
+                            <label>Upload Image</label>
+                            <img src="image-upload.png" alt="upload image icon" className='mt-1 cursor-pointer' />
                         </div>
                         <div className='flex gap-2 my-2'>
                             <input type="checkbox" onClick={()=>setCheck(!check)} checked={check} className='accent-purple-500 cursor-pointer' />
