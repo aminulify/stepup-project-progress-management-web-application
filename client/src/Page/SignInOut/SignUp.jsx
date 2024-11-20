@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import Loading from '../../Shared/Loading';
@@ -10,30 +10,76 @@ const SignUp = () => {
     const navigate = useNavigate();
     const [check, setCheck] = useState(false);
     const {googleAuthentication, loading, setLoading, createUser, updateUser} = useContext(AuthContext);
+    const imgData = useRef(null);
+
+
+    const imgBB = `https://api.imgbb.com/1/upload?key=12a5c8dd785d727ebc27245b83df27bb`;
+    console.log(imgBB);
 
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     const onSubmit = data => {
         console.log("userData",data)
         setLoading(false);
-        
-        createUser(data.email, data.password)
-        .then(result => {
-            updateUser(data.username, data.img)
-            const user = result.user;
-            console.log(user)
-            setLoading(true);
-            // react hot toast 
-            toast.success('Successfully Sign Up!',{
-                duration: 1000,
-                position: 'top-center',
-            });
-            
-            setTimeout(()=>{
-                setLoading(false);
-                navigate('/');
-            },1000);
+
+        const image = imgData.current.files[0];
+
+        const formData = new FormData();
+        formData.append('image', image);
+
+        fetch(imgBB, {
+            method: "POST",
+            body: formData
         })
+        .then(res =>res.json())
+        .then(imgResponse => {
+            console.log(imgResponse)
+            if(imgResponse.success){
+                const imgURL = imgResponse.data.display_url;
+                console.log("img",imgURL, "data",imgResponse.data);
+
+                createUser(data.email, data.password)
+                .then(result => {
+                    updateUser(data.username, imgURL)
+                    const user = result.user;
+                    console.log(user)
+                    setLoading(true);
+
+                    const uId = user.uid;
+                    const email = data.email;
+                    const username = data.username;
+                    const password = data.password;
+                    console.log("according", uId, email, username, password);
+
+                    fetch('http://localhost:3000/api/user-data',{
+                        method: "POST",
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({uId, username, email, password})
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log("signup",data)
+                        setLoading(false);
+            
+                        // react hot toast 
+                        toast.success('Successfully Sign Up!',{
+                            duration: 1000,
+                            position: 'top-center',
+                        });
+
+                        navigate('/');
+
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    })
+                    
+                })
+                    }
+                })
+           
         .catch(e => {
             setLoading(false);
             toast.error('Email or username already exists!',{
@@ -108,9 +154,10 @@ const SignUp = () => {
                                 <p className='text-sm text-red-500 flex gap-1 items-center'><TiWarningOutline/> {errors?.password?.message}</p>
                             </div>}
                         </div>
-                        <div className='mt-2 w-full'>
+                        <div className='mt-2 w-full relative'>
                             <label>Upload Image</label>
-                            <img src="image-upload.png" alt="upload image icon" className='mt-1 cursor-pointer' />
+                            <input type="file" accept="image/jpg, image/png, image/jpeg" className='absolute w-full h-full bottom-0 opacity-0 cursor-pointer' name='image' ref={imgData} />
+                            <img src="image-upload.png" alt="upload image icon" className='mt-1' />
                         </div>
                         <div className='flex gap-2 my-2'>
                             <input type="checkbox" onClick={()=>setCheck(!check)} checked={check} className='accent-purple-500 cursor-pointer' />

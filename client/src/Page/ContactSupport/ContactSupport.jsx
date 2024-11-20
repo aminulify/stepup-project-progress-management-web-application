@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import toast, { Toaster } from 'react-hot-toast';
 
 const ContactSupport = ({setContact, contact}) => {
     
@@ -18,21 +19,27 @@ const ContactSupport = ({setContact, contact}) => {
         const supportData = {name, email, phone, companyName, description, numberOfEmployee};
 
      
-            fetch('http://localhost:3000/api/contact',{
-                method: "POST",
-                headers: {
-                    'Content-Type': "application/json"
-                },
-                body: JSON.stringify(supportData)
-            })
-            .then(res => res.json())
-            .then(data => {
-                console.log('success', data);
-                form.reset();
-                setContact(false);
-    
-            })
-            .catch(err => console.log(err))
+        fetch('http://localhost:3000/api/contact',{
+            method: "POST",
+            headers: {
+                'Content-Type': "application/json"
+            },
+            body: JSON.stringify(supportData)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log('success', data);
+            form.reset();
+            setContact(false);
+
+            // hot toast 
+            toast.success('Successfully send!',{
+                duration: 3000,
+                position: 'top-center',
+            });
+
+        })
+        .catch(err => console.log(err))
 
     }
     return (

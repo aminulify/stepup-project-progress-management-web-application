@@ -11,9 +11,10 @@ const Task = () => {
     const [boardView, setBoardView] = useState(true);
     const [listView, setListView] = useState(false);
 
-    const taskData = summary.last10Task;
-    console.log("taskdata",taskData);
-    console.log("taskNote",taskData[0].note);
+    const task = summary.last10Task;
+    const taskData = task.filter(data => data.stage !== "delete")
+    console.log("taskdata",task);
+    console.log("taskNote",task[0].note);
 
     const handleBoardView = () =>{
         setBoardView(true);

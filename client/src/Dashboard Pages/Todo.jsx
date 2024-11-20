@@ -13,7 +13,7 @@ const Task = () => {
     const [listView, setListView] = useState(false);
 
     const taskData = summary.last10Task;
-    const todoDataOnly = taskData.filter(data => data.stage === "todo");
+    const todoDataOnly = taskData.filter(data => data.stage === "todo" && data.stage !== "delete");;
     // console.log(taskData);
 
     const handleBoardView = () =>{

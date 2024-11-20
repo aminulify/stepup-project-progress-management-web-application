@@ -1,7 +1,12 @@
 import mongoose from "mongoose";
 
 const userDataSchema = new mongoose.Schema({
-    name:{
+    uId: {
+        type: String,
+        required: true,
+        default: "N/A"
+    },
+    username:{
         type: String,
         required: true
     },
@@ -9,9 +14,13 @@ const userDataSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    photoURL:{
+    password: {
         type: String,
         required: true
+    },
+    role: {
+        type: String,
+        default: "Admin"
     }
 }, {timestamps: true})
 
