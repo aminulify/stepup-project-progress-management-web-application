@@ -4,6 +4,7 @@ import express from 'express';
 import "dotenv/config";
 import contactSupportRoute from './Routes/ContactSupportRoute.js';
 import userDataRoute from './Routes/UserDataRoute.js';
+// import createUserData from './Routes/';
 
 const PORT = process.env.PORT || 3000;
 const app = express();
@@ -25,6 +26,7 @@ app.get('/',(req,res)=>{
 // routes 
 app.use('/api/contact', contactSupportRoute);
 app.use('/api/user-data', userDataRoute);
+// app.use('/api/create-user-data', createUserData);
 
 app.listen(PORT, ()=>{
     console.log(`Server running on port ${PORT}`);

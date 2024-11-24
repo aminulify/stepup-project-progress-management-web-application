@@ -26,7 +26,12 @@ const DashboardTaskTable = () => {
         Designer: "bg-purple-500",
         Developer: "bg-blue-500",
         Tester: "bg-red-700",
-        Manager: "bg-green-700"
+        Manager: "bg-green-700",
+        Engineer: "bg-purple-700",
+        Marketer: "bg-black",
+        "Video Editor": "bg-orange-300",
+        "Content Creator": "bg-yellow-500",
+        "UI/UX Designer": "bg-slate-400"
     }
     return (
         <section className="mb-10 mt-8 rounded-lg">

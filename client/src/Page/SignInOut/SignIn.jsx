@@ -11,7 +11,7 @@ const SignIn = () => {
 
     const navigate = useNavigate();
 
-    const { signInUser, googleAuthentication, loading, setLoading } = useContext(AuthContext);
+    const { signInUser, loading, setLoading } = useContext(AuthContext);
 
     const handleScrollup = () =>{
         window.scrollTo(0,0)

@@ -11,6 +11,7 @@ const SignUp = () => {
     const [check, setCheck] = useState(false);
     const {googleAuthentication, loading, setLoading, createUser, updateUser} = useContext(AuthContext);
     const imgData = useRef(null);
+    const [userRole, setUserRole] = useState("Graphic Designer");
 
 
     const imgBB = `https://api.imgbb.com/1/upload?key=12a5c8dd785d727ebc27245b83df27bb`;
@@ -21,6 +22,7 @@ const SignUp = () => {
     const onSubmit = data => {
         console.log("userData",data)
         setLoading(false);
+        console.log("title",data.roleTitle);
 
         const image = imgData.current.files[0];
 
@@ -33,30 +35,35 @@ const SignUp = () => {
         })
         .then(res =>res.json())
         .then(imgResponse => {
-            console.log(imgResponse)
+            // console.log(imgResponse)
             if(imgResponse.success){
                 const imgURL = imgResponse.data.display_url;
-                console.log("img",imgURL, "data",imgResponse.data);
+                // console.log("img",imgURL, "data",imgResponse.data);
 
                 createUser(data.email, data.password)
                 .then(result => {
                     updateUser(data.username, imgURL)
                     const user = result.user;
-                    console.log(user)
+                    // console.log(user)
                     setLoading(true);
 
                     const uId = user.uid;
                     const email = data.email;
-                    const username = data.username;
+                    const username = data.username || user.email.slice(0,5);
                     const password = data.password;
-                    console.log("according", uId, email, username, password);
+                    const imageURL = imgURL;
+                    const rolePosition = data.roleTitle;
+                    const role = userRole;
+
+                    const userData = {uId, email, imageURL, username, password, rolePosition, role};
+                    console.log("according", userData);
 
                     fetch('http://localhost:3000/api/user-data',{
                         method: "POST",
                         headers: {
                             'Content-Type': 'application/json'
                         },
-                        body: JSON.stringify({uId, username, email, password})
+                        body: JSON.stringify(userData)
                     })
                     .then(res => res.json())
                     .then(data => {
@@ -153,6 +160,27 @@ const SignUp = () => {
                             {errors?.password?.message && <div>
                                 <p className='text-sm text-red-500 flex gap-1 items-center'><TiWarningOutline/> {errors?.password?.message}</p>
                             </div>}
+                        </div>
+                        <div className='mt-2'>
+                            <label className=''>Role:</label>
+                            
+                            <select id="rangeSelect" className='w-full p-2 outline-none border-[1.2px] border-purple-500 rounded-md' onChange={(e) => setUserRole(e.target.value)}>
+                                <option value="Designer">Designer</option>
+                                <option value="Developer">Developer</option>
+                                <option value="Engineer">Engineer</option>
+                                <option value="Manager">Manager</option>
+                                <option value="Marketer">Marketer</option>
+                                <option value="Tester">Tester</option>
+                                <option value="Video Editor">Video Editor</option>
+                                <option value="Content Creator">Content Creator</option>
+                                <option value="Admin">Team Admin</option>
+                            
+                        </select>
+                        </div>
+                        <div className='mt-2'>
+                            <label>Role Title:</label>
+                            <input type="text" className='p-2 rounded-md w-full outline-none border-[1.4px] border-purple-500 backdrop-blur-lg' placeholder='Ex: (Graphic Designer / Frontend Developer / Web Developer)' name='roleTitle' {...register("roleTitle", {required: "Role must be needed"})} />
+                            {errors?.roleTitle?.message && <p className='text-sm text-red-500 flex gap-1 items-center'><TiWarningOutline/>Role must be needed</p>}
                         </div>
                         <div className='mt-2 w-full relative'>
                             <label>Upload Image</label>
