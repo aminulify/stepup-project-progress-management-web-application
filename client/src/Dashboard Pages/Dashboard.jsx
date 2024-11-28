@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import DashboardNavbar from '../Shared/DashboardNavbar';
 import useStore from '../Shared/Zustand';
 import { TfiBarChart } from "react-icons/tfi";
@@ -14,7 +14,8 @@ const Dashboard = () => {
     const {showMenu} = useStore();
     let todo = 18;
     let completed = 20;
-    let teamMember = 2;
+
+    const [teamMember, setTeamMember] = useState(0);
     
     const chartData = [
         {
@@ -93,6 +94,13 @@ const Dashboard = () => {
 
       },[])
 
+      useEffect(()=>{
+        fetch('http://localhost:3000/api/user-data')
+        .then(res => res.json())
+        .then(data => setTeamMember(data))
+        .catch(err => err)
+      },[])
+
 
     return (
         <section className='md:flex'>
@@ -135,7 +143,7 @@ const Dashboard = () => {
                       <div>
                         <div>Team Members</div>
                         <p className='text-5xl font-medium'><CountUp start={0}
-                                end={teamMember}
+                                end={teamMember.length}
                                 duration={1} /></p>
                         <div className='inline-flex items-center gap-2'><span>Member</span> <span className='text-purple-500'><TbUserShare/></span></div>
                       </div>

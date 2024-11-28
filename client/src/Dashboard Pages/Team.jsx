@@ -1,24 +1,41 @@
 import React, { useContext, useEffect, useState } from 'react';
 import DashboardNavbar from '../Shared/DashboardNavbar';
 import { FiPlus } from "react-icons/fi";
-import { users } from '../../public/data';
 import TeamTable from '../Components/TeamTable';
-import { AuthContext } from '../AuthProvider/AuthProvider';
+import Loading from '../Shared/Loading';
+import { IoClose } from "react-icons/io5";
 
 const Task = () => {
 
     const [newUserModal, setNewUserModal] = useState(false);
     const [teamData, setTeamData] = useState([]);
-    const {user} = useContext(AuthContext);
+    const [loading, setLoading] = useState(false);
+    const [searchFindUserEmail, setSearchFindUserEmail] = useState();
 
+    console.log("data email",searchFindUserEmail);
     const handleOpenModal = () =>{
         setNewUserModal(true);
     }
 
+    const handleNewUserEmail = (e) =>{
+        console.log(e.target.value);
+        const value = e.target.value;
+        const filtered = teamData.filter((item) =>
+            item.email.toLowerCase().includes(value)
+          );
+        console.log(filtered);
+        setSearchFindUserEmail(filtered);
+
+    }
+
     useEffect(()=>{
+        setLoading(true);
         fetch('http://localhost:3000/api/user-data')
         .then(res => res.json())
-        .then(data => setTeamData(data))
+        .then(data => {
+            setTeamData(data);
+            setLoading(false);
+        })
         .catch(err => console.log(err))
     },[])
 
@@ -40,6 +57,9 @@ const Task = () => {
     }
     return (
         <div className='md:flex'>
+            {
+                loading && <Loading/>
+            }
             <div className='z-30 md:h-[980px] bg-purple-50'>
             <DashboardNavbar/>
             </div>
@@ -56,19 +76,18 @@ const Task = () => {
             {
                 newUserModal && <section onSubmit={handleCreateUser} className='top-10 w-screen h-screen z-[40] fixed left-0 drop-shadow-xl shadow-purple-500'>
             
-                <div className='md:w-[500px] w-[90%] md:h-[520px] h-[650px] absolute left-[50%] translate-x-[-50%] text-[var(--primaryFontColor)] p-10 rounded-lg mt-5] bg-white overflow-y-scroll mt-10'>
-                    <h2 className='text-center font-bold text-2xl'>Create New User</h2>
+                <div className='md:w-[500px] w-[90%] md:h-[350px] h-[650px] absolute left-[50%] translate-x-[-50%] text-[var(--primaryFontColor)] p-10 rounded-lg mt-5] bg-white overflow-y-scroll mt-10'>
+                    <h2 className='text-center font-bold text-2xl'>Add New User</h2>
                     <form className='my-3 flex flex-col gap-3'>
                         <div>
-                            <label>Username:</label>
-                            <input type="text" className='w-full p-2 outline-none border-[1.2px] border-purple-500 rounded-md' placeholder='Username should be unique' name="username" required/>
+                            <label>Search User Email:</label>
+                            <input type="text" className='w-full p-2 outline-none border-[1.2px] border-purple-500 rounded-md' placeholder='Enter email here' name="email" onChange={handleNewUserEmail} required/>
                         </div>
-
-                        <div className='flex gap-2 px-2 py-2'>
-                            <button type='submit' className='px-6 py-2 rounded-md bg-gradient-to-tr from-[var(--gradientFirstColor)] via-[var(--gradientSecondColor)] to-[var(--gradientThirdColor)] text-white hover:bg-gradient-to-tl'>Create</button>
-                        
-                            <button className='px-6 py-2 hover:bg-slate-100 duration-300 rounded-md border-[1.2px] border-purple-500' onClick={()=>setNewUserModal(false)}>Cancel</button>
-                            
+                        <div>
+                            <p className='text-slate-500 text-sm'>No Result Found</p>
+                        </div>
+                        <div onClick={(e)=>setNewUserModal(false)}>
+                            <IoClose className='text-4xl text-slate-700 hover:text-purple-500 duration-300 absolute top-4 right-5 animate-pulse border-2 rounded-full border-purple-500 cursor-pointer p-1'/>
                         </div>
                     </form>
                 </div>

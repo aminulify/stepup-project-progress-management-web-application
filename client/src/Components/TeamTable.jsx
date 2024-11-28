@@ -6,7 +6,6 @@ import { AuthContext } from '../AuthProvider/AuthProvider';
 const TeamTable = ({teamData}) => {
 
     const {user} = useContext(AuthContext);
-    // console.log(teamData);
 
     const teamUser = teamData.filter(team => team.adminEmail === user.email);
 
@@ -30,7 +29,7 @@ const TeamTable = ({teamData}) => {
             <table className='w-full my-5'>
                 <thead className='bg-purple-500 text-white py-1'>
                     <tr className=''>
-                        <td className='text-center py-2 rounded-l-md'>Name</td>
+                        <td className='text-center py-2 rounded-l-md'>Username</td>
                         <td className='py-2 smNone'>Title</td>
                         <td className='py-2 smNone'>Email</td>
                         <td className='py-2'>Role</td>
