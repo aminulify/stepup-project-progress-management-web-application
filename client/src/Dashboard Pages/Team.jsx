@@ -4,22 +4,37 @@ import { FiPlus } from "react-icons/fi";
 import TeamTable from '../Components/TeamTable';
 import Loading from '../Shared/Loading';
 import { IoClose } from "react-icons/io5";
+import { FaCheckCircle } from "react-icons/fa";
+import axios from 'axios';
+import { AuthContext } from '../AuthProvider/AuthProvider';
+import toast, { Toaster } from 'react-hot-toast';
+
 
 const Task = () => {
 
     const [newUserModal, setNewUserModal] = useState(false);
     const [teamData, setTeamData] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [searchFindUserEmail, setSearchFindUserEmail] = useState();
+    const [searchFindUserEmail, setSearchFindUserEmail] = useState([]);
+    const [writeText, setWriteText] = useState("");
+    const {user} = useContext(AuthContext);
 
-    console.log("data email",searchFindUserEmail);
+    console.log("data email",searchFindUserEmail.length, writeText);
     const handleOpenModal = () =>{
         setNewUserModal(true);
+        setWriteText("");
     }
 
     const handleNewUserEmail = (e) =>{
-        console.log(e.target.value);
         const value = e.target.value;
+        setWriteText(value.length);
+
+        // hot toast 
+        toast.success('New User Successfully Added!',{
+            duration: 3000,
+            position: 'top-center',
+        });
+
         const filtered = teamData.filter((item) =>
             item.email.toLowerCase().includes(value)
           );
@@ -28,35 +43,51 @@ const Task = () => {
 
     }
 
-    useEffect(()=>{
-        setLoading(true);
+    const handleConfirmEmail = (id) =>{
+        console.log(id);
+        axios.patch(`http://localhost:3000/api/user-data/${id}`,{
+            adminEmail: user.email
+        })
+        .then(res => {
+            teamDataFetch();
+
+            // hot toast 
+            toast.success('New User Successfully Added!',{
+                duration: 3000,
+                position: 'top-center',
+            });
+
+            setNewUserModal(false);
+            setWriteText("");        
+        })
+        .catch(err => console.log(err))
+    }
+
+    const teamDataFetch = () =>{
         fetch('http://localhost:3000/api/user-data')
         .then(res => res.json())
         .then(data => {
             setTeamData(data);
             setLoading(false);
+            console.log("sd")
         })
         .catch(err => console.log(err))
+    }
+
+    useEffect(()=>{
+        setLoading(true);
+        teamDataFetch();
     },[])
 
     const handleCreateUser = (e) =>{
         e.preventDefault();
         const form = e.target;
-        // const username = form.username.value;
-        // const email = form.email.value;
-        // const password = form.password.value;
-        // const adminEmail = user.email;
-        // const positionTitle = form.position.value;
-        // const isActive = "Active";
-        // const userRole = role;
-
-        // const values = {username, email, password, adminEmail, positionTitle, isActive, userRole};
-        // console.log("total values",values);
 
         setNewUserModal(false);
     }
     return (
         <div className='md:flex'>
+            <Toaster/>
             {
                 loading && <Loading/>
             }
@@ -84,7 +115,11 @@ const Task = () => {
                             <input type="text" className='w-full p-2 outline-none border-[1.2px] border-purple-500 rounded-md' placeholder='Enter email here' name="email" onChange={handleNewUserEmail} required/>
                         </div>
                         <div>
-                            <p className='text-slate-500 text-sm'>No Result Found</p>
+                            {
+                                writeText && searchFindUserEmail.length > 0 ? <p>{searchFindUserEmail.map(item => (
+                                    <div onClick={() => handleConfirmEmail(item._id)} className='w-full flex justify-between items-center py-1 hover:bg-purple-100 duration-100 px-2 cursor-pointer rounded-md'>{item.email} <FaCheckCircle className='text-green-500'/></div>
+                                ))}</p> : <p className='text-slate-500 text-sm'>No Result Found</p>
+                            }
                         </div>
                         <div onClick={(e)=>setNewUserModal(false)}>
                             <IoClose className='text-4xl text-slate-700 hover:text-purple-500 duration-300 absolute top-4 right-5 animate-pulse border-2 rounded-full border-purple-500 cursor-pointer p-1'/>
