@@ -38,7 +38,33 @@ export const updateSingleUserData = async(req,res) =>{
         })
     }
     catch(err){
-        console.error(error);
-        res.status(500).json({ message: 'Server error', error });
+        console.error(err);
+        res.status(500).json({ message: 'Server error', err });
     }
 }
+
+// export const updateSingleFullUserDetails = async(req,res) =>{
+//     const userId = req.params.id;
+//     const {username, rolePosition, role, isActive} = req.body;
+//     console.log("data get",username, rolePosition, role, isActive);
+
+//     try{
+//         const updateSingleFullUserData = await UserData.findByIdAndUpdate(
+//             userId,
+//             {username: username, rolePosition: rolePosition, role: role, isActive: isActive}
+//         )
+
+//         if(!updateSingleFullUserData){
+//             return res.status(404).json({message: 'User not found!'});
+//         }
+
+//         res.status(200).json({
+//             message: 'Successful', 
+//             user: updateSingleFullUserData
+//         });
+//     }
+//     catch(err){
+//         console.log(err);
+//         res.status(500).json({message:'server error', err})
+//     }
+// }

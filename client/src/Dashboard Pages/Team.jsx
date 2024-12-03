@@ -29,12 +29,6 @@ const Task = () => {
         const value = e.target.value;
         setWriteText(value.length);
 
-        // hot toast 
-        toast.success('New User Successfully Added!',{
-            duration: 3000,
-            position: 'top-center',
-        });
-
         const filtered = teamData.filter((item) =>
             item.email.toLowerCase().includes(value)
           );
@@ -101,7 +95,7 @@ const Task = () => {
                 <button className='flex gap-1 items-center py-2 px-4 bg-purple-500 font-medium text-white rounded-md hover:bg-purple-600 duration-300' onClick={handleOpenModal}><FiPlus/> Add New User</button>
              </header>
 
-             <TeamTable teamData={teamData}/>
+             <TeamTable teamData={teamData} teamDataFetch={teamDataFetch} setLoading={setLoading}/>
 
              
             {

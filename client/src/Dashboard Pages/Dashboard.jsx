@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import DashboardNavbar from '../Shared/DashboardNavbar';
 import useStore from '../Shared/Zustand';
 import { TfiBarChart } from "react-icons/tfi";
@@ -9,6 +9,7 @@ import { LuUsers2 } from "react-icons/lu";
 import { TbUserShare } from "react-icons/tb";
 import DashboardTaskTable from '../Components/DashboardTaskTable';
 import CountUp from 'react-countup';
+import { AuthContext } from '../AuthProvider/AuthProvider';
 
 const Dashboard = () => {
     const {showMenu} = useStore();
@@ -16,6 +17,7 @@ const Dashboard = () => {
     let completed = 20;
 
     const [teamMember, setTeamMember] = useState(0);
+    const {user} = useContext(AuthContext);
     
     const chartData = [
         {
@@ -97,7 +99,10 @@ const Dashboard = () => {
       useEffect(()=>{
         fetch('http://localhost:3000/api/user-data')
         .then(res => res.json())
-        .then(data => setTeamMember(data))
+        .then(data => {
+          const availableTeamMember = data.filter(member => member.adminEmail === user.email);
+          setTeamMember(availableTeamMember);
+        })
         .catch(err => err)
       },[])
 
