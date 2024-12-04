@@ -13,7 +13,7 @@ export const getUpdatedData = async(req,res) =>{
 
     }
     catch(err){
-        res.status(500).json('Something went wrong');
+        res.status(500).json('Something went wrong!');
     }
 }
 
@@ -35,6 +35,20 @@ export const updateUserData = async(req,res) =>{
         res.status(200).json(user);
     }
     catch(err){
-        res.status(500).json('Something went wrong');
+        res.status(500).json('Something went wrong!');
     }
 }
+
+// export const deleteUserData = async(req,res) =>{
+//     const userId = req.params.id;
+//     try{
+//         const deleteUser = await UserData.findByIdAndDelete(userId);
+//         if(!deleteUser){
+//             return res.status(404).json({message: 'User not found'});
+//         }
+//         res.status(200).json(deleteUser);
+//     }
+//     catch(err){
+//         res.status(500).json('Something went wrong!');
+//     }
+// }
