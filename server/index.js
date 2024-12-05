@@ -6,6 +6,7 @@ import contactSupportRoute from './Routes/ContactSupportRoute.js';
 import userDataRoute from './Routes/UserDataRoute.js';
 import userSingleDataRoute from './Routes/UserSingleDataRoute.js';
 import userUpdateDataRoute from './Routes/UserUpdateDataRoute.js';
+import taskData from './Routes/TaskRoute.js';
 
 const PORT = process.env.PORT || 3000;
 const app = express();
@@ -29,6 +30,7 @@ app.use('/api/contact', contactSupportRoute);
 app.use('/api/user-data', userDataRoute);
 app.use('/api', userSingleDataRoute);
 app.use('/api/user-update-data', userUpdateDataRoute);
+app.use('/api/tasks', taskData);
 
 app.listen(PORT, ()=>{
     console.log(`Server running on port ${PORT}`);

@@ -1,4 +1,4 @@
-import CreateUser from "../models/CreateUserModel";
+import CreateUser from "../models/CreateUserModel.js";
 
 export const GetCreateUser = async(req,res) =>{
     try{

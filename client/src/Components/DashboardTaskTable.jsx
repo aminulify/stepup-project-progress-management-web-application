@@ -16,9 +16,9 @@ const DashboardTaskTable = () => {
     }
 
     const StageColor = {
-        todo: "bg-blue-500",
+        todo: "bg-orange-500",
         completed: "bg-green-500",
-        "in progress": "bg-orange-500" 
+        "in progress": "bg-blue-500" 
     }
 
     const RoleColor = {

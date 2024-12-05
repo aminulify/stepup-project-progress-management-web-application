@@ -47,14 +47,14 @@ const Task = () => {
                 <div className='grid grid-cols-3 gap-5 my-5'>
                     <div className='flex justify-between gap-2 items-center py-1.5 px-2 bg-purple-50'>
                         <aside className='flex items-center gap-2'>
-                            <div className='w-3 h-3 rounded-full bg-blue-500'></div>
+                            <div className='w-3 h-3 rounded-full bg-orange-500'></div>
                             <div className='text-sm font-medium'>To Do</div>
                         </aside>
                         <div className='text-right md:block hidden'><FiPlus/></div>
                     </div>
                     <div className='flex flex-wrap justify-between gap-2 items-center py-1.5 px-2 bg-purple-50'>
                         <aside className='flex items-center gap-2'>
-                            <div className='w-3 h-3 rounded-full bg-orange-500'></div>
+                            <div className='w-3 h-3 rounded-full bg-blue-500'></div>
                             <div className='text-sm font-medium'>In Progress</div>
                         </aside>
                         <div className='text-right md:block hidden'><FiPlus/></div>
