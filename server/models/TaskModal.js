@@ -22,8 +22,8 @@ const TaskSchema = new mongoose.Schema({
         required: true,
         default: "Normal",
     },
-    note: {
-        type: String,
+    notes: {
+        type: [String],
     },
     stage: {
         type: String,
@@ -31,12 +31,15 @@ const TaskSchema = new mongoose.Schema({
         default: 'todo'
     },
     teamMember: {
-        type: String,
+        type: [String],
         required: true,
     },
     tags: {
         type: String,
         required: true
+    },
+    subTasks: {
+        type: [String]
     }
 })
 
