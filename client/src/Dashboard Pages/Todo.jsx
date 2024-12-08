@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import DashboardNavbar from '../Shared/DashboardNavbar';
 import { FiPlus } from "react-icons/fi";
 import { IoListOutline } from "react-icons/io5";
@@ -7,14 +7,25 @@ import { summary } from '../../public/data';
 import TaskDetails from '../Components/TaskDetails';
 import TodoTaskDetails from '../Components/TodoTaskDetails';
 import TaskListView from '../Components/TaskListView';
+import axios from 'axios';
 
 const Task = () => {
     const [boardView, setBoardView] = useState(true);
     const [listView, setListView] = useState(false);
-
-    const taskData = summary.last10Task;
-    const todoDataOnly = taskData.filter(data => data.stage === "todo" && data.stage !== "delete");;
-    // console.log(taskData);
+    const [loading, setLoading] = useState(false);
+    const [task, setTask] = useState([]);
+    
+    const todoDataOnly = task.filter(item => item.stage === 'todo');
+    
+    useEffect(()=>{
+        setLoading(true);
+        axios.get('http://localhost:3000/api/tasks')
+        .then(res => {
+            setTask(res.data)
+            setLoading(false);
+        })
+        .catch(e => console.log(e))
+    },[])
 
     const handleBoardView = () =>{
         setBoardView(true);
@@ -60,7 +71,7 @@ const Task = () => {
                 listView ? <section className='-z-10'>
                 <TaskListView taskData={todoDataOnly}/>
              </section> : <section>
-                <TodoTaskDetails taskData={taskData}/>
+                <TodoTaskDetails taskData={task} loading = {loading}/>
              </section>
             }
             

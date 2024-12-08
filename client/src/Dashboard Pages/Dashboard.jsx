@@ -10,11 +10,32 @@ import { TbUserShare } from "react-icons/tb";
 import DashboardTaskTable from '../Components/DashboardTaskTable';
 import CountUp from 'react-countup';
 import { AuthContext } from '../AuthProvider/AuthProvider';
+import axios from 'axios';
 
 const Dashboard = () => {
     const {showMenu} = useStore();
-    let todo = 18;
-    let completed = 20;
+    const [task, setTask] = useState(0);
+    const [completedTask, setCompletedTask] = useState([]);
+    const [highPriority, setHighPriority] = useState([]);
+    const [mediumPriority, setMediumPriority] = useState([]);
+    const [normalPriority, setNormalPriority] = useState([]);
+    const [lowPriority, setLowPriority] = useState([]);
+
+    console.log("high",highPriority.length);
+    console.log("medium",mediumPriority.length);
+
+    useEffect(()=>{
+      axios.get('http://localhost:3000/api/tasks')
+      .then(res => {
+        setTask(res.data);
+        setCompletedTask(res.data.filter(item => item.stage === 'completed'));
+        setHighPriority((res.data.filter(item => item.taskPrioirty === 'high')));
+        setMediumPriority(res.data.filter(item => item.taskPrioirty === 'medium'));
+        setNormalPriority(res.data.filter(item => item.taskPrioirty === 'normal'));
+        setLowPriority(res.data.filter(item => item.taskPrioirty === 'low'));
+      })
+      .catch(e => console.log(e))
+    },[])
 
     const [teamMember, setTeamMember] = useState(0);
     const {user} = useContext(AuthContext);
@@ -22,19 +43,19 @@ const Dashboard = () => {
     const chartData = [
         {
           name: "High",
-          Task_Priority: 22,
+          Task_Priority: highPriority.length,
         },
         {
           name: "Medium",
-          Task_Priority: 46,
+          Task_Priority: mediumPriority.length,
         },
         {
           name: "Normal",
-          Task_Priority: 64,
+          Task_Priority: normalPriority.length,
         },
         {
           name: "Low",
-          Task_Priority: 91,
+          Task_Priority: lowPriority.length,
         },
       ];
 
@@ -121,9 +142,9 @@ const Dashboard = () => {
                   {/* todo */}
                     <div className='flex justify-between p-5 border-[1.5px] border-purple-500 rounded-md'>
                       <div>
-                        <div>Total Todo</div>
+                        <div>Total Tasks</div>
                         <p className='text-5xl font-medium'><CountUp start={0}
-                                end={todo}
+                                end={task.length}
                                 duration={2} />
                                 </p>
                         <div className='inline-flex items-center gap-2'><span>Tasks</span> <span className='text-purple-500'><TfiBarChart/></span></div>
@@ -136,7 +157,7 @@ const Dashboard = () => {
                       <div>
                         <div>Completed Tasks</div>
                         <p className='text-5xl font-medium'><CountUp start={0}
-                                end={completed}
+                                end={completedTask.length}
                                 duration={2} /></p>
                         <div className='inline-flex items-center gap-2'><span>Finished</span> <span className='text-purple-500'><AiOutlinePieChart/></span></div>
                       </div>

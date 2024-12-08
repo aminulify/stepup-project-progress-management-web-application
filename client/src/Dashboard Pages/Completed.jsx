@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import DashboardNavbar from '../Shared/DashboardNavbar';
 import { FiPlus } from "react-icons/fi";
 import { IoListOutline } from "react-icons/io5";
@@ -7,13 +7,25 @@ import { summary } from '../../public/data';
 import TaskDetails from '../Components/TaskDetails';
 import CompletedTaskDetails from '../Components/CompletedTaskDetails';
 import TaskListView from '../Components/TaskListView';
+import axios from 'axios';
 
 const Task = () => {
     const [boardView, setBoardView] = useState(true);
     const [listView, setListView] = useState(false);
+    const [task, setTask] = useState([]);
+    const [loading, setLoading] = useState(false);
 
-    const taskData = summary.last10Task;
-    const completedDataOnly = taskData.filter(data => data.stage === "completed" && data.stage !== "delete");
+    const completedDataOnly = task.filter(data => data.stage === "completed" && data.stage !== "delete");
+
+    useEffect(()=>{
+        setLoading(true);
+        axios.get('http://localhost:3000/api/tasks')
+        .then(res => {
+            setTask(res.data);
+            setLoading(false);
+        })
+        .catch(e => console.log(e))
+    },[])
 
     const handleBoardView = () =>{
         setBoardView(true);
@@ -59,7 +71,7 @@ const Task = () => {
                 listView ? <section>
                 <TaskListView taskData={completedDataOnly}/>
              </section> : <section>
-                <CompletedTaskDetails taskData={taskData}/>
+                <CompletedTaskDetails taskData={completedDataOnly} loading={loading} />
              </section>
             }
              

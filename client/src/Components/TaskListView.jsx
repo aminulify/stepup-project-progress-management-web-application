@@ -23,7 +23,7 @@ const TaskListView = ({taskData}) => {
     const StageColor = {
         todo: "bg-orange-500",
         completed: "bg-green-500",
-        "in progress": "bg-blue-500" 
+        "in-progress": "bg-blue-500" 
     }
 
     const RoleColor = {
@@ -62,12 +62,12 @@ const TaskListView = ({taskData}) => {
                                         </aside>
                                     </td>
                                     <td>
-                                        <aside className={`flex gap-1 items-center text-sm ${setPriorityColor[task.priority]}`}>
-                                            <div>{ICONS[task.priority]}</div>
-                                            <p className={`${task.ICONS} text-sm font-medium`}>{task.priority.slice(0,1).toUpperCase()}{task.priority.slice(1,)} Priority</p>
+                                        <aside className={`flex gap-1 items-center text-sm ${setPriorityColor[task.taskPrioirty]}`}>
+                                            <div>{ICONS[task.taskPrioirty]}</div>
+                                            <p className={`${task.ICONS} text-sm font-medium`}>{task.taskPrioirty.slice(0,1).toUpperCase()}{task.taskPrioirty.slice(1,)} Priority</p>
                                         </aside>
                                     </td>
-                                    <td className='text-sm smNone'>{task.createdAt.slice(0,10)}</td>
+                                    <td className='text-sm smNone'>{task.startingDate.slice(0,10)}</td>
 
                                     <td className='smNone'>
                                         <div className='flex justify-between'>
@@ -91,8 +91,8 @@ const TaskListView = ({taskData}) => {
                                     <td className='smNone'>
                                     <section className='flex'>
                                 {
-                                    task.team.map(data => (
-                                        <div className={`p-1 rounded-full ${RoleColor[data.role]} text-white text-[8px]`}>{data.name.slice(0,2).toUpperCase()}</div>
+                                    task.teamMember.map(data => (
+                                        <div className={`p-1 rounded-full ${RoleColor['developer']} text-white text-[8px]`}>{data.slice(0,2).toUpperCase()}</div>
                                     ))
                                 }
                             </section>
@@ -112,3 +112,7 @@ const TaskListView = ({taskData}) => {
 };
 
 export default TaskListView;
+
+
+
+

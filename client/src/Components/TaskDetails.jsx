@@ -122,12 +122,3 @@ const TaskDetails = ({taskData, loading}) => {
 };
 
 export default TaskDetails;
-
-
-
-
-
-
-
-
-
