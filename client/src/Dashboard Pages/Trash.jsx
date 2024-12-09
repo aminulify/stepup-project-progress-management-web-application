@@ -1,19 +1,34 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import DashboardNavbar from '../Shared/DashboardNavbar';
 import { FiPlus } from "react-icons/fi";
 import { IoListOutline } from "react-icons/io5";
 import { RxDashboard } from "react-icons/rx";
-import { summary } from '../../public/data';
 import TaskListView from '../Components/TaskListView';
 import TrashTaskDetails from '../Components/TrashTaskDetails';
 import TrashListView from '../Components/TrashListView';
+import axios from 'axios';
 
 const Trash = () => {
     const [boardView, setBoardView] = useState(true);
     const [listView, setListView] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [task, setTask] = useState([]);
+    
+    const taskDataOnly = task.filter(data => data.stage === "delete");
 
-    const taskData = summary.last10Task;
-    const taskDataOnly = taskData.filter(data => data.stage === "delete");
+    const handleTasks = () =>{
+        axios.get('http://localhost:3000/api/tasks')
+        .then(res => {
+            setTask(res.data);
+            setLoading(false);
+        })
+        .catch(e => console.log(e))
+    }
+
+    useEffect(()=>{
+        setLoading(true)
+        handleTasks();
+    },[])
 
     const handleBoardView = () =>{
         setBoardView(true);
@@ -59,7 +74,7 @@ const Trash = () => {
                 listView ? <section>
                 <TrashListView taskData={taskDataOnly}/>
              </section> : <section>
-                <TrashTaskDetails taskData={taskDataOnly}/>
+                <TrashTaskDetails handleTasks={handleTasks} taskData={taskDataOnly} loading={loading}/>
              </section>
             }
              

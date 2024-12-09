@@ -15,6 +15,7 @@ import DashboardHome from "../Dashboard Pages/DashboardHome";
 import Completed from "../Dashboard Pages/Completed";
 import Chat from "../Dashboard Pages/Chat";
 import PrivateRoutes from "./PrivateRoutes";
+import TaskRouteDetails from "../Components/ComponentDetailPage/TaskRouteDetails";
 
 const router = createBrowserRouter([
     {
@@ -52,20 +53,36 @@ const router = createBrowserRouter([
         element: <Task/>
       },
       {
+        path: "tasks/:id",
+        element: <TaskRouteDetails></TaskRouteDetails>
+      },
+      {
         path: "completed",
-        element: <Completed/>
+        element: <PrivateRoutes><Completed/></PrivateRoutes>
+      },
+      {
+        path: "completed/:id",
+        element: <TaskRouteDetails></TaskRouteDetails>
       },
       {
         path: "in-progress",
-        element: <Progress/>
+        element: <PrivateRoutes><Progress/></PrivateRoutes>
+      },
+      {
+        path: "in-progress/:id",
+        element: <TaskRouteDetails></TaskRouteDetails>
       },
       {
         path: "todo",
-        element: <Todo/>
+        element: <PrivateRoutes><Todo/></PrivateRoutes>
+      },
+      {
+        path: "todo/:id",
+        element: <TaskRouteDetails></TaskRouteDetails>
       },
       {
         path: "team",
-        element: <Team/>
+        element: <PrivateRoutes><Team/></PrivateRoutes>
       },
       {
         path: "team-chat",
@@ -73,7 +90,7 @@ const router = createBrowserRouter([
       },
       {
         path: "trash",
-        element: <Trash/>
+        element: <PrivateRoutes><Trash/></PrivateRoutes>
       },
     ]},
   ]);

@@ -40,6 +40,10 @@ const TaskSchema = new mongoose.Schema({
     },
     subTasks: {
         type: [String]
+    },
+    description: {
+        type: String,
+        required: true
     }
 })
 

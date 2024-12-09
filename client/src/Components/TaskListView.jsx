@@ -3,6 +3,7 @@ import { GoDot } from 'react-icons/go';
 import { MdKeyboardArrowDown, MdKeyboardArrowUp, MdKeyboardDoubleArrowUp, MdOutlineStickyNote2 } from 'react-icons/md';
 import { RiDeleteBinLine, RiEditBoxLine } from 'react-icons/ri';
 import { TbSubtask } from 'react-icons/tb';
+import { Link } from 'react-router-dom';
 
 const TaskListView = ({taskData}) => {
 
@@ -98,7 +99,7 @@ const TaskListView = ({taskData}) => {
                             </section>
                                     </td>
                                     <td className='flex gap-1 py-2 justify-center'>
-                                        <div className='text-xl p-1 rounded-sm bg-purple-50 hover:bg-purple-200 cursor-pointer duration-300'><RiEditBoxLine/></div>
+                                        <Link to={task._id} className='text-xl p-1 rounded-sm bg-purple-50 hover:bg-purple-200 cursor-pointer duration-300'><RiEditBoxLine/></Link>
                                         <div className='text-xl p-1 rounded-sm bg-purple-50 hover:bg-purple-200 cursor-pointer duration-300'><RiDeleteBinLine/></div>
                                     </td>
                                 </tr>     

@@ -3,7 +3,6 @@ import DashboardNavbar from '../Shared/DashboardNavbar';
 import { FiPlus } from "react-icons/fi";
 import { IoListOutline } from "react-icons/io5";
 import { RxDashboard } from "react-icons/rx";
-import { summary } from '../../public/data';
 import TaskDetails from '../Components/TaskDetails';
 import TodoTaskDetails from '../Components/TodoTaskDetails';
 import TaskListView from '../Components/TaskListView';
@@ -16,7 +15,7 @@ const Task = () => {
     const [task, setTask] = useState([]);
     
     const todoDataOnly = task.filter(item => item.stage === 'todo');
-    
+
     useEffect(()=>{
         setLoading(true);
         axios.get('http://localhost:3000/api/tasks')
