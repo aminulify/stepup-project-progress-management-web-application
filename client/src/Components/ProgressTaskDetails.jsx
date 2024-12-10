@@ -33,7 +33,14 @@ const ProgressTaskDetails = ({taskData, loading}) => {
         Designer: "bg-purple-500",
         Developer: "bg-blue-500",
         Tester: "bg-red-700",
-        Manager: "bg-green-700"
+        Manager: "bg-green-700",
+        Engineer: "bg-purple-700",
+        Marketer: "bg-black",
+        "Video Editor": "bg-orange-300",
+        "Content Creator": "bg-yellow-500",
+        "UI/UX Designer": "bg-slate-400",
+        Creator: "bg-pink-500",
+        Editor: "bg-pink-700"
     }
 
     return (
@@ -71,10 +78,13 @@ const ProgressTaskDetails = ({taskData, loading}) => {
     
                                 <section className='flex'>
                                     {
-                                        task.teamMember.map(data => (
-                                            
-                                            <div className={`p-1 rounded-full ${RoleColor['Developer']} text-white text-[8px]`}>{data.slice(0,2).toUpperCase()}</div>
-                                        ))
+                                        task.teamMember.map(member => (
+                                            <div>
+                                                       {
+                                                           member?.imgURL ? <img src={member.imgURL} className='rounded-full h-5 w-5 ' alt="" /> : <div className={`p-1 rounded-full ${RoleColor[member.role]} text-white text-[8px]`}>{member.username.slice(0,2).toUpperCase()}</div> 
+                                                       }
+                                           </div>   
+                                            ) )
                                     }
                                 </section>
                             </div>

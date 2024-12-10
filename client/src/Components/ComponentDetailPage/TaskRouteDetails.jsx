@@ -44,6 +44,20 @@ const TaskRouteDetails = () => {
         completed: "text-green-500",
         "in-progress": "text-blue-500" 
     }
+    const RoleColor = {
+        Admin: "bg-green-500",
+        Designer: "bg-purple-500",
+        Developer: "bg-blue-500",
+        Tester: "bg-red-700",
+        Manager: "bg-green-700",
+        Engineer: "bg-purple-700",
+        Marketer: "bg-black",
+        "Video Editor": "bg-orange-300",
+        "Content Creator": "bg-yellow-500",
+        "UI/UX Designer": "bg-slate-400",
+        Creator: "bg-pink-500",
+        Editor: "bg-pink-700"
+    }
 
     console.log("data",taskDetails);
     return (
@@ -76,9 +90,16 @@ const TaskRouteDetails = () => {
                 <div className='py-2'>
                         {
                            taskDetails?.teamMember?.map(member => (
-                            <div>
-                                <div></div>
-                                <p>{member}</p>
+                            <div className='flex items-center gap-3 mb-2'>
+                                <div>
+                                    {
+                                        member?.imgURL ? <img src={member.imgURL} className='rounded-full h-10 w-10 ' alt="" /> : <div className={`p-2.5 rounded-full ${RoleColor[member.role]} text-white text-sm`}>{member.username.slice(0,2).toUpperCase()}</div> 
+                                    }
+                                </div>
+                                <div>
+                                    <p className='font-semibold'>{member.email}</p>
+                                    <p className='text-sm'>{member.role}</p>
+                                </div>
                             </div>
                            )) 
                         }
