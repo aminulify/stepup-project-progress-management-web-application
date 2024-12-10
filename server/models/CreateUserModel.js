@@ -29,6 +29,9 @@ const createUserModel = new mongoose.Schema({
         type: String,
         required: true,
     },
+    imageURL: {
+        type: String,
+    },
     username:{
         type: String,
         required: true,

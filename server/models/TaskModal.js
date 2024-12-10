@@ -1,5 +1,24 @@
 import mongoose from "mongoose";
 
+// team member schema 
+const TeamMemberSchema = new mongoose.Schema({
+    email: {
+        type: String,
+        required: true,
+    },
+    username: {
+        type: String,
+        required: true,
+    },
+    role: {
+        type: String,
+        required: true,
+    },
+    imgURL: {
+        type: String,
+    }
+});
+
 const TaskSchema = new mongoose.Schema({
     adminEmail: {
         type: String,
@@ -31,7 +50,7 @@ const TaskSchema = new mongoose.Schema({
         default: 'todo'
     },
     teamMember: {
-        type: [String],
+        type: [TeamMemberSchema],
         required: true,
     },
     tags: {

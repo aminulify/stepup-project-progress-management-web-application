@@ -10,11 +10,11 @@ export const GetCreateUser = async(req,res) =>{
 }
 
 export const PostCreateUser = async(req,res)=>{
-    const {uId, adminEmail, email, isActive, password, positionTitle, userRole, username} = req.body;
+    const {uId, adminEmail, email, isActive, password, positionTitle, userRole, username, imageURL} = req.body;
     // console.log(adminEmail, email, isActive, password, positionTitle, userRole, username);
 
     try{
-        const users = new CreateUser({uId, adminEmail, email, isActive, password, positionTitle, userRole, username});
+        const users = new CreateUser({uId, adminEmail, email, isActive, password, positionTitle, userRole, username, imageURL: imageURL});
         await users.save();
         res.status(200).json(users);
     }catch(err){
