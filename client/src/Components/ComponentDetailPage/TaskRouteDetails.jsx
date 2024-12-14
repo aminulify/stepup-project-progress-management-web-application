@@ -116,8 +116,8 @@ const TaskRouteDetails = () => {
 
                 
                 <div className='flex gap-3 my-3'>
-                    <button className={`flex gap-1 items-center justify-center bg-gradient-to-tr from-[var(--gradientFirstColor)] via-[var(--gradientSecondColor)] to-[var(--gradientThirdColor)] hover:bg-gradient-to-tl text-white duration-300 rounded-md w-[20%] py-2`}><FaRegEdit /> Update</button>
-                    <button className='flex gap-1 items-center justify-center border-[1.3px] border-purple-500 rounded-md w-[20%] py-2 hover:border-red-500 hover:text-red-500 duration-300'><MdOutlineDeleteOutline className='text-lg' /> Delete</button>
+                    <button className={`flex gap-1 items-center justify-center bg-gradient-to-tr from-[var(--gradientFirstColor)] via-[var(--gradientSecondColor)] to-[var(--gradientThirdColor)] hover:bg-gradient-to-tl text-white duration-300 rounded-md md:w-[20%] w-[40%] py-2`}><FaRegEdit /> Update</button>
+                    <button className='flex gap-1 items-center justify-center border-[1.3px] border-purple-500 rounded-md md:w-[20%] w-[40%] py-2 hover:border-red-500 hover:text-red-500 duration-300'><MdOutlineDeleteOutline className='text-lg' /> Delete</button>
                 </div>
             </div> : <Loading></Loading>
             }

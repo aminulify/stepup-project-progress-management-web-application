@@ -73,6 +73,10 @@ const router = createBrowserRouter([
         element: <TaskRouteDetails></TaskRouteDetails>
       },
       {
+        path: "completed/:id",
+        element: <TaskRouteDetails></TaskRouteDetails>
+      },
+      {
         path: "todo",
         element: <PrivateRoutes><Todo/></PrivateRoutes>
       },

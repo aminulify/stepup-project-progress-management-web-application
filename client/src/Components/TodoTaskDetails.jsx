@@ -4,6 +4,7 @@ import { CgDetailsMore } from 'react-icons/cg';
 import { GoDot } from 'react-icons/go';
 import { MdKeyboardArrowDown, MdKeyboardArrowUp, MdKeyboardDoubleArrowUp, MdOutlineStickyNote2 } from 'react-icons/md';
 import { TbSubtask } from "react-icons/tb";
+import { Link } from 'react-router-dom';
 
 const TodoTaskDetails = ({taskData, loading}) => {
     const todo = taskData.filter(task => task.stage === 'todo');
@@ -49,6 +50,7 @@ const TodoTaskDetails = ({taskData, loading}) => {
                 !loading ? <div className='grid md:grid-cols-3 grid-cols-1 gap-5'>
                 {
                     todo.map(task => (
+                        <Link to={`${task._id}`}>
                         <div key={task._id} className=' p-2 rounded-md border-[1.4px] border-purple-200 hover:border-purple-500 duration-300 cursor-pointer'>
                             <aside className={`flex gap-1 items-center text-sm ${setPriorityColor[task.taskPrioirty]}`}>
                                 <div>{ICONS[task.taskPrioirty]}</div>
@@ -114,6 +116,7 @@ const TodoTaskDetails = ({taskData, loading}) => {
                             </div>
     
                         </div>
+                        </Link>
                     ))
                 }
             </div> : <div className='task-skeleton grid md:grid-cols-3 grid-cols-1 gap-5'><div className="skeleton"></div>

@@ -168,7 +168,7 @@ const TeamTable = ({teamData, teamDataFetch, setLoading}) => {
                 </thead>
                 <tbody>
                     {
-                        teamUser.map(team => (
+                      teamUser.map(team => (
                             <tr className='border-b-[1.5px]'>
                                 <td className='py-2 pl-3'>{team.username.length > 12 ? team.username.slice(0,12) + "." : team.username}</td>
                                 <td className='py-2 smNone'>{team.rolePosition}</td>
