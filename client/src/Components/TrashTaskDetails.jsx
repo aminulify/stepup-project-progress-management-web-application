@@ -38,7 +38,7 @@ const TrashTaskDetails = ({taskData, loading, handleTasks}) => {
     }
 
     const handleRestore = (id) =>{
-        console.log(id);
+        // console.log(id);
 
         axios.patch(`http://localhost:3000/api/tasks/${id}`, {stage: 'todo'})
         .then(res => {
@@ -56,7 +56,7 @@ const TrashTaskDetails = ({taskData, loading, handleTasks}) => {
     }
 
     const handleTaskDelete = (id) =>{
-        console.log(id);
+        // console.log(id);
 
         axios.delete(`http://localhost:3000/api/tasks/${id}`)
         .then(res => {
@@ -116,6 +116,7 @@ const TrashTaskDetails = ({taskData, loading, handleTasks}) => {
                                            </div>   
                                             ) )
                                     }
+
                                 </section>
                             </div>
     

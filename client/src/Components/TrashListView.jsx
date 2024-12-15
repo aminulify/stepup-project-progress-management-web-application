@@ -23,7 +23,8 @@ const TrashListView = ({taskData}) => {
     const StageColor = {
         todo: "bg-orange-500",
         completed: "bg-green-500",
-        "in progress": "bg-blue-500" 
+        "in-progress": "bg-blue-500" ,
+        delete: "bg-slate-500"
     }
 
     const RoleColor = {
@@ -32,6 +33,41 @@ const TrashListView = ({taskData}) => {
         Developer: "bg-blue-500",
         Tester: "bg-red-700",
         Manager: "bg-green-700"
+    }
+
+    const handleRestore = (id) =>{
+        // console.log(id);
+
+        axios.patch(`http://localhost:3000/api/tasks/${id}`, {stage: 'todo'})
+        .then(res => {
+            if(res.data.message){
+                console.log(res.data.message)
+                handleTasks();
+                toast.success('Successfully Restored');
+            }
+        })
+        .catch(err => {
+            console.log(err)
+            toast.error('Something went wrong!')
+        })
+
+    }
+
+    const handleTaskDelete = (id) =>{
+        // console.log(id);
+
+        axios.delete(`http://localhost:3000/api/tasks/${id}`)
+        .then(res => {
+            if(res.data.message){
+                console.log(res.data.message);
+                handleTasks();
+                toast.success('Successfully Deleted');
+            }
+        })
+        .catch(err => {
+            console.log(err);
+            toast.error('Something went wrong!')
+        })
     }
 
     return (
@@ -62,12 +98,12 @@ const TrashListView = ({taskData}) => {
                                         </aside>
                                     </td>
                                     <td>
-                                        <aside className={`flex gap-1 items-center text-sm ${setPriorityColor[task.priority]}`}>
-                                            <div>{ICONS[task.priority]}</div>
-                                            <p className={`${task.ICONS} text-sm font-medium`}>{task.priority.slice(0,1).toUpperCase()}{task.priority.slice(1,)} Priority</p>
+                                        <aside className={`flex gap-1 items-center text-sm ${setPriorityColor[task.taskPrioirty]}`}>
+                                            <div>{ICONS[task.taskPrioirty]}</div>
+                                            <p className={`${task.ICONS} text-sm font-medium`}>{task.taskPrioirty.slice(0,1).toUpperCase()}{task.taskPrioirty.slice(1,)}</p>
                                         </aside>
                                     </td>
-                                    <td className='text-sm smNone'>{task.createdAt.slice(0,10)}</td>
+                                    <td className='text-sm smNone'>{task.startingDate}</td>
 
                                     <td className='smNone'>
                                         <div className='flex justify-between'>
@@ -91,15 +127,17 @@ const TrashListView = ({taskData}) => {
                                     <td className='smNone'>
                                     <section className='flex'>
                                 {
-                                    task.team.map(data => (
-                                        <div className={`p-1 rounded-full ${RoleColor[data.role]} text-white text-[8px]`}>{data.name.slice(0,2).toUpperCase()}</div>
-                                    ))
+                                    task.teamMember.map(data => 
+                                        
+                                            data?.imgURL ? (<img className='w-5 h-5 rounded-full' src={data.imgURL} alt="Avatar" />) : (<div className={`w-5 h-5 rounded-full ${RoleColor[data.role]} text-white grid place-content-center text-[10px] uppercase`}>{data.username.slice(0,2)}</div>)
+                                        
+                                    )
                                 }
                             </section>
                                     </td>
                                     <td className='flex gap-1 py-2 justify-center'>
-                                        <div className='text-xl p-1 rounded-sm bg-purple-50 hover:bg-purple-200 cursor-pointer duration-300'><TbRotate/></div>
-                                        <div className='text-xl p-1 rounded-sm bg-purple-50 hover:bg-purple-200 cursor-pointer duration-300'><RiDeleteBinLine/></div>
+                                        <div onClick={()=>handleRestore(task._id)} className='text-xl p-1 rounded-sm bg-purple-50 hover:bg-purple-200 cursor-pointer duration-300'><TbRotate/></div>
+                                        <div onClick={()=>handleTaskDelete(task._id)} className='text-xl p-1 rounded-sm bg-purple-50 hover:bg-purple-200 cursor-pointer duration-300'><RiDeleteBinLine/></div>
                                     </td>
                                 </tr>     
                         ))
