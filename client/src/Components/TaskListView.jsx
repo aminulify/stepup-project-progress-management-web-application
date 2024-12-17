@@ -65,7 +65,7 @@ const TaskListView = ({taskData}) => {
                                         <aside className='flex items-center gap-1'>
                                         <div className={`w-2 h-2 rounded-full ${StageColor[task.stage]}`}></div>
                                         <div>
-                                            {task.title}
+                                        {task.title.length > 30 ? task.title.slice(0,30)+"..." : task.title}
                                         </div>
                                         </aside>
                                     </td>

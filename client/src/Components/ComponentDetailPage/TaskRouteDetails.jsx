@@ -60,7 +60,7 @@ const TaskRouteDetails = () => {
         Editor: "bg-pink-700"
     }
 
-    console.log("data",taskDetails);
+    // console.log("data",taskDetails);
     return (
         <div className='md:flex'>
             <div className='z-30 md:h-[980px] bg-purple-50'>
@@ -81,7 +81,7 @@ const TaskRouteDetails = () => {
                         <div className='flex gap-2 items-center text-md font-medium'><MdOutlineStickyNote2 className='text-lg'/><p>{note}</p></div>
                     ))
                 }
-                <button className='flex items-center gap-[2px] mt-1.5 font-medium px-3 py-[1px] text-sm border-purple-500 border-[1.5px] rounded-md hover:text-purple-500 duration-300'><BiPlus/> Add New Note</button>
+                
                 </div>
                 <div className='py-2 flex justify-between'>
                     <p className='flex gap-1 items-center'><GoDotFill className={`${StageColor[taskDetails.stage]} text-lg`}/><span>Stage: </span><span className={`uppercase font-semibold text-purple-500`}>{taskDetails.stage}</span></p>
@@ -115,7 +115,6 @@ const TaskRouteDetails = () => {
                     }
                 </div>
 
-                <button className='flex items-center gap-[2px] font-medium px-3 py-[1px] text-sm border-purple-500 border-[1.5px] rounded-md hover:text-purple-500 duration-300'><BiPlus/> Add Sub-task</button>
                 
                 <div className='flex gap-3 mb-3 mt-5'>
                     <button className={`flex gap-1 items-center justify-center bg-gradient-to-tr from-[var(--gradientFirstColor)] via-[var(--gradientSecondColor)] to-[var(--gradientThirdColor)] hover:bg-gradient-to-tl text-white duration-300 rounded-md md:w-[20%] w-[40%] py-2`}><FaRegEdit /> Update</button>

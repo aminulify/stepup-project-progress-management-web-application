@@ -1,12 +1,24 @@
-import React from 'react';
-import { summary } from '../../public/data';
+import React, { useEffect, useState } from 'react';
 import { MdKeyboardArrowDown, MdKeyboardArrowUp, MdKeyboardDoubleArrowUp } from 'react-icons/md';
 import { GoDot } from "react-icons/go";
+import axios from 'axios';
+import Loading from '../Shared/Loading';
 
 const DashboardTaskTable = () => {
-    const tasks = summary.last10Task;
-    const withoutDeleteTask = tasks.filter(data => data.stage !== "delete")
-    // console.log("total",tasks);
+    const [tasks, setTasks] = useState([]);
+    const withoutDeleteTask = tasks.filter(data => data.stage !== "delete");
+    const [loading, setLoading] = useState(false);
+    // console.log(withoutDeleteTask);
+
+    useEffect(()=>{
+        setLoading(true);
+        axios.get('http://localhost:3000/api/tasks')
+        .then(res => {
+            setLoading(false);
+            setTasks(res.data);
+        })
+        .catch(err => console.log(err));
+    },[])
 
     const ICONS = {
         high: <MdKeyboardDoubleArrowUp/>,
@@ -18,7 +30,7 @@ const DashboardTaskTable = () => {
     const StageColor = {
         todo: "bg-orange-500",
         completed: "bg-green-500",
-        "in progress": "bg-blue-500" 
+        "in-progress": "bg-blue-500" 
     }
 
     const RoleColor = {
@@ -44,26 +56,27 @@ const DashboardTaskTable = () => {
                         <th className='py-2 md:text-md text-sm'>Task Title</th>
                         <th className='py-2 md:text-md text-sm text-left'>Priority</th>
                         <th className='py-2 md:text-md text-sm text-left'>Team</th>
-                        <th className='py-2 md:text-md text-sm hidden md:block'>Created At</th>
+                        <th className='py-2 md:text-md text-sm hidden md:block'>Starting Date</th>
                     </tr>
                 </thead>
 
                 <tbody>
-                    {withoutDeleteTask?.map((task, id) => (
+                    { loading ? <div><Loading/></div> : withoutDeleteTask?.map((task, id) => (
                         
                         <tr key={id} className='text-[var(--primaryFontColor)] bg-white text-left border-b pb-2'>
                             <td className='py-2 md:text-md text-sm'>
                                 <div className='flex gap-1 items-center'><div className={`w-3 h-3 rounded-full ${StageColor[task.stage]}`}></div>
-                                <p>{task.title}</p></div></td>
-                            <td className='py-2 flex gap-1 items-center md:text-md text-sm'><span className='text-purple-500'>{ICONS[task.priority]}</span>{task.priority}</td>
+                                <p>{task.title.length > 30 ? task.title.slice(0,60)+"..." : task.title}</p></div></td>
+                            <td className='py-2 flex gap-1 items-center md:text-md text-sm'><span className='text-purple-500'>{ICONS[task.taskPrioirty]}</span>{task.taskPrioirty.slice(0,1).toUpperCase() + task.taskPrioirty.slice(1,) + ' Priority'}</td>
                             <td className='py-2 md:text-md text-sm'>
                                 <div className='flex'>{
-                                task.team.map(worker => (
-                                    <div className={`grid place-content-center border-[1px] border-white w-5 h-5 ${RoleColor[worker.role]} rounded-full text-[10px] font-semibold text-white`}>{worker.name.slice(0,2).toUpperCase()}</div>
-                                ))
+                                task.teamMember.map(worker => 
+                                    worker?.imgURL ? (<img src={worker.imgURL} className='w-5 h-5 rounded-full' alt='IMG' />) : (<div className={`grid place-content-center border-[1px] border-white w-5 h-5 ${RoleColor[worker.role]} rounded-full text-[10px] font-semibold text-white`}>{worker.username.slice(0,2).toUpperCase()}</div>)
+                                    
+                                )
                                 }</div>
                             </td>
-                            <td className='py-2 md:text-md text-sm hidden md:block text-center'>{task.createdAt.slice(0,19).replace("T", " T:")}</td>
+                            <td className='py-2 md:text-md text-sm hidden md:block text-center'>{task.startingDate}</td>
                         </tr>
                     ))}
                 </tbody>

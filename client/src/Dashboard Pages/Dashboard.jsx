@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useMemo, useState } from 'react';
 import DashboardNavbar from '../Shared/DashboardNavbar';
 import useStore from '../Shared/Zustand';
 import { TfiBarChart } from "react-icons/tfi";
@@ -21,8 +21,8 @@ const Dashboard = () => {
     const [normalPriority, setNormalPriority] = useState([]);
     const [lowPriority, setLowPriority] = useState([]);
 
-    console.log("high",highPriority.length);
-    console.log("medium",mediumPriority.length);
+    console.log(highPriority.length);
+    console.log(mediumPriority.length);
 
     useEffect(()=>{
       axios.get('http://localhost:3000/api/tasks')
@@ -40,24 +40,25 @@ const Dashboard = () => {
     const [teamMember, setTeamMember] = useState(0);
     const {user} = useContext(AuthContext);
     
-    const chartData = [
-        {
-          name: "High",
-          Task_Priority: highPriority.length,
-        },
-        {
-          name: "Medium",
-          Task_Priority: mediumPriority.length,
-        },
-        {
-          name: "Normal",
-          Task_Priority: normalPriority.length,
-        },
-        {
-          name: "Low",
-          Task_Priority: lowPriority.length,
-        },
-      ];
+    const chartData = useMemo(() => [
+      {
+        name: "High",
+        Task_Priority: highPriority.length,
+      },
+      {
+        name: "Medium",
+        Task_Priority: mediumPriority.length,
+      },
+      {
+        name: "Normal",
+        Task_Priority: normalPriority.length,
+      },
+      {
+        name: "Low",
+        Task_Priority: 5,
+      },
+    ], [highPriority, mediumPriority, normalPriority, lowPriority]);
+
 
       const labels = chartData.map((item) => item.name);
       const data = chartData.map((item) => item.Task_Priority);

@@ -93,14 +93,14 @@ const TrashListView = ({taskData}) => {
                                         <aside className='flex items-center gap-1'>
                                         <div className={`w-2 h-2 rounded-full ${StageColor[task.stage]}`}></div>
                                         <div>
-                                            {task.title}
+                                            {task.title.slice(0,32) + '...'}
                                         </div>
                                         </aside>
                                     </td>
                                     <td>
-                                        <aside className={`flex gap-1 items-center text-sm ${setPriorityColor[task.taskPrioirty]}`}>
+                                        <aside className={`flex justify-start gap-1 items-center text-sm ${setPriorityColor[task.taskPrioirty]}`}>
                                             <div>{ICONS[task.taskPrioirty]}</div>
-                                            <p className={`${task.ICONS} text-sm font-medium`}>{task.taskPrioirty.slice(0,1).toUpperCase()}{task.taskPrioirty.slice(1,)}</p>
+                                            <p className={`${task.ICONS} text-sm font-medium`}>{task.taskPrioirty.slice(0,1).toUpperCase()}{task.taskPrioirty.slice(1,)} Priority</p>
                                         </aside>
                                     </td>
                                     <td className='text-sm smNone'>{task.startingDate}</td>
@@ -108,7 +108,7 @@ const TrashListView = ({taskData}) => {
                                     <td className='smNone'>
                                         <div className='flex justify-between'>
                                             <section className='flex gap-2 items-center'>
-                                                <aside className='flex gap-1 items-center'>
+                                                <aside className='flex gap-1 items-center '>
                                                     <MdOutlineStickyNote2/>
 
                                                     {/* have TODO  */}
@@ -117,7 +117,7 @@ const TrashListView = ({taskData}) => {
                                                 </aside>
 
                                                 <aside className='flex gap-1 items-center'>
-                                                    <TbSubtask/>
+                                                    <TbSubtask className='text-purple-500'/>
                                                     <div className='text-sm'>{task.subTasks.length}</div>
                                                 </aside>
                                             </section> 
