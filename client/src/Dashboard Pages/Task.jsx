@@ -6,12 +6,14 @@ import { RxDashboard } from "react-icons/rx";
 import TaskDetails from '../Components/TaskDetails';
 import TaskListView from '../Components/TaskListView';
 import axios from 'axios';
+import CreateTask from './CreateTask';
 
 const Task = () => {
     const [boardView, setBoardView] = useState(true);
     const [listView, setListView] = useState(false);
     const [task, setTask] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [modal, setModal] = useState(false);
     console.log(task);
 
 
@@ -45,10 +47,13 @@ const Task = () => {
             <div className='z-30 md:h-[980px] bg-purple-50'>
             <DashboardNavbar/>
             </div>
+            {
+                modal && <CreateTask setModal={setModal}/>
+            }
             <div className='md:my-20 my-5 text-[var(--primaryFontColor)] mx-5 md:w-[900px] md:mx-auto'>
              <header className='w-full flex justify-between items-center'>
                 <h2 className='text-xl font-medium'>Tasks</h2>
-                <button className='flex gap-1 items-center py-2 px-4 bg-purple-500 font-medium text-white rounded-md hover:bg-purple-600 duration-300'><FiPlus/> Create Task</button>
+                <button onClick={()=>setModal(true)} className='flex gap-1 items-center py-2 px-4 bg-purple-500 font-medium text-white rounded-md hover:bg-purple-600 duration-300'><FiPlus/> Create Task</button>
              </header>
              
              <div className='text-left flex gap-5 my-2'>

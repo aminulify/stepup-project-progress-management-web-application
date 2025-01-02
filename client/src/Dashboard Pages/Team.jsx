@@ -63,7 +63,7 @@ const Task = () => {
         .then(data => {
             setTeamData(data);
             setLoading(false);
-            console.log("sd")
+            // console.log("sd")
         })
         .catch(err => console.log(err))
     }
