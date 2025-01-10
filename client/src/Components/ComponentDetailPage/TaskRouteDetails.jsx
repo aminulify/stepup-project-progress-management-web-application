@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import DashboardNavbar from '../../Shared/DashboardNavbar';
 import { SlCalender } from "react-icons/sl";
 import Loading from '../../Shared/Loading';
@@ -9,12 +9,14 @@ import { GoDot, GoDotFill } from "react-icons/go";
 import { TbSubtask } from "react-icons/tb";
 import { FaRegEdit } from 'react-icons/fa';
 import { BiPlus } from 'react-icons/bi';
+import toast, { Toaster } from 'react-hot-toast';
 
 const TaskRouteDetails = () => {
     const id = useParams();
     const [taskDetails, setTaskDetails] = useState([]);
     const [loading, setLoading] = useState(false);
-    console.log(taskDetails.title)
+    // console.log(taskDetails.title)
+    const navigate = useNavigate();
 
     useEffect(()=>{
         setLoading(true);
@@ -22,9 +24,20 @@ const TaskRouteDetails = () => {
         .then(res => {
             setTaskDetails(res.data);
             setLoading(false);
+            
         })
         .catch(err => console.log(err))
     },[])
+
+    // update Patch stage 
+    const handleDetailsTaskDelete = (id) =>{
+        axios.patch(`http://localhost:3000/api/tasks/${id.id}`, {stage: 'delete'})
+        .then(res => {
+            toast.success('Delete Successfully!')
+            navigate(-1);
+        })
+        .catch(e => toast.error('Something went wrong!'))
+    }
 
     const ICONS = {
         high: <MdKeyboardDoubleArrowUp/>,
@@ -63,6 +76,8 @@ const TaskRouteDetails = () => {
     // console.log("data",taskDetails);
     return (
         <div className='md:flex'>
+            <Toaster />
+
             <div className='z-30 md:h-[980px] bg-purple-50'>
             <DashboardNavbar/>
             </div>
@@ -118,7 +133,7 @@ const TaskRouteDetails = () => {
                 
                 <div className='flex gap-3 mb-3 mt-5'>
                     <button className={`flex gap-1 items-center justify-center bg-gradient-to-tr from-[var(--gradientFirstColor)] via-[var(--gradientSecondColor)] to-[var(--gradientThirdColor)] hover:bg-gradient-to-tl text-white duration-300 rounded-md md:w-[20%] w-[40%] py-2`}><FaRegEdit /> Update</button>
-                    <button className='flex gap-1 items-center justify-center border-[1.3px] border-purple-500 rounded-md md:w-[20%] w-[40%] py-2 hover:border-red-500 hover:text-red-500 duration-300'><MdOutlineDeleteOutline className='text-lg' /> Delete</button>
+                    <button onClick={()=>handleDetailsTaskDelete(id)} className='flex gap-1 items-center justify-center border-[1.3px] border-purple-500 rounded-md md:w-[20%] w-[40%] py-2 hover:border-red-500 hover:text-red-500 duration-300'><MdOutlineDeleteOutline className='text-lg' /> Delete</button>
                 </div>
             </div> : <Loading></Loading>
             }

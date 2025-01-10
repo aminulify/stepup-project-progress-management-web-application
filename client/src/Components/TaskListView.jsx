@@ -1,11 +1,13 @@
+import axios from 'axios';
 import React from 'react';
+import toast, { Toaster } from 'react-hot-toast';
 import { GoDot } from 'react-icons/go';
 import { MdKeyboardArrowDown, MdKeyboardArrowUp, MdKeyboardDoubleArrowUp, MdOutlineStickyNote2 } from 'react-icons/md';
 import { RiDeleteBinLine, RiEditBoxLine } from 'react-icons/ri';
 import { TbSubtask } from 'react-icons/tb';
 import { Link } from 'react-router-dom';
 
-const TaskListView = ({taskData}) => {
+const TaskListView = ({taskData, handleTask}) => {
 
     const ICONS = {
         high: <MdKeyboardDoubleArrowUp/>,
@@ -42,8 +44,20 @@ const TaskListView = ({taskData}) => {
         Editor: "bg-pink-700"
     }
 
+    // update Patch stage 
+    const handleDetailsTaskDelete = (id) =>{
+        // console.log(id)
+        axios.patch(`http://localhost:3000/api/tasks/${id}`, {stage: 'delete'})
+        .then(res => {
+            toast.success('Delete Successfully!');
+            handleTask();
+        })
+        .catch(e => console.log(e))
+    }
+
     return (
         <div className='p-2 border-[1px] rounded-md border-purple-500'>
+            <Toaster />
             <table className='w-full'>
                 
                     <thead>
@@ -111,7 +125,7 @@ const TaskListView = ({taskData}) => {
                                     </td>
                                     <td className='flex gap-1 py-2 justify-center'>
                                         <Link to={task._id} className='text-xl p-1 rounded-sm bg-purple-50 hover:bg-purple-200 cursor-pointer duration-300'><RiEditBoxLine/></Link>
-                                        <div className='text-xl p-1 rounded-sm bg-purple-50 hover:bg-purple-200 cursor-pointer duration-300'><RiDeleteBinLine/></div>
+                                        <div onClick={()=>handleDetailsTaskDelete(task._id)} className='text-xl p-1 rounded-sm bg-purple-50 hover:bg-purple-200 cursor-pointer duration-300'><RiDeleteBinLine/></div>
                                     </td>
                                 </tr>     
                         ))

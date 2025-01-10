@@ -39,7 +39,7 @@ const TaskSchema = new mongoose.Schema({
     taskPrioirty: {
         type: String,
         required: true,
-        default: "Normal",
+        default: "high",
     },
     notes: {
         type: [String],

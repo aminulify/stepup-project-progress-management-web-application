@@ -76,7 +76,7 @@ const ProjectPreview = () => {
                             <MdAddTask />
                             
                         </div>
-                        <p className='text-sm font-semibold mt-1 md:block hidden'>Task</p>
+                        <p className='text-sm font-semibold mt-1 md:block hidden'>Tasks</p>
                     </aside>
                     <aside className='text-center flex flex-col'>
                         <div onClick={handleProgress} className={`text-2xl md:text-4xl md:h-[70px] h-[50px] md:w-[70px] w-[50px] flex justify-center items-center rounded-lg border-[2px] hover:text-purple-500 hover:border-purple-500 duration-300 cursor-pointer ${progress ? "text-purple-500 border-purple-500":"border-[var(--primaryFontColor)]"}`}>

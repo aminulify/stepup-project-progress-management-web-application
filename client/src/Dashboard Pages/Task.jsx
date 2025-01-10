@@ -14,22 +14,25 @@ const Task = () => {
     const [task, setTask] = useState([]);
     const [loading, setLoading] = useState(false);
     const [modal, setModal] = useState(false);
-    console.log(task);
+    // console.log(task);
 
-
-    useEffect(()=>{
-        setLoading(true);
+    const handleTask = () =>{
         axios.get('http://localhost:3000/api/tasks')
         .then(res => {
             setTask(res.data);
             setLoading(false);
         })
         .catch(e => console.log(e))
+    }
+
+    useEffect(()=>{
+        setLoading(true);
+        handleTask();
     },[])
 
     // const task = summary.last10Task;
     const taskData = task.filter(data => data.stage !== "delete");
-    console.log("taskdata",task);
+    // console.log("taskdata",task);
     // console.log("taskNote",task.notes[0]);
 
     const handleBoardView = () =>{
@@ -50,7 +53,7 @@ const Task = () => {
             {
                 modal && <CreateTask setModal={setModal}/>
             }
-            <div className='md:my-20 my-5 text-[var(--primaryFontColor)] mx-5 md:w-[900px] md:mx-auto'>
+            <div className='md:my-20 my-5 text-[var(--primaryFontColor)] mx-6 md:w-[74%] md:mx-auto'>
              <header className='w-full flex justify-between items-center'>
                 <h2 className='text-xl font-medium'>Tasks</h2>
                 <button onClick={()=>setModal(true)} className='flex gap-1 items-center py-2 px-4 bg-purple-500 font-medium text-white rounded-md hover:bg-purple-600 duration-300'><FiPlus/> Create Task</button>
@@ -92,7 +95,7 @@ const Task = () => {
 
              {
                 listView ? <section>
-                <TaskListView taskData={taskData}/>
+                <TaskListView taskData={taskData} handleTask={handleTask}/>
              </section> : <section>
                 <TaskDetails taskData={taskData} loading={loading}/>
              </section>

@@ -59,9 +59,9 @@ const DashboardNavbar = () => {
 
                         <hr className='border-[1px] border-purple-500 my-1 ' />
 
-                        <Link to="/user/team-chat"><li className={`py-1 my-1 rounded-sm hover:text-white hover:bg-purple-500 duration-300 cursor-pointer px-5 flex gap-1 items-center ${location.pathname == "/user/team-chat" && "bg-purple-500 text-white"}`}><IoIosChatbubbles className="text-[20px] md:text-xl"/> <div className="">Chat</div></li></Link>
+                        {/* <Link to="/user/team-chat"><li className={`py-1 my-1 rounded-sm hover:text-white hover:bg-purple-500 duration-300 cursor-pointer px-5 flex gap-1 items-center ${location.pathname == "/user/team-chat" && "bg-purple-500 text-white"}`}><IoIosChatbubbles className="text-[20px] md:text-xl"/> <div className="">Chat</div></li></Link> */}
 
-                        <hr className='border-[1px] border-purple-500 my-1 ' />
+                        {/* <hr className='border-[1px] border-purple-500 my-1 ' /> */}
 
                         <Link to="/user/trash"><li className={`py-1 my-1 rounded-sm hover:text-white hover:bg-purple-500 duration-300 cursor-pointer px-5 flex gap-1 items-center ${location.pathname == "/user/trash" && "bg-purple-500 text-white"}`}><FaTrashCan  className="text-[20px] md:text-lg"/> <div className="">Trash</div></li></Link>
                     </aside>
