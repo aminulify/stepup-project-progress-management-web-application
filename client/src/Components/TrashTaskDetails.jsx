@@ -26,7 +26,8 @@ const TrashTaskDetails = ({taskData, loading, handleTasks}) => {
     const StageColor = {
         todo: "bg-orange-500",
         completed: "bg-green-500",
-        "in-progress": "bg-blue-500" 
+        "in-progress": "bg-blue-500",
+        "delete": "bg-slate-500"
     }
 
     const RoleColor = {

@@ -45,7 +45,7 @@ const Trash = () => {
             <div className='z-30 md:h-[980px] bg-purple-50'>
             <DashboardNavbar/>
             </div>
-            <div className='md:my-20 my-5 text-[var(--primaryFontColor)] mx-5 md:w-[900px] md:mx-auto'>
+            <div className='md:my-20 my-5 text-[var(--primaryFontColor)] mx-6 md:w-[74%] md:mx-auto'>
              <header className='w-full'>
                 <h2 className='text-xl font-medium'>Trash</h2>
              </header>
