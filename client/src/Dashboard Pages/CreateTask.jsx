@@ -51,8 +51,19 @@ const CreateTask = ({setModal}) => {
         const description = form.description.value;
 
         const value = {adminEmail, title, startingDate, endingDate, taskPrioirty: prioirty, notes: noteText, stage, teamMember, tags, description, subTasks: subTask};
-        console.log(value);
+
+        fetch('http://localhost:3000/api/tasks', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(value)
+        })
+        .then(res => res.json())
+        .then(data => console.log("here come",data))
+        .catch(e => console.log(e))
     }
+
 
     useEffect(()=>{
         axios.get('http://localhost:3000/api/user-data')
@@ -123,7 +134,7 @@ const CreateTask = ({setModal}) => {
 
                         <div>
                             <label>Tags</label>
-                            <input type="text" className='w-full p-2 outline-none border-[1.2px] border-purple-500 rounded-md' placeholder='Task Tag Here' name="tags" required />
+                            <input type="text" className='w-full p-2 outline-none border-[1.2px] border-purple-500 rounded-md' placeholder='Ex: App/Marketing/Software/Designing/Editing ...' name="tags" required />
                         </div>
 
                         <div>

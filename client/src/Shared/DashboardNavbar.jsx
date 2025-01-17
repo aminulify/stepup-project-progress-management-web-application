@@ -14,10 +14,10 @@ import Loading from './Loading';
 const DashboardNavbar = () => {
     const {user, loading} = useContext(AuthContext);
     const {showMenu} = useStore();
-    console.log(user);
+    // console.log(user);
 
     const location = useLocation();
-    console.log(location.pathname);
+    // console.log(location.pathname);
     return (
         <div className='text-[var(--primaryFontColor)]'>
 
