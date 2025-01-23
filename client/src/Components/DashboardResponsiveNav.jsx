@@ -30,9 +30,9 @@ const DashboardResponsiveNav = () => {
                     </div>
                     
                     <div className='absolute right-[5%] md:right-[8%] md:mt-12 mt-0'>
-                            <div className='bg-white shadow-sm shadow-purple-200 rounded-lg'>
+                            <div className='bg-white shadow-sm shadow-purple-200 rounded-full'>
                             {
-                                 user.photoURL ? <div className="flex gap-1 items-center px-3 py-[4.5px] border-[1.5px] border-purple-500 rounded-lg"><img src={user.photoURL} className='w-[30px] h-[30px] rounded-full object-center object-cover cursor-pointer' alt="" /> <span className="text-[16px] font-medium">{user?.displayName.slice(0,6)}.</span></div> : <div className="flex gap-1 items-center px-2 py-[4.5px] border-[1.5px] border-purple-500 rounded-lg"><div className='text-xl font-bold bg-purple-500 w-[30px] h-[30px] rounded-full text-white cursor-pointer flex justify-center items-center'>{user.displayName[0].toUpperCase()}</div> <span className="text-[16px] font-semibold text-purple-700">{user?.displayName.slice(0,6)}.</span></div>
+                                 user.photoURL ? <div className="flex gap-1 items-center px-3 py-[4.5px] border-[1.5px] border-purple-500 rounded-full"><img src={user.photoURL} className='w-[30px] h-[30px] rounded-full object-center object-cover cursor-pointer' alt="" /> <span className="text-[16px] font-medium">{user?.displayName.slice(0,6)}.</span></div> : <div className="flex gap-1 items-center px-2 py-[4.5px] border-[1.5px] border-purple-500 rounded-lg"><div className='text-xl font-bold bg-purple-500 w-[30px] h-[30px] rounded-full text-white cursor-pointer flex justify-center items-center'>{user.displayName[0].toUpperCase()}</div> <span className="text-[16px] font-semibold text-purple-700">{user?.displayName.slice(0,6)}.</span></div>
                             }
                             </div>
                     </div>

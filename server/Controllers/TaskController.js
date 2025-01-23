@@ -32,10 +32,11 @@ export const GetEachTaskData = async(req,res) =>{
 
 export const UpdateTaskStage = async(req,res) =>{
     const taskId = req.params.id;
-    const {stage} = req.body;
-    console.log(stage);
+    console.log(taskId);
+    const {title, adminEmail, startingDate, endingDate, taskPrioirty, notes, stage, teamMember, tags, description, subTasks} = req.body;
+    
     try{
-        const data = await Tasks.findByIdAndUpdate(taskId, {stage: stage});
+        const data = await Tasks.findByIdAndUpdate(taskId, {title: title, adminEmail: adminEmail, startingDate: startingDate, endingDate: endingDate, taskPrioirty: taskPrioirty, notes: notes, stage: stage, teamMember: teamMember, tags: tags, description: description, subTasks: subTasks});
 
         if(!data){
             return res.status(404).json({message: 'No data found'})
