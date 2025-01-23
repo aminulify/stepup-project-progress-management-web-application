@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { MdDashboard } from "react-icons/md";
 import { RiProgress3Fill } from "react-icons/ri";
@@ -10,14 +10,28 @@ import { AuthContext } from '../AuthProvider/AuthProvider';
 import DashboardResponsiveNav from '../Components/DashboardResponsiveNav';
 import useStore from './Zustand';
 import Loading from './Loading';
+import axios from 'axios';
 
 const DashboardNavbar = () => {
     const {user, loading} = useContext(AuthContext);
-    const {showMenu} = useStore();
     // console.log(user);
+    const {showMenu} = useStore();
+    const [findUser, setFindUser] = useState();
 
     const location = useLocation();
     // console.log(location.pathname);
+
+    const findUserRole = () =>{
+        axios.get('http://localhost:3000/api/user-data')
+        .then(res => {
+            const getAllUser = res.data;
+            const matchUser = getAllUser.filter(data => data.email === user.email);
+            setFindUser(matchUser.findUser[0]?.role);
+        })
+    }
+    useEffect(()=>{
+        findUserRole();
+    },[])
     return (
         <div className='text-[var(--primaryFontColor)]'>
 
@@ -34,9 +48,9 @@ const DashboardNavbar = () => {
                         <Link to="/"><img src="../../public/logo.png" alt="" /></Link>
                     </aside>
                     <aside className='md:py-8 py-2 px-2 text-purple-700'>
-                        <Link to="/user/dashboard"><li className={`py-1 my-1 rounded-sm hover:text-white hover:bg-purple-500 duration-300 cursor-pointer px-5 flex gap-1 items-center ${location.pathname == "/user/dashboard" && "bg-purple-500 text-white"}`}><MdDashboard className="text-[20px] md:text-xl"/> <div className="">Dashboard</div></li></Link>
+                        <Link to="/user/dashboard"><li className={`py-1 my-1 rounded-sm hover:text-white hover:bg-purple-500 duration-300 cursor-pointer px-5 flex gap-1 items-center ${location.pathname == "/user/dashboard" && "bg-purple-500 text-white"} ${findUser !== 'Admin' && 'hidden'}`}><MdDashboard className="text-[20px] md:text-xl"/> <div className="">Dashboard</div></li></Link>
 
-                        <hr className='border-[1px] border-purple-500 my-1 ' />
+                        <hr className={`border-[1px] border-purple-500 my-1 ${findUser !== 'Admin' && 'hidden'}`} />
 
                         <Link to="/user/tasks"><li className={`py-1 my-1 rounded-sm hover:text-white hover:bg-purple-500 duration-300 cursor-pointer px-5 flex gap-1 items-center ${location.pathname == "/user/tasks" && "bg-purple-500 text-white"}`}><GrTasks className="text-[20px] md:text-xl"/> <div className="">Tasks</div></li></Link>
 
@@ -52,18 +66,18 @@ const DashboardNavbar = () => {
 
                         <Link to="/user/todo"><li className={`py-1 my-1 rounded-sm hover:text-white hover:bg-purple-500 duration-300 cursor-pointer px-5 flex gap-1 items-center ${location.pathname == "/user/todo" && "bg-purple-500 text-white"}`}><FaClipboardList className="text-[20px] md:text-xl"/> <div className="">Todo</div></li></Link>
 
-                        <hr className='border-[1px] border-purple-500 my-1 ' />
+                        <hr className={`border-[1px] border-purple-500 my-1 ${findUser !== 'Admin' && 'hidden'}`} />
                         
 
-                        <Link to="/user/team"><li className={`py-1 my-1 rounded-sm hover:text-white hover:bg-purple-500 duration-300 cursor-pointer px-5 flex gap-1 items-center ${location.pathname == "/user/team" && "bg-purple-500 text-white"}`}><FaUsers className="text-[20px] md:text-xl"/> <div className="">Team</div></li></Link>
+                        <Link to="/user/team"><li className={`py-1 my-1 rounded-sm hover:text-white hover:bg-purple-500 duration-300 cursor-pointer px-5 flex gap-1 items-center ${location.pathname == "/user/team" && "bg-purple-500 text-white"} ${findUser !== 'Admin' && 'hidden'}`}><FaUsers className="text-[20px] md:text-xl"/> <div className="">Team</div></li></Link>
 
-                        <hr className='border-[1px] border-purple-500 my-1 ' />
+                        <hr className={`border-[1px] border-purple-500 my-1 ${findUser !== 'Admin' && 'hidden'}`} />
 
                         {/* <Link to="/user/team-chat"><li className={`py-1 my-1 rounded-sm hover:text-white hover:bg-purple-500 duration-300 cursor-pointer px-5 flex gap-1 items-center ${location.pathname == "/user/team-chat" && "bg-purple-500 text-white"}`}><IoIosChatbubbles className="text-[20px] md:text-xl"/> <div className="">Chat</div></li></Link> */}
 
                         {/* <hr className='border-[1px] border-purple-500 my-1 ' /> */}
 
-                        <Link to="/user/trash"><li className={`py-1 my-1 rounded-sm hover:text-white hover:bg-purple-500 duration-300 cursor-pointer px-5 flex gap-1 items-center ${location.pathname == "/user/trash" && "bg-purple-500 text-white"}`}><FaTrashCan  className="text-[20px] md:text-lg"/> <div className="">Trash</div></li></Link>
+                        <Link to="/user/trash"><li className={`py-1 my-1 rounded-sm hover:text-white hover:bg-purple-500 duration-300 cursor-pointer px-5 flex gap-1 items-center ${location.pathname == "/user/trash" && "bg-purple-500 text-white"} ${findUser !== 'Admin' && 'hidden'}`}><FaTrashCan  className="text-[20px] md:text-lg"/> <div className="">Trash</div></li></Link>
                     </aside>
                     
                 </div>

@@ -13,8 +13,10 @@ import { AuthContext } from '../AuthProvider/AuthProvider';
 import axios from 'axios';
 
 const Dashboard = () => {
+    const {user} = useContext(AuthContext);
     const {showMenu} = useStore();
-    const [task, setTask] = useState(0);
+    const [task, setTask] = useState([]);
+    // console.log(task);
     const [completedTask, setCompletedTask] = useState([]);
     const [highPriority, setHighPriority] = useState([]);
     const [mediumPriority, setMediumPriority] = useState([]);
@@ -27,7 +29,12 @@ const Dashboard = () => {
     useEffect(()=>{
       axios.get('http://localhost:3000/api/tasks')
       .then(res => {
-        setTask(res.data);
+        const getData = res.data;
+        // console.log(getData);
+        const matchAdminEmail = getData.filter(data => data.adminEmail === user.email);
+       
+        setTask(matchAdminEmail);
+
         setCompletedTask(res.data.filter(item => item.stage === 'completed'));
         setHighPriority((res.data.filter(item => item.taskPrioirty === 'high')));
         setMediumPriority(res.data.filter(item => item.taskPrioirty === 'medium'));
@@ -38,7 +45,6 @@ const Dashboard = () => {
     },[])
 
     const [teamMember, setTeamMember] = useState(0);
-    const {user} = useContext(AuthContext);
     
     const chartData = useMemo(() => [
       {

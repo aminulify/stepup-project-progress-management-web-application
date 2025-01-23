@@ -15,7 +15,7 @@ const SignUp = () => {
 
 
     const imgBB = `https://api.imgbb.com/1/upload?key=12a5c8dd785d727ebc27245b83df27bb`;
-    console.log(imgBB);
+    // console.log(imgBB);
 
     const { register, handleSubmit, formState: { errors } } = useForm();
 
@@ -56,7 +56,7 @@ const SignUp = () => {
                     const role = userRole;
 
                     const userData = {uId, email, imageURL, username, password, rolePosition, role};
-                    console.log("according", userData);
+                    // console.log("according", userData);
 
                     fetch('http://localhost:3000/api/user-data',{
                         method: "POST",
@@ -67,7 +67,7 @@ const SignUp = () => {
                     })
                     .then(res => res.json())
                     .then(data => {
-                        console.log("signup",data)
+                        // console.log("signup",data)
                         setLoading(false);
             
                         // react hot toast 
@@ -80,6 +80,7 @@ const SignUp = () => {
 
                     })
                     .catch(err => {
+                        setLoading(false);
                         console.log(err);
                     })
                     
@@ -103,6 +104,27 @@ const SignUp = () => {
         .then(result => {
             setLoading(true);
             const user = result.user;
+            // console.log(user);
+
+            // create user data in database 
+            const userData = {uId: user.uid, username: user.displayName.toLowerCase().slice(0,6), email: user.email, password: "12345678", rolePosition: "Administrator", role: "Admin", adminEmail: user.email, isActive: "Active", imageURL: user.photoURL};
+            console.log(userData);
+
+            fetch('http://localhost:3000/api/user-data',{
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(userData)
+            })
+            .then(res => res.json())
+            
+            .then(data => {
+                // console.log(data);
+                // console.log("created done");
+            })
+            .catch(e => console.log(e))
+
             toast.success('Successfully Logged in!',{
                 duration: 1000,
                 position: 'top-center',

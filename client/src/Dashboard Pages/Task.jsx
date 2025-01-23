@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import DashboardNavbar from '../Shared/DashboardNavbar';
 import { FiPlus } from "react-icons/fi";
 import { IoListOutline } from "react-icons/io5";
@@ -7,19 +7,36 @@ import TaskDetails from '../Components/TaskDetails';
 import TaskListView from '../Components/TaskListView';
 import axios from 'axios';
 import CreateTask from './CreateTask';
+import { AuthContext } from '../AuthProvider/AuthProvider';
 
 const Task = () => {
+    const {user} = useContext(AuthContext);
     const [boardView, setBoardView] = useState(true);
     const [listView, setListView] = useState(false);
     const [task, setTask] = useState([]);
     const [loading, setLoading] = useState(false);
     const [modal, setModal] = useState(false);
-    // console.log(task);
+    const [getUser, setGetUser] = useState([]);
+    // console.log(getUser[0]?.adminEmail);
 
     const handleTask = () =>{
+        axios.get('http://localhost:3000/api/user-data')
+        .then(res => {
+            const userData = res.data;
+            const findUser = userData.filter(data => data.email === user.email);
+            // console.log(findUser[0].adminEmail);
+            setGetUser(findUser[0].adminEmail);
+        })
+        .catch(e => console.log(e))
+
+
         axios.get('http://localhost:3000/api/tasks')
         .then(res => {
-            setTask(res.data);
+            const taskData = res.data;
+            console.log(taskData);
+            const taskMatchWithAdmin = taskData.filter(data => data.adminEmail === getUser); 
+            console.log(taskMatchWithAdmin);
+            setTask(taskMatchWithAdmin);
             setLoading(false);
         })
         .catch(e => console.log(e))
@@ -36,11 +53,13 @@ const Task = () => {
     // console.log("taskNote",task.notes[0]);
 
     const handleBoardView = () =>{
+        handleTask();
         setBoardView(true);
         setListView(false);
     }
 
     const handleListView = () =>{
+        handleTask();
         setBoardView(false);
         setListView(true);
     }
