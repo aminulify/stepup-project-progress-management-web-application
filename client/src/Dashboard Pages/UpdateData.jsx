@@ -1,12 +1,12 @@
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 
 const UpdateData = ({taskDetails, setModal}) => {
     const id = useParams();
-    console.log(id.id)
+    const navigate = useNavigate();
 
     const {user} = useContext(AuthContext);
     const [memberFromTask, setMemberFromTask] = useState([]);
@@ -37,20 +37,19 @@ const UpdateData = ({taskDetails, setModal}) => {
         const tags = form.tags.value;
         const teamMember = memberFromTask;
 
-        const updatedValue = {title, adminEmail: user.email, startingDate, endingDate, taskPrioirty: prioirty, notes: [notes], stage, teamMember, tags, description, subTasks: subTask};
-        console.log("clg data",updatedValue)
 
         axios.patch(`http://localhost:3000/api/tasks/${id.id}`, {title, adminEmail: taskDetails.adminEmail, startingDate, endingDate, taskPrioirty: prioirty, notes: [notes], stage, teamMember, tags, description, subTasks: subTask})
         .then(res => {
             const data = res.data;
-            console.log(data);
             toast.success('Successfully Updated');
+            setModal(false);
+            navigate(-1);
         })
         .catch(e => {
             toast.error('Something went wrong!');
             console.log(e)
         })
-        // console.log("update data", updatedValue);
+        
         
 
     }

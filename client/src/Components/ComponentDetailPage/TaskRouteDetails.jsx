@@ -88,9 +88,9 @@ const TaskRouteDetails = () => {
             {
                 !loading ? <div className='text-purple-900 md:mt-24 md:mb-10 my-5 md:w-[900px] text-left md:mx-auto mx-5'>
                 <h2 className='font-semibold text-xl md:text-2xl text-purple-500'>{taskDetails.title}</h2>
-                <div className='md:flex justify-between my-2'>
-                    <p className='flex gap-1.5 items-center'><SlCalender className='text-purple-500'/> <div><span className='font-medium'> Starting Date:</span> {taskDetails.startingDate}</div></p>
-                    <p className='flex gap-1.5 items-center  md:py-0 py-2'><SlCalender className='text-purple-500'/> <div><span className='font-medium'> Ending Date:</span> {taskDetails.startingDate}</div></p>
+                <div className='md:flex justify-between my-2 animate-pulse'>
+                    <p className='flex gap-1.5 items-center'><SlCalender className='text-purple-500'/> <div><span className='font-medium'> Starting Date:</span> <span className='text-green-500'>{taskDetails.startingDate}</span></div></p>
+                    <p className='flex gap-1.5 items-center  md:py-0 py-2'><SlCalender className='text-purple-500'/> <div><span className='font-medium'> Ending Date:</span> <span className='text-red-500'>{taskDetails.endingDate}</span></div></p>
                 </div>
 
                 {
