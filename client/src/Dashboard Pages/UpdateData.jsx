@@ -38,7 +38,7 @@ const UpdateData = ({taskDetails, setModal}) => {
         const teamMember = memberFromTask;
 
 
-        axios.patch(`http://localhost:3000/api/tasks/${id.id}`, {title, adminEmail: taskDetails.adminEmail, startingDate, endingDate, taskPrioirty: prioirty, notes: [notes], stage, teamMember, tags, description, subTasks: subTask})
+        axios.put(`http://localhost:3000/api/tasks/${id.id}`, {title, adminEmail: taskDetails.adminEmail, startingDate, endingDate, taskPrioirty: prioirty, notes: [notes], stage, teamMember, tags, description, subTasks: subTask})
         .then(res => {
             const data = res.data;
             toast.success('Successfully Updated');

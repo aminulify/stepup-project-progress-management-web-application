@@ -26,7 +26,7 @@ const SignIn = () => {
         const password = form.password.value;
 
         const value = {email, password};
-        console.log(value);
+        // console.log(value);
 
         signInUser(email, password)
         .then((result)=>{

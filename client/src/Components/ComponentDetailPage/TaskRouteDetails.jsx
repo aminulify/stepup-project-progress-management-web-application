@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import DashboardNavbar from '../../Shared/DashboardNavbar';
 import { SlCalender } from "react-icons/sl";
@@ -10,17 +10,29 @@ import { TbSubtask } from "react-icons/tb";
 import { FaRegEdit } from 'react-icons/fa';
 import { BiPlus } from 'react-icons/bi';
 import toast, { Toaster } from 'react-hot-toast';
-import { UpdateTaskStage } from '../../../../server/Controllers/TaskController';
 import UpdateData from '../../Dashboard Pages/updateData';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
+import UpdateNormalUserData from '../../Dashboard Pages/UpdateNormalUserData';
 
 const TaskRouteDetails = () => {
     const id = useParams();
+    const {user} = useContext(AuthContext);
     const [taskDetails, setTaskDetails] = useState([]);
     const [loading, setLoading] = useState(false);
-    // console.log(taskDetails.title)
     const navigate = useNavigate();
     const [modal, setModal] = useState(false);
-    // console.log(modal);
+    const [userModal, setUserModal] = useState(false);
+    const [userRole, setUserRole] = useState(null);
+    
+    const checkUserRole = async() =>{
+        const userRes = await axios.get('http://localhost:3000/api/user-data');
+        const userData = userRes.data;
+        const findUser = userData.filter(data => data.email === user.email);
+        setUserRole(findUser[0].role);
+    }
+    useEffect(()=>{
+        checkUserRole();
+    },[])
 
     useEffect(()=>{
         setLoading(true);
@@ -93,8 +105,14 @@ const TaskRouteDetails = () => {
                     <p className='flex gap-1.5 items-center  md:py-0 py-2'><SlCalender className='text-purple-500'/> <div><span className='font-medium'> Ending Date:</span> <span className='text-red-500'>{taskDetails.endingDate}</span></div></p>
                 </div>
 
+                {/* for admin  */}
                 {
                     modal && <UpdateData taskDetails={taskDetails} setModal={setModal} modal={modal} />
+                }
+
+                {/* for normal user  */}
+                {
+                    userModal && <UpdateNormalUserData setUserModal = {setUserModal} taskDetails={taskDetails} />
                 }
 
                 <p className='py-1'>{taskDetails.description}</p>
@@ -140,7 +158,12 @@ const TaskRouteDetails = () => {
 
                 
                 <div className='flex gap-3 mb-3 mt-5'>
-                    <button onClick={()=>setModal(!modal)} className={`flex gap-1 items-center justify-center bg-gradient-to-tr from-[var(--gradientFirstColor)] via-[var(--gradientSecondColor)] to-[var(--gradientThirdColor)] hover:bg-gradient-to-tl text-white duration-300 rounded-md md:w-[20%] w-[40%] py-2`}><FaRegEdit /> Update</button>
+                    {/* for Admin  */}
+                    <button onClick={()=>setModal(!modal)} className={`flex gap-1 items-center justify-center bg-gradient-to-tr from-[var(--gradientFirstColor)] via-[var(--gradientSecondColor)] to-[var(--gradientThirdColor)] hover:bg-gradient-to-tl text-white duration-300 rounded-md md:w-[20%] w-[40%] py-2 ${userRole !== 'Admin' && 'hidden'}`}><FaRegEdit /> Update</button>
+
+                    {/* for normal user */}
+                    <button onClick={()=>setUserModal(!modal)} className={`flex gap-1 items-center justify-center bg-gradient-to-tr from-[var(--gradientFirstColor)] via-[var(--gradientSecondColor)] to-[var(--gradientThirdColor)] hover:bg-gradient-to-tl text-white duration-300 rounded-md md:w-[20%] w-[40%] py-2 ${userRole === 'Admin' && 'hidden'}`}><FaRegEdit /> Update</button>
+
                     <button onClick={()=>handleDetailsTaskDelete(id)} className='flex gap-1 items-center justify-center border-[1.3px] border-purple-500 rounded-md md:w-[20%] w-[40%] py-2 hover:border-red-500 hover:text-red-500 duration-300'><MdOutlineDeleteOutline className='text-lg' /> Delete</button>
                 </div>
             </div> : <Loading></Loading>

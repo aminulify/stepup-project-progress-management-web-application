@@ -16,22 +16,31 @@ const DashboardNavbar = () => {
     const {user, loading} = useContext(AuthContext);
     // console.log(user);
     const {showMenu} = useStore();
-    const [findUser, setFindUser] = useState();
-
+    const [findUser, setFindUser] = useState(null);
+    console.log(findUser);
     const location = useLocation();
     // console.log(location.pathname);
 
-    const findUserRole = () =>{
-        axios.get('http://localhost:3000/api/user-data')
-        .then(res => {
-            const getAllUser = res.data;
-            const matchUser = getAllUser.filter(data => data.email === user.email);
-            setFindUser(matchUser.findUser[0]?.role);
-        })
-    }
-    useEffect(()=>{
+    const findUserRole = async () => {
+        try {
+            // Fetch user data
+            const userRes = await axios.get('http://localhost:3000/api/user-data');
+            const userData = userRes.data;
+    
+            // Find user by email
+            const matchUser = userData.filter(data => data.email === user.email);
+    
+            // Safely set the role if a match is found
+            setFindUser(matchUser[0]?.role); 
+        } 
+        catch (err) {
+            console.error(err);
+        }
+    };
+    
+    useEffect(() => {
         findUserRole();
-    },[])
+    }, []);
     return (
         <div className='text-[var(--primaryFontColor)]'>
 

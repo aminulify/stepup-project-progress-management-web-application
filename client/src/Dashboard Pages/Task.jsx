@@ -16,36 +16,39 @@ const Task = () => {
     const [task, setTask] = useState([]);
     const [loading, setLoading] = useState(false);
     const [modal, setModal] = useState(false);
-    const [getUser, setGetUser] = useState([]);
+    const [userRole, setUserRole] = useState([]);
     // console.log(getUser[0]?.adminEmail);
+    // console.log(task)
 
-    const handleTask = () =>{
-        axios.get('http://localhost:3000/api/user-data')
-        .then(res => {
-            const userData = res.data;
+    const handleTask = async () => {
+        try {
+            setLoading(true);
+    
+            // Fetch user data
+            const userRes = await axios.get('http://localhost:3000/api/user-data');
+            const userData = userRes.data;
             const findUser = userData.filter(data => data.email === user.email);
-            // console.log(findUser[0].adminEmail);
-            setGetUser(findUser[0].adminEmail);
-        })
-        .catch(e => console.log(e))
-
-
-        axios.get('http://localhost:3000/api/tasks')
-        .then(res => {
-            const taskData = res.data;
-            console.log(taskData);
-            const taskMatchWithAdmin = taskData.filter(data => data.adminEmail === getUser); 
-            console.log(taskMatchWithAdmin);
-            setTask(taskMatchWithAdmin);
+    
+            if (findUser.length > 0) {
+                setUserRole(findUser[0].role);
+    
+                // Fetch tasks after getting user data
+                const taskRes = await axios.get('http://localhost:3000/api/tasks');
+                const taskData = taskRes.data;
+                const taskMatchWithAdmin = taskData.filter(data => data.adminEmail === findUser[0].adminEmail);
+                
+                setTask(taskMatchWithAdmin);
+            }
+        } catch (error) {
+            console.error(error);
+        } finally {
             setLoading(false);
-        })
-        .catch(e => console.log(e))
-    }
-
-    useEffect(()=>{
-        setLoading(true);
+        }
+    };
+    
+    useEffect(() => {
         handleTask();
-    },[])
+    }, []);
 
     // const task = summary.last10Task;
     const taskData = task.filter(data => data.stage !== "delete");
@@ -75,7 +78,7 @@ const Task = () => {
             <div className='md:my-20 my-5 text-[var(--primaryFontColor)] mx-6 md:w-[74%] md:mx-auto'>
              <header className='w-full flex justify-between items-center'>
                 <h2 className='text-xl font-medium'>Tasks</h2>
-                <button onClick={()=>setModal(true)} className='flex gap-1 items-center py-2 px-4 bg-purple-500 font-medium text-white rounded-md hover:bg-purple-600 duration-300'><FiPlus/> Create Task</button>
+                <button onClick={()=>setModal(true)} className={`flex gap-1 items-center py-2 px-4 bg-purple-500 font-medium text-white rounded-md hover:bg-purple-600 duration-300 ${userRole !== 'Admin' && 'hidden'}`}><FiPlus/> Create Task</button>
              </header>
              
              <div className='text-left flex gap-5 my-2'>

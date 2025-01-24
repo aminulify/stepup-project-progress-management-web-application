@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BiPlus } from 'react-icons/bi';
 import { CgDetailsMore } from 'react-icons/cg';
 import { GoDot } from 'react-icons/go';
@@ -68,8 +68,8 @@ const TaskDetails = ({taskData, loading}) => {
                                 <section className='flex gap-2 items-center'>
                                     <aside className='flex gap-1 items-center'>
                                         <MdOutlineStickyNote2/>
-                                        <div className='text-sm'>3</div>
-                                        {/* <div>{task.team.length}</div> */}
+                                        <div className='text-sm'>{task.subTasks.length}</div>
+                                        
                                     </aside>
     
                                     <aside className='flex gap-1 items-center'>

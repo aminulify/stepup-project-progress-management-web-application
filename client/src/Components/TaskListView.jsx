@@ -98,13 +98,13 @@ const TaskListView = ({taskData, handleTask}) => {
                                                     <MdOutlineStickyNote2/>
 
                                                     {/* have TODO  */}
-                                                    <div className='text-sm'>3</div>
+                                                    <div className='text-sm'>{task.subTasks.length}</div>
                             
                                                 </aside>
 
                                                 <aside className='flex gap-1 items-center'>
                                                     <TbSubtask/>
-                                                    <div className='text-sm'>{task.subTasks.length}</div>
+                                                    <div className='text-sm'>{task.notes.length}</div>
                                                 </aside>
                                             </section> 
                                         </div>

@@ -133,6 +133,8 @@ const SignUp = () => {
                 setLoading(false);
                 navigate('/');
             },1000);
+
+            window.scrollTo(0,0);
         })
         .catch(e => {
             setLoading(false);

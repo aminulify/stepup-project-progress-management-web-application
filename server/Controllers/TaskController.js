@@ -30,7 +30,7 @@ export const GetEachTaskData = async(req,res) =>{
     }
 }
 
-export const UpdateTaskStage = async(req,res) =>{
+export const UpdateTask = async(req,res) =>{
     const taskId = req.params.id;
     console.log(taskId);
     const {title, adminEmail, startingDate, endingDate, taskPrioirty, notes, stage, teamMember, tags, description, subTasks} = req.body;
@@ -43,6 +43,23 @@ export const UpdateTaskStage = async(req,res) =>{
         }
 
         res.status(200).json({message: 'successful', data});
+    }
+    catch(err){
+        res.status(500).json({message: 'Something went wrong!'})
+    }
+}
+
+export const UpdateStageTaskData = async(req,res) =>{
+    const taskId = req.params.id;
+    const {stage} = req.body;
+
+    try{
+        const data = await Tasks.findByIdAndUpdate(taskId, {stage: stage});
+
+        if(!data){
+            return res.status(404).json({message: 'No data found'})
+        }
+        res.status(200).json({message: 'successful', data})
     }
     catch(err){
         res.status(500).json({message: 'Something went wrong!'})

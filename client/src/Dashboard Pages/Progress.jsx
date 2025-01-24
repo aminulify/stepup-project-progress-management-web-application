@@ -1,30 +1,47 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import DashboardNavbar from '../Shared/DashboardNavbar';
 import { FiPlus } from "react-icons/fi";
 import { IoListOutline } from "react-icons/io5";
 import { RxDashboard } from "react-icons/rx";
-import { summary } from '../../public/data';
 import ProgressTaskDetails from '../Components/ProgressTaskDetails';
 import TaskListView from '../Components/TaskListView';
 import axios from 'axios';
+import { AuthContext } from '../AuthProvider/AuthProvider';
 
 const Task = () => {
+    const {user} = useContext(AuthContext);
     const [boardView, setBoardView] = useState(true);
     const [listView, setListView] = useState(false);
     const [task, setTask] = useState([]);
     const [loading, setLoading] = useState([]);
 
-    useEffect(()=>{
-        setLoading(true);
-        axios.get('http://localhost:3000/api/tasks')
-        .then(res => {
-            setTask(res.data)
-            setLoading(false);
-        })
-        .catch(e => {
-            console.log(e)
-        })
-    },[])
+    const handleTask = async () => {
+                try {
+                    setLoading(true);
+            
+                    // Fetch user data
+                    const userRes = await axios.get('http://localhost:3000/api/user-data');
+                    const userData = userRes.data;
+                    const findUser = userData.filter(data => data.email === user.email);
+            
+                    if (findUser.length > 0) {
+            
+                        // Fetch tasks after getting user data
+                        const taskRes = await axios.get('http://localhost:3000/api/tasks');
+                        const taskData = taskRes.data;
+                        const taskMatchWithAdmin = taskData.filter(data => data.adminEmail === findUser[0].adminEmail);
+                        setTask(taskMatchWithAdmin);
+                    }
+                } catch (error) {
+                    console.error(error);
+                } finally {
+                    setLoading(false);
+                }
+            };
+            
+            useEffect(() => {
+                handleTask();
+            }, []);
 
     const progressDataOnly = task.filter(data => data.stage === "in-progress" && data.stage !== "delete");
 

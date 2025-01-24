@@ -53,15 +53,15 @@ const Dashboard = () => {
       },
       {
         name: "Medium",
-        Task_Priority: mediumPriority.length,
+        Task_Priority: 2,
       },
       {
         name: "Normal",
-        Task_Priority: normalPriority.length,
+        Task_Priority: 3,
       },
       {
         name: "Low",
-        Task_Priority: 5,
+        Task_Priority: 4,
       },
     ], [highPriority, mediumPriority, normalPriority, lowPriority]);
 
