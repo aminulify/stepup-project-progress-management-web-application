@@ -16,6 +16,7 @@ const Dashboard = () => {
     const {user} = useContext(AuthContext);
     const {showMenu} = useStore();
     const [task, setTask] = useState([]);
+    const [withoutDeleteTask, setWithoutDeleteTask] = useState([]);
     // console.log(task);
     const [completedTask, setCompletedTask] = useState([]);
     const [highPriority, setHighPriority] = useState([]);
@@ -23,8 +24,8 @@ const Dashboard = () => {
     const [normalPriority, setNormalPriority] = useState([]);
     const [lowPriority, setLowPriority] = useState([]);
 
-    console.log(highPriority.length);
-    console.log(mediumPriority.length);
+    // console.log(highPriority.length);
+    // console.log(mediumPriority.length);
 
     useEffect(()=>{
       axios.get('http://localhost:3000/api/tasks')
@@ -32,7 +33,8 @@ const Dashboard = () => {
         const getData = res.data;
         // console.log(getData);
         const matchAdminEmail = getData.filter(data => data.adminEmail === user.email);
-       
+        const withoutDelete = matchAdminEmail.filter(data => data.stage !== 'delete');
+        setWithoutDeleteTask(withoutDelete);
         setTask(matchAdminEmail);
 
         setCompletedTask(res.data.filter(item => item.stage === 'completed'));
@@ -151,7 +153,7 @@ const Dashboard = () => {
                       <div>
                         <div>Total Tasks</div>
                         <p className='text-5xl font-medium'><CountUp start={0}
-                                end={task.length}
+                                end={withoutDeleteTask.length}
                                 duration={2} />
                                 </p>
                         <div className='inline-flex items-center gap-2'><span>Tasks</span> <span className='text-purple-500'><TfiBarChart/></span></div>
