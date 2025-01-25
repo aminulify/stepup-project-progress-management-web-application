@@ -42,7 +42,7 @@ const TaskRouteDetails = () => {
             setLoading(false);
             
         })
-        .catch(err => console.log(err))
+        .catch(err => err)
     },[])
 
     // update Patch stage 

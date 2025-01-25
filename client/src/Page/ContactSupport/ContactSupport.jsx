@@ -28,7 +28,7 @@ const ContactSupport = ({setContact, contact}) => {
         })
         .then(res => res.json())
         .then(data => {
-            console.log('success', data);
+            // console.log('success', data);
             form.reset();
             setContact(false);
 
@@ -39,7 +39,7 @@ const ContactSupport = ({setContact, contact}) => {
             });
 
         })
-        .catch(err => console.log(err))
+        .catch(err => err)
 
     }
     return (

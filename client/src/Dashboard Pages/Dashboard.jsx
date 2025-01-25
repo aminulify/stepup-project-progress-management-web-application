@@ -43,7 +43,7 @@ const Dashboard = () => {
         setNormalPriority(res.data.filter(item => item.taskPrioirty === 'normal'));
         setLowPriority(res.data.filter(item => item.taskPrioirty === 'low'));
       })
-      .catch(e => console.log(e))
+      .catch(e => e)
     },[])
 
     const [teamMember, setTeamMember] = useState(0);

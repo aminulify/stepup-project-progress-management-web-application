@@ -11,7 +11,7 @@ export const getUserData = async(req,res) =>{
 
 export const createUserData = async(req,res) =>{
     const {uId, username, email, password, role, rolePosition, isActive, adminEmail, imageURL} = req.body;
-    console.log(uId, username, email, password, role, rolePosition, isActive, adminEmail, imageURL);
+    // console.log(uId, username, email, password, role, rolePosition, isActive, adminEmail, imageURL);
     try{
         const users = new UserData({uId, username, email, password, role, rolePosition, isActive, adminEmail, imageURL});
         await users.save();

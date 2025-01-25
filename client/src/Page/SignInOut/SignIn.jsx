@@ -11,7 +11,7 @@ const SignIn = () => {
 
     const navigate = useNavigate();
 
-    const { signInUser, loading, setLoading } = useContext(AuthContext);
+    const { signInUser, loading, setLoading, googleAuthentication } = useContext(AuthContext);
 
     const handleScrollup = () =>{
         window.scrollTo(0,0)
@@ -56,23 +56,24 @@ const SignIn = () => {
     // ******** google login ********
     // ******** google login ********
 
-    // const handleGoogleAuth = () =>{
-    //     setError(false);
-    //     googleAuthentication()
-    //     .then(result => {
-    //         setLoading(false);
-    //         const user = result.user;
-    //         toast.success('Successfully Logged in!',{
-    //             duration: 1000,
-    //             position: 'top-center',
-    //         });
-    //         setTimeout(()=>{
-    //             navigate('/');
-    //         },1000);
-    //         // console.log(user);
-    //     })
-    //     .catch(err => setError(true))
-    // }
+    const handleGoogleAuth = () =>{
+        setError(false);
+        googleAuthentication()
+        .then(result => {
+            setLoading(false);
+            const user = result.user;
+            toast.success('Successfully Logged in!',{
+                duration: 1000,
+                position: 'top-center',
+            });
+            setTimeout(()=>{
+                navigate('/');
+            },1000);
+            
+            window.scrollTo(0,0);
+        })
+        .catch(err => setError(true))
+    }
     
     return (
         <div className='h-screen w-full text-[var(--primaryFontColor)] flex items-center'>
@@ -113,10 +114,10 @@ const SignIn = () => {
                     
 
                     {/* google auth  */}
-                    {/* <div onClick={handleGoogleAuth} className='flex gap-3 items-center p-2 w-full justify-center border-[1.5px] border-purple-500 shadow-md hover:shadow-none duration-300 rounded-md cursor-pointer'>
-                        <img src="../../../public/google.png" className='w-[20px]' alt="google logo" />
+                    <div onClick={handleGoogleAuth} className='flex gap-3 items-center p-2 w-full justify-center border-[1.5px] border-purple-500 shadow-md hover:shadow-none duration-300 rounded-md cursor-pointer'>
+                        <img src="google.png" className='w-[20px]' alt="google logo" />
                         <h4 className='text-md font-medium'>Login With Google</h4>
-                    </div> */}
+                    </div>
                     <Link onClick={handleScrollup} to="/sign-up"><p className=' cursor-pointer underline'>Create new account?</p></Link>
                 </div>
             </section>

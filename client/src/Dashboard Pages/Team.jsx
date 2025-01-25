@@ -19,7 +19,7 @@ const Task = () => {
     const [writeText, setWriteText] = useState("");
     const {user} = useContext(AuthContext);
 
-    console.log("data email",searchFindUserEmail.length, writeText);
+    // console.log("data email",searchFindUserEmail.length, writeText);
     const handleOpenModal = () =>{
         setNewUserModal(true);
         setWriteText("");
@@ -32,13 +32,13 @@ const Task = () => {
         const filtered = teamData.filter((item) =>
             item.email.toLowerCase().includes(value)
           );
-        console.log(filtered);
+        // console.log(filtered);
         setSearchFindUserEmail(filtered);
 
     }
 
     const handleConfirmEmail = (id) =>{
-        console.log(id);
+        // console.log(id);
         axios.patch(`http://localhost:3000/api/user-data/${id}`,{
             adminEmail: user.email
         })
@@ -54,7 +54,7 @@ const Task = () => {
             setNewUserModal(false);
             setWriteText("");        
         })
-        .catch(err => console.log(err))
+        .catch(err => err)
     }
 
     const teamDataFetch = () =>{
@@ -65,7 +65,7 @@ const Task = () => {
             setLoading(false);
             // console.log("sd")
         })
-        .catch(err => console.log(err))
+        .catch(err => err)
     }
 
     useEffect(()=>{

@@ -47,7 +47,7 @@ const UpdateData = ({taskDetails, setModal}) => {
         })
         .catch(e => {
             toast.error('Something went wrong!');
-            console.log(e)
+            // console.log(e)
         })
         
         

@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 const CompletedTaskDetails = ({taskData, loading}) => {
     const completedTask = taskData.filter(task => task.stage === 'completed');
-    console.log(completedTask);
+    // console.log(completedTask);
 
     const ICONS = {
         high: <MdKeyboardDoubleArrowUp/>,

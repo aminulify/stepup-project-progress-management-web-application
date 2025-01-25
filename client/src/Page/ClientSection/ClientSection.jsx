@@ -1,12 +1,12 @@
 import './ClientSection.css';
-import img1 from '../../../public/clients/3.png';
-import img2 from '../../../public/clients/4.png';
-import img3 from '../../../public/clients/5.png';
-import img4 from '../../../public/clients/6.png';
-import img5 from '../../../public/clients/7.png';
-import img6 from '../../../public/clients/8.png';
-import img7 from '../../../public/clients/9.png';
-import img8 from '../../../public/clients/10.png';
+import img1 from '/clients/3.png';
+import img2 from '/clients/4.png';
+import img3 from '/clients/5.png';
+import img4 from '/clients/6.png';
+import img5 from '/clients/7.png';
+import img6 from '/clients/8.png';
+import img7 from '/clients/9.png';
+import img8 from '/clients/10.png';
 
 const ClientSection = () => {
     

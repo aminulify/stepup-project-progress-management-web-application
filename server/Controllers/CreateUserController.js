@@ -11,7 +11,7 @@ export const GetCreateUser = async(req,res) =>{
 
 export const PostCreateUser = async(req,res)=>{
     const {uId, adminEmail, email, isActive, password, positionTitle, userRole, username, imageURL} = req.body;
-    console.log(uId, adminEmail, email, isActive, password, positionTitle, userRole, username, imageURL);
+    // console.log(uId, adminEmail, email, isActive, password, positionTitle, userRole, username, imageURL);
     try{
         const users = new CreateUser({uId, adminEmail, email, isActive, password, positionTitle, userRole, username, imageURL: imageURL});
         await users.save();

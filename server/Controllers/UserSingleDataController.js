@@ -12,7 +12,7 @@ export const getSingleUserData = async(req,res) =>{
         res.status(200).json(user);
     }
     catch(err){
-        console.log("Error fetching user by id", err);
+        // console.log("Error fetching user by id", err);
         res.status(500).json({message: "Server Error", err});
     }
 }
@@ -20,7 +20,7 @@ export const getSingleUserData = async(req,res) =>{
 export const updateSingleUserData = async(req,res) =>{
     const userId = req.params.id;
     const { adminEmail } = req.body;
-    console.log(adminEmail);
+    // console.log(adminEmail);
 
     try{
         const updatedUser = await UserData.findByIdAndUpdate(

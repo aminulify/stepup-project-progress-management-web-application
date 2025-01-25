@@ -20,9 +20,9 @@ const SignUp = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     const onSubmit = data => {
-        console.log("userData",data)
+        // console.log("userData",data)
         setLoading(false);
-        console.log("title",data.roleTitle);
+        // console.log("title",data.roleTitle);
 
         const image = imgData.current.files[0];
 
@@ -81,7 +81,7 @@ const SignUp = () => {
                     })
                     .catch(err => {
                         setLoading(false);
-                        console.log(err);
+                        // console.log(err);
                     })
                     
                 })
@@ -94,7 +94,7 @@ const SignUp = () => {
                 duration: 3000,
                 position: 'top-center',
             });
-            console.log(e);
+            // console.log(e);
         })
         
     };
@@ -108,7 +108,7 @@ const SignUp = () => {
 
             // create user data in database 
             const userData = {uId: user.uid, username: user.displayName.toLowerCase().slice(0,6), email: user.email, password: "12345678", rolePosition: "Administrator", role: "Admin", adminEmail: user.email, isActive: "Active", imageURL: user.photoURL};
-            console.log(userData);
+            // console.log(userData);
 
             fetch('http://localhost:3000/api/user-data',{
                 method: 'POST',
@@ -123,7 +123,7 @@ const SignUp = () => {
                 // console.log(data);
                 // console.log("created done");
             })
-            .catch(e => console.log(e))
+            .catch(e => e)
 
             toast.success('Successfully Logged in!',{
                 duration: 1000,
@@ -227,7 +227,7 @@ const SignUp = () => {
 
                     {/* google auth  */}
                     <div onClick={handleGoogleAuth} className='flex gap-3 items-center p-2 w-full justify-center border-[1.5px] border-purple-500 shadow-md hover:shadow-none duration-300 rounded-md cursor-pointer'>
-                        <img src="../../../public/google.png" className='w-[20px]' alt="google logo" />
+                        <img src="google.png" className='w-[20px]' alt="google logo" />
                         <h4 className='text-md font-medium'>Sign Up With Google</h4>
                     </div>
                     <Link to="/login"><p className='pt-2 cursor-pointer underline'>Already have an account?</p></Link>

@@ -22,7 +22,7 @@ const Trash = () => {
             setTask(res.data);
             setLoading(false);
         })
-        .catch(e => console.log(e))
+        .catch(e => e)
     }
 
     useEffect(()=>{

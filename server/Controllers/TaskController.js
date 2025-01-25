@@ -32,7 +32,7 @@ export const GetEachTaskData = async(req,res) =>{
 
 export const UpdateTask = async(req,res) =>{
     const taskId = req.params.id;
-    console.log(taskId);
+    // console.log(taskId);
     const {title, adminEmail, startingDate, endingDate, taskPrioirty, notes, stage, teamMember, tags, description, subTasks} = req.body;
     
     try{
@@ -85,13 +85,13 @@ export const DeleteTaskData = async(req,res) =>{
 export const PostTaskData = async(req,res) =>{
     const {adminEmail, title, startingDate, endingDate, taskPrioirty, notes, stage, teamMember, tags, description, subTasks } = req.body;
     
-    console.log(adminEmail, title, startingDate, endingDate, taskPrioirty, notes, stage, teamMember, tags, description, subTasks);
+    // console.log(adminEmail, title, startingDate, endingDate, taskPrioirty, notes, stage, teamMember, tags, description, subTasks);
 
     try{
         const createTask = new Tasks({adminEmail, title, startingDate, endingDate, taskPrioirty, notes, stage, teamMember, tags, description, subTasks});
         await createTask.save();
 
-        console.log(createTask);
+        // console.log(createTask);
         res.status(200).json(createTask);
     }catch(err){
         res.status(500).json({message: "User not found", err:err.message}); 

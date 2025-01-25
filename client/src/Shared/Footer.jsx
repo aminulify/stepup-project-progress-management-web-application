@@ -12,7 +12,7 @@ const Footer = () => {
             <div className='w-full bg-[#f8f8fc] py-5 rounded-t-[100px]'>
             <div className='max-w-[1000px] lg:mx-auto md:mx-10 mx-5 text-[var(--primaryFontColor)] flex md:flex-row flex-col items-center md:justify-between gap-2'>
                 <Link to="/" className='flex gap-1 items-center cursor-pointer'>
-                    <img src="../../public/favicon.png" className='w-5' alt="Logo Icon" />
+                    <img src="favicon.png" className='w-5' alt="Logo Icon" />
                     <h3 className='font-semibold text-md'>The everything app for work.</h3>
                 </Link>
                 <div className='flex gap-3 text-sm'>

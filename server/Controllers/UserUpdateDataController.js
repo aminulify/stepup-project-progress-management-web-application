@@ -19,7 +19,7 @@ export const getUpdatedData = async(req,res) =>{
 
 export const updateUserData = async(req,res) =>{
     const userId = req.params.id;
-    console.log(userId);
+    // console.log(userId);
     const {username, role, rolePosition, isActive} = req.body;
     // console.log(username, role, rolePosition, isActive);
 

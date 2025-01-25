@@ -6,9 +6,9 @@ import { BiSolidQuoteAltLeft } from "react-icons/bi";
 const Reviews = () => {
     const [reviews, setReviews] = useState([]);
     useEffect(()=>{
-        axios.get('../../../public/reviews.json')
+        axios.get('reviews.json')
         .then(res => setReviews(res.data))
-        .catch(err => console.log(err))
+        .catch(err => err)
     },[])
     return (
         <div className='text-[var(--primaryFontColor)] bg-white'>

@@ -11,13 +11,14 @@ import DashboardResponsiveNav from '../Components/DashboardResponsiveNav';
 import useStore from './Zustand';
 import Loading from './Loading';
 import axios from 'axios';
+import logo from '/logo.png';
 
 const DashboardNavbar = () => {
     const {user, loading} = useContext(AuthContext);
     // console.log(user);
     const {showMenu} = useStore();
     const [findUser, setFindUser] = useState(null);
-    console.log(findUser);
+    // console.log(findUser);
     const location = useLocation();
     // console.log(location.pathname);
 
@@ -54,7 +55,7 @@ const DashboardNavbar = () => {
             <nav className='w-[220px] list-none flex flex-col items-center'>
                 <div className=''>
                     <aside className={`w-[180px] px-8 py-5 `}>
-                        <Link to="/"><img src="../../public/logo.png" alt="" /></Link>
+                        <Link to="/"><img src={logo} alt="" /></Link>
                     </aside>
                     <aside className='md:py-8 py-2 px-2 text-purple-700'>
                         <Link to="/user/dashboard"><li className={`py-1 my-1 rounded-sm hover:text-white hover:bg-purple-500 duration-300 cursor-pointer px-5 flex gap-1 items-center ${location.pathname == "/user/dashboard" && "bg-purple-500 text-white"} ${findUser !== 'Admin' && 'hidden'}`}><MdDashboard className="text-[20px] md:text-xl"/> <div className="">Dashboard</div></li></Link>

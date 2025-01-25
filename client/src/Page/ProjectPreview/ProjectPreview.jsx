@@ -107,7 +107,7 @@ const ProjectPreview = () => {
                         {
                             dashboard && (
                                 <div className='p-5 rounded-lg backdrop-blur-2xl border-[1.5px] border-purple-500 z-10'>
-                                    <img src="../../../public/project/1.jpg" className='rounded-md shadow-md' alt="Project Preview Image" />
+                                    <img src="project/1.jpg" className='rounded-md shadow-md' alt="Project Preview Image" />
                                 </div>
                             )
                         }
@@ -116,7 +116,7 @@ const ProjectPreview = () => {
                         {
                             task && (
                                 <div className='p-5 rounded-lg backdrop-blur-2xl border-[1.5px] border-purple-500 z-10'>
-                                    <img src="../../../public/project/2.jpg" className='rounded-md shadow-md' alt="Project Preview Image" />
+                                    <img src="project/2.jpg" className='rounded-md shadow-md' alt="Project Preview Image" />
                                 </div>
                             )
                         }
@@ -125,7 +125,7 @@ const ProjectPreview = () => {
                         {
                             progress && (
                                 <div className='p-5 rounded-lg backdrop-blur-2xl border-[1.5px] border-purple-500 z-10'>
-                                    <img src="../../../public/project/4.jpg" className='rounded-md shadow-md' alt="Project Preview Image" />
+                                    <img src="project/4.jpg" className='rounded-md shadow-md' alt="Project Preview Image" />
                                 </div>
                             )
                         }
@@ -134,7 +134,7 @@ const ProjectPreview = () => {
                         {
                             todo && (
                                 <div className='p-5 rounded-lg backdrop-blur-2xl border-[1.5px] border-purple-500 z-10'>
-                                    <img src="../../../public/project/5.jpg" className='rounded-md shadow-md' alt="Project Preview Image" />
+                                    <img src="project/5.jpg" className='rounded-md shadow-md' alt="Project Preview Image" />
                                 </div>
                             )
                         }
@@ -143,7 +143,7 @@ const ProjectPreview = () => {
                         {
                             team && (
                                 <div className='p-5 rounded-lg backdrop-blur-2xl border-[1.5px] border-purple-500 z-10'>
-                                    <img src="../../../public/project/6.jpg" className='rounded-md shadow-md' alt="Project Preview Image" />
+                                    <img src="project/6.jpg" className='rounded-md shadow-md' alt="Project Preview Image" />
                                 </div>
                             )
                         }

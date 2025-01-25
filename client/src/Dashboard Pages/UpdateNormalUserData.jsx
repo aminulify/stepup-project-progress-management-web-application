@@ -7,7 +7,7 @@ const UpdateNormalUserData = ({taskDetails, setUserModal}) => {
     const id = useParams();
     const navigate = useNavigate();
     const [taskStage, setTaskStage] = useState(taskDetails.stage);
-    console.log(taskStage);
+    // console.log(taskStage);
 
     const handleUpdateStageData = async(e) =>{
         e.preventDefault();
@@ -23,7 +23,7 @@ const UpdateNormalUserData = ({taskDetails, setUserModal}) => {
 
         })
         .catch(err => {
-            console.log(err);
+            // console.log(err);
             toast.error('Something went wrong!')
         });
     }

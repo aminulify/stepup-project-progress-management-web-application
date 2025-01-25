@@ -8,7 +8,7 @@ const CreateTask = ({setModal}) => {
     const [selectEmail, setSelectEmail] = useState([]);
     const [taskPrioirty, setTaskPrioirty] = useState('high');
     const [taskStage, setTaskStage] = useState('todo');
-    console.log(selectEmail);
+    // console.log(selectEmail);
     const [filteredTeamMemberEmail, setFilteredTeamMemberEmail] = useState([]);
     // console.log(filteredTeamMemberEmail);
 
@@ -60,8 +60,8 @@ const CreateTask = ({setModal}) => {
             body: JSON.stringify(value)
         })
         .then(res => res.json())
-        .then(data => console.log("here come",data))
-        .catch(e => console.log(e))
+        .then(data => data)
+        .catch(e => e)
     }
 
 
@@ -74,7 +74,7 @@ const CreateTask = ({setModal}) => {
                 setTeamMember(teamFilter);
             }
         })
-        .catch(e => console.log(e))
+        .catch(e => e)
     },[])
     return (
         <section className='top-10 w-screen h-screen z-[40] fixed left-0 drop-shadow-xl shadow-purple-500'>

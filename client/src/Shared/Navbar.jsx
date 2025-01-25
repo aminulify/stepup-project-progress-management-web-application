@@ -78,7 +78,7 @@ const Navbar = () => {
                 <nav className='max-w-[1000px] lg:mx-auto md:mx-10 mx-5 py-5 flex justify-between items-center'>
                     <Link to='/'>
                     <div className='w-[150px]'>
-                        <img src="../../public/logo.png" alt="Logo Design" />
+                        <img src="logo.png" alt="Logo Design" />
                     </div>
                     </Link>
 

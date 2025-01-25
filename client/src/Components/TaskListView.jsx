@@ -52,7 +52,7 @@ const TaskListView = ({taskData, handleTask}) => {
             toast.success('Delete Successfully!');
             handleTask();
         })
-        .catch(e => console.log(e))
+        .catch(e => e)
     }
 
     return (

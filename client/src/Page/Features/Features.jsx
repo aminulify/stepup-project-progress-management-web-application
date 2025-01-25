@@ -38,7 +38,7 @@ const Features = () => {
                                 <p className='md:text-lg text-md font-medium'>Manage complex projects at scale</p>
                             </div>
                             <div className='flex gap-2 items-center mt-4'>
-                                <img src="../../../public/developer-img.png" className='w-[100px]' alt="developer image" />
+                                <img src="developer-img.png" className='w-[100px]' alt="developer image" />
                                 <div>
                                     <p className='md:text-md text-sm'><span className='font-semibold'>“StepUp brings all of our teams together into one place</span> so that they can stay on track, collaborate and communicate.”</p>
                                     <p className='text-sm font-semibold text-purple-500'>Developer: “ Aminul Islam ”</p>

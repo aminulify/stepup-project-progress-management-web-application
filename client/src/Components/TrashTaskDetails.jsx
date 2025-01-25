@@ -44,13 +44,13 @@ const TrashTaskDetails = ({taskData, loading, handleTasks}) => {
         axios.patch(`http://localhost:3000/api/tasks/${id}`, {stage: 'todo'})
         .then(res => {
             if(res.data.message){
-                console.log(res.data.message)
+                // console.log(res.data.message)
                 handleTasks();
                 toast.success('Successfully Restored');
             }
         })
         .catch(err => {
-            console.log(err)
+            // console.log(err)
             toast.error('Something went wrong!')
         })
 
@@ -62,13 +62,13 @@ const TrashTaskDetails = ({taskData, loading, handleTasks}) => {
         axios.delete(`http://localhost:3000/api/tasks/${id}`)
         .then(res => {
             if(res.data.message){
-                console.log(res.data.message);
+                // console.log(res.data.message);
                 handleTasks();
                 toast.success('Successfully Deleted');
             }
         })
         .catch(err => {
-            console.log(err);
+            // console.log(err);
             toast.error('Something went wrong!')
         })
     }

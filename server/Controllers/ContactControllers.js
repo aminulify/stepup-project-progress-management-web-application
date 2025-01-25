@@ -11,7 +11,7 @@ export const getContact = async(req,res) =>{
 
 export const createContact = async(req, res) => {
     const { name, email, phone, companyName, description, numberOfEmployee } = req.body;
-    console.log(name, email, phone, companyName, description, numberOfEmployee);
+    // console.log(name, email, phone, companyName, description, numberOfEmployee);
     try {
         const supports = new Contact({ name, email, phone, companyName, description, numberOfEmployee });
         await supports.save();  // Corrected this line to save the correct variable
