@@ -50,11 +50,11 @@ const router = createBrowserRouter([
       },
       {
         path: "tasks",
-        element: <Task/>
+        element: <PrivateRoutes><Task/></PrivateRoutes>
       },
       {
         path: "tasks/:id",
-        element: <TaskRouteDetails></TaskRouteDetails>
+        element: <PrivateRoutes><TaskRouteDetails></TaskRouteDetails></PrivateRoutes>
       },
       {
         path: "completed",
@@ -62,7 +62,7 @@ const router = createBrowserRouter([
       },
       {
         path: "completed/:id",
-        element: <TaskRouteDetails></TaskRouteDetails>
+        element: <PrivateRoutes><TaskRouteDetails></TaskRouteDetails></PrivateRoutes>
       },
       {
         path: "in-progress",
@@ -70,11 +70,11 @@ const router = createBrowserRouter([
       },
       {
         path: "in-progress/:id",
-        element: <TaskRouteDetails></TaskRouteDetails>
+        element: <PrivateRoutes><TaskRouteDetails></TaskRouteDetails></PrivateRoutes>
       },
       {
         path: "completed/:id",
-        element: <TaskRouteDetails></TaskRouteDetails>
+        element: <PrivateRoutes><TaskRouteDetails></TaskRouteDetails></PrivateRoutes>
       },
       {
         path: "todo",
@@ -82,7 +82,7 @@ const router = createBrowserRouter([
       },
       {
         path: "todo/:id",
-        element: <TaskRouteDetails></TaskRouteDetails>
+        element: <PrivateRoutes><TaskRouteDetails></TaskRouteDetails></PrivateRoutes>
       },
       {
         path: "team",
@@ -90,7 +90,7 @@ const router = createBrowserRouter([
       },
       {
         path: "team-chat",
-        element: <Chat/>
+        element: <PrivateRoutes><Chat/></PrivateRoutes>
       },
       {
         path: "trash",

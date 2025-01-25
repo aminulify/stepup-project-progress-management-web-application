@@ -14,23 +14,20 @@ const Navbar = () => {
     const [findUser, setFindUser] = useState(null);
         // console.log(findUser);
     const userRole = findUser;
+    // console.log(userRole);
     
     
-    const findUserRole = async () => {
-        try {
+    const findUserRole = () => {
+      
             // Fetch user data
-            const userRes = await axios.get('http://localhost:3000/api/user-data');
-            const userData = userRes.data;
-    
-            // Find user by email
-            const matchUser = userData.filter(data => data.email === user.email);
-    
-            // Safely set the role if a match is found
-            setFindUser(matchUser[0]?.role); 
-        } 
-        catch (err) {
-            console.error(err);
-        }
+            fetch('http://localhost:3000/api/user-data')
+            .then(res => res.json())
+            .then(data => {
+                const matchData = data.filter(dataMatch => dataMatch.email === user?.email);
+                setFindUser(matchData[0]?.role); 
+            })
+            .catch(err => err)
+
     };
     
     useEffect(() => {
@@ -91,7 +88,7 @@ const Navbar = () => {
 
                             <div className='flex bg-white gap-2 px-2 py-2 border-[1.4px] border-blue-700 rounded-lg duration-300'>
                             <Link to={`${userRole === 'Admin' ? '/user/dashboard' : '/user/tasks'}`}>
-                            <button className={`px-2 py-1 shadow-md hover:shadow-none  bg-slate-100 hover:bg-slate-200 duration-300 rounded-md text-[var(--primaryFontColor)]`}>Dashboard</button></Link>
+                            <button onClick={findUserRole()} className={`px-2 py-1 shadow-md hover:shadow-none  bg-slate-100 hover:bg-slate-200 duration-300 rounded-md text-[var(--primaryFontColor)]`}>Dashboard</button></Link>
                             <Link><button onClick={handleLogout} className=' shadow-md hover:shadow-none px-2 py-1 rounded-md bg-gradient-to-tr from-[var(--gradientFirstColor)] via-[var(--gradientSecondColor)] to-[var(--gradientThirdColor)] text-white hover:bg-gradient-to-tl'>Logout</button></Link>
                         </div>
                             </div>
