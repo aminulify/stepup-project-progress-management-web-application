@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 import axios from 'axios';
+import toast, { Toaster } from 'react-hot-toast';
 
 const CreateTask = ({setModal}) => {
     const {user} = useContext(AuthContext);
@@ -60,7 +61,10 @@ const CreateTask = ({setModal}) => {
             body: JSON.stringify(value)
         })
         .then(res => res.json())
-        .then(data => data)
+        .then(data => {
+            setModal(false);
+            toast.success('Task Created Successfully!')
+        })
         .catch(e => e)
     }
 
@@ -78,7 +82,8 @@ const CreateTask = ({setModal}) => {
     },[])
     return (
         <section className='top-10 w-screen h-screen z-[40] fixed left-0 drop-shadow-xl shadow-purple-500'>
-            
+
+                <Toaster/>
                 <div className='md:w-[500px] w-[90%] md:h-[500px] h-[650px] absolute left-[50%] translate-x-[-50%] text-[var(--primaryFontColor)] p-10 rounded-lg mt-5] bg-white overflow-y-auto mt-10'>
                     <h2 className='text-center font-bold text-2xl'>Create New Task</h2>
                     <form onSubmit={handleCreateTask} className='flex flex-col gap-3 mt-2'>

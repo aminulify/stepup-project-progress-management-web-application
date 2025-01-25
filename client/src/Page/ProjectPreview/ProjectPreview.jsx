@@ -8,12 +8,19 @@ import { FiTrash2 } from "react-icons/fi";
 import { BiSolidDashboard } from "react-icons/bi";
 import { MdAddTask } from "react-icons/md";
 
+import img1 from "/project/1.jpg";
+import img2 from "/project/2.jpg";
+import img4 from "/project/4.jpg";
+import img5 from "/project/5.jpg";
+import img6 from "/project/6.jpg";
+
 const ProjectPreview = () => {
     const [dashboard, setDashboard] = useState(true);
     const [task, setTask] = useState(false);
     const [progress, setProgress] = useState(false);
     const [todo, setTodo] = useState(false);
     const [team, setTeam] = useState(false);
+
 
     const handleDashboard = () =>{
         setDashboard(true);
@@ -107,7 +114,7 @@ const ProjectPreview = () => {
                         {
                             dashboard && (
                                 <div className='p-5 rounded-lg backdrop-blur-2xl border-[1.5px] border-purple-500 z-10'>
-                                    <img src="project/1.jpg" className='rounded-md shadow-md' alt="Project Preview Image" />
+                                    <img src={img1} className='rounded-md shadow-md' alt="Project Preview Image" />
                                 </div>
                             )
                         }
@@ -116,7 +123,7 @@ const ProjectPreview = () => {
                         {
                             task && (
                                 <div className='p-5 rounded-lg backdrop-blur-2xl border-[1.5px] border-purple-500 z-10'>
-                                    <img src="project/2.jpg" className='rounded-md shadow-md' alt="Project Preview Image" />
+                                    <img src={img2} className='rounded-md shadow-md' alt="Project Preview Image" />
                                 </div>
                             )
                         }
@@ -125,7 +132,7 @@ const ProjectPreview = () => {
                         {
                             progress && (
                                 <div className='p-5 rounded-lg backdrop-blur-2xl border-[1.5px] border-purple-500 z-10'>
-                                    <img src="project/4.jpg" className='rounded-md shadow-md' alt="Project Preview Image" />
+                                    <img src={img4} className='rounded-md shadow-md' alt="Project Preview Image" />
                                 </div>
                             )
                         }
@@ -134,7 +141,7 @@ const ProjectPreview = () => {
                         {
                             todo && (
                                 <div className='p-5 rounded-lg backdrop-blur-2xl border-[1.5px] border-purple-500 z-10'>
-                                    <img src="project/5.jpg" className='rounded-md shadow-md' alt="Project Preview Image" />
+                                    <img src={img5} className='rounded-md shadow-md' alt="Project Preview Image" />
                                 </div>
                             )
                         }
@@ -143,7 +150,7 @@ const ProjectPreview = () => {
                         {
                             team && (
                                 <div className='p-5 rounded-lg backdrop-blur-2xl border-[1.5px] border-purple-500 z-10'>
-                                    <img src="project/6.jpg" className='rounded-md shadow-md' alt="Project Preview Image" />
+                                    <img src={img6} className='rounded-md shadow-md' alt="Project Preview Image" />
                                 </div>
                             )
                         }

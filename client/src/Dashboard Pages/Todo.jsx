@@ -88,7 +88,7 @@ const Task = () => {
 
             {
                 listView ? <section className='-z-10'>
-                <TaskListView taskData={todoDataOnly}/>
+                <TaskListView taskData={todoDataOnly} handleTask={handleTask}/>
              </section> : <section>
                 <TodoTaskDetails taskData={task} loading = {loading}/>
              </section>

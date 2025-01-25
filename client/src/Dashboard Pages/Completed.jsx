@@ -88,7 +88,7 @@ const Task = () => {
 
             {
                 listView ? <section>
-                <TaskListView taskData={completedDataOnly}/>
+                <TaskListView taskData={completedDataOnly} handleTask={handleTask}/>
              </section> : <section>
                 <CompletedTaskDetails taskData={completedDataOnly} loading={loading} />
              </section>

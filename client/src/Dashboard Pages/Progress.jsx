@@ -87,7 +87,7 @@ const Task = () => {
 
             {
                 listView ? <section>
-                <TaskListView taskData={progressDataOnly}/>
+                <TaskListView taskData={progressDataOnly} handleTask={handleTask}/>
              </section> : <section>
                 <ProgressTaskDetails taskData={task} loading={loading} />
              </section>
