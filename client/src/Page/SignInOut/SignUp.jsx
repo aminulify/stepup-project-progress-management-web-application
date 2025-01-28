@@ -58,7 +58,7 @@ const SignUp = () => {
                     const userData = {uId, email, imageURL, username, password, rolePosition, role};
                     // console.log("according", userData);
 
-                    fetch('http://localhost:3000/api/user-data',{
+                    fetch('https://stepup-api.sarkbd.com/api/user-data',{
                         method: "POST",
                         headers: {
                             'Content-Type': 'application/json'
@@ -110,7 +110,7 @@ const SignUp = () => {
             const userData = {uId: user.uid, username: user.displayName.toLowerCase().slice(0,6), email: user.email, password: "12345678", rolePosition: "Administrator", role: "Admin", adminEmail: user.email, isActive: "Active", imageURL: user.photoURL};
             // console.log(userData);
 
-            fetch('http://localhost:3000/api/user-data',{
+            fetch('https://stepup-api.sarkbd.com/api/user-data',{
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

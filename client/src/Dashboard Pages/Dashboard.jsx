@@ -28,7 +28,7 @@ const Dashboard = () => {
     // console.log(mediumPriority.length);
 
     useEffect(()=>{
-      axios.get('http://localhost:3000/api/tasks')
+      axios.get('https://stepup-api.sarkbd.com/api/tasks')
       .then(res => {
         const getData = res.data;
         // console.log(getData);
@@ -127,7 +127,7 @@ const Dashboard = () => {
       },[])
 
       useEffect(()=>{
-        fetch('http://localhost:3000/api/user-data')
+        fetch('https://stepup-api.sarkbd.com/api/user-data')
         .then(res => res.json())
         .then(data => {
           const availableTeamMember = data.filter(member => member.adminEmail === user.email);

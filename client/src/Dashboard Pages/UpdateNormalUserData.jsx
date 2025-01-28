@@ -13,7 +13,7 @@ const UpdateNormalUserData = ({taskDetails, setUserModal}) => {
         e.preventDefault();
         const stage = taskStage;
 
-        axios.patch(`http://localhost:3000/api/tasks/${id.id}`, {stage: stage})
+        axios.patch(`https://stepup-api.sarkbd.com/api/tasks/${id.id}`, {stage: stage})
         .then(res => {
             const data = res.data;
             // console.log(data);

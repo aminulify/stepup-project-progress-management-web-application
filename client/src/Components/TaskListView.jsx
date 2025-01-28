@@ -47,7 +47,7 @@ const TaskListView = ({taskData, handleTask}) => {
     // update Patch stage 
     const handleDetailsTaskDelete = (id) =>{
         // console.log(id)
-        axios.patch(`http://localhost:3000/api/tasks/${id}`, {stage: 'delete'})
+        axios.patch(`https://stepup-api.sarkbd.com/api/tasks/${id}`, {stage: 'delete'})
         .then(res => {
             toast.success('Delete Successfully!');
             handleTask();

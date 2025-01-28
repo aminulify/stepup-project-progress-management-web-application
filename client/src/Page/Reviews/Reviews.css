@@ -9,7 +9,7 @@
 }
 
 .img-slide:hover .img-slide-rolling{
-    animation-play-state: paused;
+    /* animation-play-state: paused; */
     cursor: grab;
 }
 

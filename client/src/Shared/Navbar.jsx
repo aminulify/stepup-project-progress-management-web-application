@@ -20,7 +20,7 @@ const Navbar = () => {
     const findUserRole = () => {
       
             // Fetch user data
-            fetch('http://localhost:3000/api/user-data')
+            fetch('https://stepup-api.sarkbd.com/api/user-data')
             .then(res => res.json())
             .then(data => {
                 const matchData = data.filter(dataMatch => dataMatch.email === user?.email);

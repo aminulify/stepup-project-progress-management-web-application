@@ -17,7 +17,7 @@ const Trash = () => {
     const taskDataOnly = task.filter(data => data.stage === "delete");
 
     const handleTasks = () =>{
-        axios.get('http://localhost:3000/api/tasks')
+        axios.get('https://stepup-api.sarkbd.com/api/tasks')
         .then(res => {
             setTask(res.data);
             setLoading(false);

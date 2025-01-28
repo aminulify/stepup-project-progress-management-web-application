@@ -14,7 +14,7 @@ const UpdateData = ({taskDetails, setModal}) => {
     const [taskPrioirty, setTaskPrioirty] = useState(taskDetails.taskPrioirty);
     
     const handleMemberEmail = () =>{
-        axios.get(`http://localhost:3000/api/tasks/${id.id}`)
+        axios.get(`https://stepup-api.sarkbd.com/api/tasks/${id.id}`)
         .then(res => {
             setMemberFromTask(res.data.teamMember);
         })
@@ -38,7 +38,7 @@ const UpdateData = ({taskDetails, setModal}) => {
         const teamMember = memberFromTask;
 
 
-        axios.put(`http://localhost:3000/api/tasks/${id.id}`, {title, adminEmail: taskDetails.adminEmail, startingDate, endingDate, taskPrioirty: prioirty, notes: [notes], stage, teamMember, tags, description, subTasks: subTask})
+        axios.put(`https://stepup-api.sarkbd.com/api/tasks/${id.id}`, {title, adminEmail: taskDetails.adminEmail, startingDate, endingDate, taskPrioirty: prioirty, notes: [notes], stage, teamMember, tags, description, subTasks: subTask})
         .then(res => {
             const data = res.data;
             toast.success('Successfully Updated');

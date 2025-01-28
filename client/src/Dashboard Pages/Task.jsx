@@ -25,7 +25,7 @@ const Task = () => {
             setLoading(true);
     
             // Fetch user data
-            const userRes = await axios.get('http://localhost:3000/api/user-data');
+            const userRes = await axios.get('https://stepup-api.sarkbd.com/api/user-data');
             const userData = userRes.data;
             const findUser = userData.filter(data => data.email === user.email);
     
@@ -33,7 +33,7 @@ const Task = () => {
                 setUserRole(findUser[0].role);
     
                 // Fetch tasks after getting user data
-                const taskRes = await axios.get('http://localhost:3000/api/tasks');
+                const taskRes = await axios.get('https://stepup-api.sarkbd.com/api/tasks');
                 const taskData = taskRes.data;
                 const taskMatchWithAdmin = taskData.filter(data => data.adminEmail === findUser[0].adminEmail);
                 

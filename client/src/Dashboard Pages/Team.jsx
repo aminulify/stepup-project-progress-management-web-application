@@ -39,7 +39,7 @@ const Task = () => {
 
     const handleConfirmEmail = (id) =>{
         // console.log(id);
-        axios.patch(`http://localhost:3000/api/user-data/${id}`,{
+        axios.patch(`https://stepup-api.sarkbd.com/api/user-data/${id}`,{
             adminEmail: user.email
         })
         .then(res => {
@@ -58,7 +58,7 @@ const Task = () => {
     }
 
     const teamDataFetch = () =>{
-        fetch('http://localhost:3000/api/user-data')
+        fetch('https://stepup-api.sarkbd.com/api/user-data')
         .then(res => res.json())
         .then(data => {
             setTeamData(data);

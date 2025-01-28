@@ -19,7 +19,7 @@ const ContactSupport = ({setContact, contact}) => {
         const supportData = {name, email, phone, companyName, description, numberOfEmployee};
 
      
-        fetch('http://localhost:3000/api/contact',{
+        fetch('https://stepup-api.sarkbd.com/api/contact',{
             method: "POST",
             headers: {
                 'Content-Type': "application/json"
