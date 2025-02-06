@@ -11,6 +11,7 @@ import DashboardTaskTable from '../Components/DashboardTaskTable';
 import CountUp from 'react-countup';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 import axios from 'axios';
+import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, BarChart, Bar, Legend } from 'recharts';
 
 const Dashboard = () => {
     const {user} = useContext(AuthContext);
@@ -19,10 +20,10 @@ const Dashboard = () => {
     const [withoutDeleteTask, setWithoutDeleteTask] = useState([]);
     // console.log(task);
     const [completedTask, setCompletedTask] = useState([]);
-    const [highPriority, setHighPriority] = useState([]);
-    const [mediumPriority, setMediumPriority] = useState([]);
-    const [normalPriority, setNormalPriority] = useState([]);
-    const [lowPriority, setLowPriority] = useState([]);
+    const [highPriority, setHighPriority] = useState(0);
+    const [mediumPriority, setMediumPriority] = useState(0);
+    const [normalPriority, setNormalPriority] = useState(0);
+    const [lowPriority, setLowPriority] = useState(0);
 
     // console.log(highPriority.length);
     // console.log(mediumPriority.length);
@@ -37,94 +38,20 @@ const Dashboard = () => {
         setWithoutDeleteTask(withoutDelete);
         setTask(matchAdminEmail);
 
-        setCompletedTask(res.data.filter(item => item.stage === 'completed'));
-        setHighPriority((res.data.filter(item => item.taskPrioirty === 'high')));
-        setMediumPriority(res.data.filter(item => item.taskPrioirty === 'medium'));
-        setNormalPriority(res.data.filter(item => item.taskPrioirty === 'normal'));
-        setLowPriority(res.data.filter(item => item.taskPrioirty === 'low'));
+        setCompletedTask(matchAdminEmail.filter(item => item.stage === 'completed'));
+        setHighPriority((matchAdminEmail.filter(item => item.taskPrioirty === 'high' && item.stage !== 'delete')));
+        setMediumPriority(matchAdminEmail.filter(item => item.taskPrioirty === 'medium' && item.stage !== 'delete'));
+        setNormalPriority(matchAdminEmail.filter(item => item.taskPrioirty === 'normal' && item.stage !== 'delete'));
+        setLowPriority(matchAdminEmail.filter(item => item.taskPrioirty === 'low' && item.stage !== 'delete'));
       })
       .catch(e => e)
     },[])
 
     const [teamMember, setTeamMember] = useState(0);
+
+    // TODO 
+    const data = [{name: "High", dataLength: highPriority.length}, {name: "Medium", dataLength: mediumPriority.length},{name: "Normal", dataLength: normalPriority.length}, {name: "Low", dataLength: lowPriority.length}]
     
-    const chartData = useMemo(() => [
-      {
-        name: "High",
-        Task_Priority: highPriority.length,
-      },
-      {
-        name: "Medium",
-        Task_Priority: 2,
-      },
-      {
-        name: "Normal",
-        Task_Priority: 3,
-      },
-      {
-        name: "Low",
-        Task_Priority: 4,
-      },
-    ], [highPriority, mediumPriority, normalPriority, lowPriority]);
-
-
-      const labels = chartData.map((item) => item.name);
-      const data = chartData.map((item) => item.Task_Priority);
-
-      // bar chart 
-      // bar chart 
-      useEffect(()=>{
-        const ctx = document.getElementById('myChart');
-
-          new Chart(ctx, {
-            type: 'bar',
-            data: {
-              labels: labels,
-              datasets: [{
-                label: 'Available Task',
-                data: data,
-                // borderWidth: 1,
-                backgroundColor: [
-                  'rgb(168, 85, 247)',
-                  'rgb(168, 85, 247, 0.7)',
-                  'rgb(168, 85, 247, 0.6)',
-                  'rgb(168, 85, 247, 0.4)',
-                ],
-              }]
-            },
-            options: {
-              scales: {
-                y: {
-                  beginAtZero: true
-                }
-              }
-            }
-  });
-      },[])
-
-
-      const lineChartData = {
-        labels: labels,
-        datasets: [{
-          label: 'Available Task',
-          data: data,
-          fill: true,
-          borderColor: 'rgb(168, 85, 247)',
-          backgroundColor: 'rgb(168, 85, 247, 0.2)',
-          tension: 0.1
-        }]
-      };
-      // line chart 
-      // line chart 
-      useEffect(()=>{
-        const ctx = document.getElementById('myChart-right'); 
-        
-        new Chart(ctx, {
-          type: 'line',
-          data: lineChartData,
-        })
-
-      },[])
 
       useEffect(()=>{
         fetch('https://stepup-api.sarkbd.com/api/user-data')
@@ -188,10 +115,24 @@ const Dashboard = () => {
 
                 <div className='md:w-[90%] w-[100%] mx-auto flex flex-col md:flex-row gap-8'>
                   <div className='md:w-[90%] w-[90%] bg-purple-50 md:px-10 px-5 md:py-5 py-3 rounded-lg border-[1.4px] border-purple-500 mx-auto mt-8'>
-                    <canvas id='myChart-right'></canvas>
+                  <LineChart width={400} height={200} data={data}>
+                  <Line type="monotone" dataKey="dataLength" stroke="#a855f7" />
+                  <CartesianGrid stroke="#a855f7" strokeDasharray="5 5" />
+                  <XAxis dataKey="name" />
+                  
+                  <YAxis />
+                  <Tooltip />
+                </LineChart>
+                    
                   </div>
                   <div className='md:w-[90%] w-[90%] bg-purple-50 md:px-10 px-5 md:py-5 py-3 rounded-lg border-[1.4px] border-purple-500 mx-auto md:mt-8'>
-                    <canvas id='myChart'></canvas>
+                  <BarChart width={330} height={200} data={data}>
+                    <XAxis dataKey="name"  />
+                    <YAxis />
+                    <Tooltip />
+                    <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+                    <Bar dataKey="dataLength" fill="#a855f7" barSize={40} />
+                  </BarChart>
                   </div>
                 </div>
 
