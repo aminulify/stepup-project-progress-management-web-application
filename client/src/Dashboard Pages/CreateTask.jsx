@@ -18,7 +18,7 @@ const CreateTask = ({setModal}) => {
 
         // console.log(value, checked);
 
-        axios.get('https://stepup-api.sarkbd.com/api/user-data')
+        axios.get('https://stepup-task-manager.aminulify.com/api/user-data')
         .then(res => {
             const data = res.data;
             // console.log(data);
@@ -53,7 +53,7 @@ const CreateTask = ({setModal}) => {
 
         const value = {adminEmail, title, startingDate, endingDate, taskPrioirty: prioirty, notes: noteText, stage, teamMember, tags, description, subTasks: subTask};
 
-        fetch('https://stepup-api.sarkbd.com/api/tasks', {
+        fetch('https://stepup-task-manager.aminulify.com/api/tasks', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -70,7 +70,7 @@ const CreateTask = ({setModal}) => {
 
 
     useEffect(()=>{
-        axios.get('https://stepup-api.sarkbd.com/api/user-data')
+        axios.get('https://stepup-task-manager.aminulify.com/api/user-data')
         .then(res => {
             const data = res.data;
             const teamFilter = data.filter(member => member.adminEmail === user.email);

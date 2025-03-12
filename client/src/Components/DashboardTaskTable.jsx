@@ -12,7 +12,7 @@ const DashboardTaskTable = () => {
 
     useEffect(()=>{
         setLoading(true);
-        axios.get('https://stepup-api.sarkbd.com/api/tasks')
+        axios.get('https://stepup-task-manager.aminulify.com/api/tasks')
         .then(res => {
             setLoading(false);
             setTasks(res.data);

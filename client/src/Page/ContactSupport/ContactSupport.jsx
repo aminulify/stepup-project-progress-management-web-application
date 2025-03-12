@@ -19,7 +19,7 @@ const ContactSupport = ({setContact, contact}) => {
         const supportData = {name, email, phone, companyName, description, numberOfEmployee};
 
      
-        fetch('https://stepup-api.sarkbd.com/api/contact',{
+        fetch('https://stepup-task-manager.aminulify.com/api/contact',{
             method: "POST",
             headers: {
                 'Content-Type': "application/json"

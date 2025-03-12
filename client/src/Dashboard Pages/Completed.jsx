@@ -23,14 +23,14 @@ const Task = () => {
                 setLoading(true);
         
                 // Fetch user data
-                const userRes = await axios.get('https://stepup-api.sarkbd.com/api/user-data');
+                const userRes = await axios.get('https://stepup-task-manager.aminulify.com/api/user-data');
                 const userData = userRes.data;
                 const findUser = userData.filter(data => data.email === user.email);
         
                 if (findUser.length > 0) {
         
                     // Fetch tasks after getting user data
-                    const taskRes = await axios.get('https://stepup-api.sarkbd.com/api/tasks');
+                    const taskRes = await axios.get('https://stepup-task-manager.aminulify.com/api/tasks');
                     const taskData = taskRes.data;
                     const taskMatchWithAdmin = taskData.filter(data => data.adminEmail === findUser[0].adminEmail);
                     setTask(taskMatchWithAdmin);

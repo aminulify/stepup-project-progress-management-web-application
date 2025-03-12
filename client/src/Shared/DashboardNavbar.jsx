@@ -25,7 +25,7 @@ const DashboardNavbar = () => {
     const findUserRole = async () => {
         try {
             // Fetch user data
-            const userRes = await axios.get('https://stepup-api.sarkbd.com/api/user-data');
+            const userRes = await axios.get('https://stepup-task-manager.aminulify.com/api/user-data');
             const userData = userRes.data;
     
             // Find user by email

@@ -38,7 +38,7 @@ const TrashListView = ({taskData}) => {
     const handleRestore = (id) =>{
         // console.log(id);
 
-        axios.patch(`https://stepup-api.sarkbd.com/api/tasks/${id}`, {stage: 'todo'})
+        axios.patch(`https://stepup-task-manager.aminulify.com/api/tasks/${id}`, {stage: 'todo'})
         .then(res => {
             if(res.data.message){
                 // console.log(res.data.message)
@@ -56,7 +56,7 @@ const TrashListView = ({taskData}) => {
     const handleTaskDelete = (id) =>{
         // console.log(id);
 
-        axios.delete(`https://stepup-api.sarkbd.com/api/tasks/${id}`)
+        axios.delete(`https://stepup-task-manager.aminulify.com/api/tasks/${id}`)
         .then(res => {
             if(res.data.message){
                 // console.log(res.data.message);

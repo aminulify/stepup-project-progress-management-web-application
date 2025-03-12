@@ -21,7 +21,7 @@ const TeamTable = ({teamData, teamDataFetch, setLoading}) => {
     const handleDeleteUser = (id) =>{
         setLoading(true);
         // console.log(id);
-        axios.patch(`https://stepup-api.sarkbd.com/api/user-data/${id}`,
+        axios.patch(`https://stepup-task-manager.aminulify.com/api/user-data/${id}`,
             {adminEmail: 'N/A'}
         )
         .then(res => {
@@ -41,7 +41,7 @@ const TeamTable = ({teamData, teamDataFetch, setLoading}) => {
     const handleUpdateUser = (id) =>{
         setLoading(true);
 
-        axios.get(`https://stepup-api.sarkbd.com/api/user-data/${id}`)
+        axios.get(`https://stepup-task-manager.aminulify.com/api/user-data/${id}`)
         .then(res => {
             setUpdateSelectedUser(res.data);
             setLoading(false);
@@ -68,8 +68,8 @@ const TeamTable = ({teamData, teamDataFetch, setLoading}) => {
         const updateData = {username, rolePosition, role, isActive};
         // console.log(updateData);
 
-        // console.log(`https://stepup-api.sarkbd.com/api/user-updated-data/${modalId}`);
-        axios.patch(`https://stepup-api.sarkbd.com/api/user-update-data/${modalId}`, {username, rolePosition, role, isActive})
+        // console.log(`https://stepup-task-manager.aminulify.com/api/user-updated-data/${modalId}`);
+        axios.patch(`https://stepup-task-manager.aminulify.com/api/user-update-data/${modalId}`, {username, rolePosition, role, isActive})
         .then(res => {
             setLoading(true);
             // console.log("modal data",res);
