@@ -13,7 +13,7 @@ const UpdateNormalUserData = ({taskDetails, setUserModal}) => {
         e.preventDefault();
         const stage = taskStage;
 
-        axios.patch(`https://stepup-task-manager.aminulify.com/api/tasks/${id.id}`, {stage: stage})
+        axios.patch(`https://stepup-task-manager-api.aminulify.com/api/tasks/${id.id}`, {stage: stage})
         .then(res => {
             const data = res.data;
             // console.log(data);

@@ -47,7 +47,7 @@ const TaskListView = ({taskData, handleTask}) => {
     // update Patch stage 
     const handleDetailsTaskDelete = (id) =>{
         // console.log(id)
-        axios.patch(`https://stepup-task-manager.aminulify.com/api/tasks/${id}`, {stage: 'delete'})
+        axios.patch(`https://stepup-task-manager-api.aminulify.com/api/tasks/${id}`, {stage: 'delete'})
         .then(res => {
             toast.success('Delete Successfully!');
             handleTask();

@@ -5,6 +5,7 @@ export const getContact = async(req,res) =>{
         const supports = await Contact.find();
         res.status(200).json(supports);
     }catch(err){
+        console.log(err);
         res.status(500).json({message: err.message})
     }
 };
@@ -17,6 +18,7 @@ export const createContact = async(req, res) => {
         await supports.save();  // Corrected this line to save the correct variable
         res.status(200).json(supports);
     } catch (err) {
+        // console.log(err);
         res.status(400).json({ message: "Contact info not defined", error: err.message });
     }
 }

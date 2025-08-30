@@ -49,7 +49,7 @@ const TaskDetails = ({taskData, loading}) => {
                 !loading ? <div className='grid md:grid-cols-3 grid-cols-1 gap-5'>
                 {
                     taskData.map(task => (
-                        <Link to={`${task._id}`}>
+                        <Link key={task._id} to={`${task._id}`}>
 
                         <div key={task._id} className=' p-2 rounded-md border-[1.4px] border-purple-200 hover:border-purple-500 duration-300 cursor-pointer'>
                             <aside className={`flex gap-1 items-center text-sm ${setPriorityColor[task.taskPrioirty]}`}>

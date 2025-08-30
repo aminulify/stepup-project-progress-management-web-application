@@ -25,7 +25,7 @@ const TaskRouteDetails = () => {
     const [userRole, setUserRole] = useState(null);
     
     const checkUserRole = async() =>{
-        const userRes = await axios.get('https://stepup-task-manager.aminulify.com/api/user-data');
+        const userRes = await axios.get('https://stepup-task-manager-api.aminulify.com/api/user-data');
         const userData = userRes.data;
         const findUser = userData.filter(data => data.email === user.email);
         setUserRole(findUser[0].role);
@@ -36,7 +36,7 @@ const TaskRouteDetails = () => {
 
     useEffect(()=>{
         setLoading(true);
-        axios.get(`https://stepup-task-manager.aminulify.com/api/tasks/${id.id}`)
+        axios.get(`https://stepup-task-manager-api.aminulify.com/api/tasks/${id.id}`)
         .then(res => {
             setTaskDetails(res.data);
             setLoading(false);
@@ -47,7 +47,7 @@ const TaskRouteDetails = () => {
 
     // update Patch stage 
     const handleDetailsTaskDelete = (id) =>{
-        axios.patch(`https://stepup-task-manager.aminulify.com/api/tasks/${id.id}`, {stage: 'delete'})
+        axios.patch(`https://stepup-task-manager-api.aminulify.com/api/tasks/${id.id}`, {stage: 'delete'})
         .then(res => {
             toast.success('Delete Successfully!')
             navigate(-1);

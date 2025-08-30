@@ -17,9 +17,8 @@ const ContactSupport = ({setContact, contact}) => {
         const numberOfEmployee = employeeNum;
 
         const supportData = {name, email, phone, companyName, description, numberOfEmployee};
-
      
-        fetch('https://stepup-task-manager.aminulify.com/api/contact',{
+        fetch('https://stepup-task-manager-api.aminulify.com/contact',{
             method: "POST",
             headers: {
                 'Content-Type': "application/json"
@@ -28,7 +27,7 @@ const ContactSupport = ({setContact, contact}) => {
         })
         .then(res => res.json())
         .then(data => {
-            // console.log('success', data);
+            console.log('success', data);
             form.reset();
             setContact(false);
 
@@ -39,7 +38,7 @@ const ContactSupport = ({setContact, contact}) => {
             });
 
         })
-        .catch(err => err)
+        .catch(err => console.log(err))
 
     }
     return (

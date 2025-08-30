@@ -3,14 +3,16 @@ import { Tasks } from "../models/TaskModal.js"
 export const GetTaskData = async(req,res) =>{
     try{
         const data = await Tasks.find();
-
+        console.log(data);
         if(!data){
             return res.status(404).json({message: 'No data found!'})
         }
 
         res.status(200).json(data);
+        
     }
     catch(err){
+        console.log(err);
         res.status(500).json({message: 'Something went wrong!'});
     }
 }
@@ -85,7 +87,7 @@ export const DeleteTaskData = async(req,res) =>{
 export const PostTaskData = async(req,res) =>{
     const {adminEmail, title, startingDate, endingDate, taskPrioirty, notes, stage, teamMember, tags, description, subTasks } = req.body;
     
-    // console.log(adminEmail, title, startingDate, endingDate, taskPrioirty, notes, stage, teamMember, tags, description, subTasks);
+    console.log(adminEmail, title, startingDate, endingDate, taskPrioirty, notes, stage, teamMember, tags, description, subTasks);
 
     try{
         const createTask = new Tasks({adminEmail, title, startingDate, endingDate, taskPrioirty, notes, stage, teamMember, tags, description, subTasks});

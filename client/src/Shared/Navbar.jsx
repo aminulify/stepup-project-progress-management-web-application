@@ -20,7 +20,7 @@ const Navbar = () => {
     const findUserRole = () => {
       
             // Fetch user data
-            fetch('https://stepup-task-manager.aminulify.com/api/user-data')
+            fetch('https://stepup-task-manager-api.aminulify.com/api/user-data')
             .then(res => res.json())
             .then(data => {
                 const matchData = data.filter(dataMatch => dataMatch.email === user?.email);

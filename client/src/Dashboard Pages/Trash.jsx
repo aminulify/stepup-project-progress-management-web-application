@@ -17,7 +17,7 @@ const Trash = () => {
     const taskDataOnly = task.filter(data => data.stage === "delete");
 
     const handleTasks = () =>{
-        axios.get('https://stepup-task-manager.aminulify.com/api/tasks')
+        axios.get('https://stepup-task-manager-api.aminulify.com/api/tasks')
         .then(res => {
             setTask(res.data);
             setLoading(false);
