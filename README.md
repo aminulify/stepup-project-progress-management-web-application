@@ -2,6 +2,12 @@
 <p><b>Used Language/Library/Frameworks/Tools (Full Stack):</b> <span style="color:blue;">HTML5, CSS3, Tailwind CSS, React, React Router, Zustand, Axios, Node Js, Express Js, MongoDB, Mongoose, Vercel, Github, Git</span></p>
 <p>A full-stack, team-oriented project management web application inspired by Jira/ClickUp, designed to streamline task progress tracking, role-based access, and team collaboration.</p> <br>
 
+<h4>Example Trial:</h4>
+<ul type="square" style="display:flex; gap:5px; margin-bottom:10px;">
+  <li>Email: aminulify1024@gmail.com</li>
+  <li>Password: Aminulify1024@</li>
+</ul>
+
 <h4>Features:</h4>
 <p>Developed a task management platform for teams with features like task creation, date tracking, and status updates.</p>
 <ul type="square" style="display:flex; gap:5px; margin-bottom:10px;">
@@ -16,5 +22,10 @@
 <b>StepUp Project Progress Web Application Live Link: </b><a href="https://stepup-3fe41.web.app/">Click Here</a> 
 <br/>
 <img src="cover-img.jpg"/>
+<img src="backend preview using eraser.svg"/>
+
+
+
+
 
 
