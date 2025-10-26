@@ -3,8 +3,10 @@
 <p>A full-stack, team-oriented project management web application inspired by Jira/ClickUp, designed to streamline task progress tracking, role-based access, and team collaboration.</p> <br>
 
 <h4>Trial:</h4>
-<p>Email: aminulify1024@gmail.com</p>
-<p>Password: Aminulify1024@</p>
+<ul type="square" style="display:flex; gap:5px; margin-bottom:10px;">
+  <li>Email: aminulify1024@gmail.com</li>
+  <li>Password: Aminulify1024@</li>
+</ul>
 
 <h4>Features:</h4>
 <p>Developed a task management platform for teams with features like task creation, date tracking, and status updates.</p>
@@ -21,6 +23,7 @@
 <br/>
 <img src="cover-img.jpg"/>
 <img src="backend preview using eraser.svg"/>
+
 
 
 
