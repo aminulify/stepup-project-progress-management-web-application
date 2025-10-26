@@ -2,6 +2,10 @@
 <p><b>Used Language/Library/Frameworks/Tools (Full Stack):</b> <span style="color:blue;">HTML5, CSS3, Tailwind CSS, React, React Router, Zustand, Axios, Node Js, Express Js, MongoDB, Mongoose, Vercel, Github, Git</span></p>
 <p>A full-stack, team-oriented project management web application inspired by Jira/ClickUp, designed to streamline task progress tracking, role-based access, and team collaboration.</p> <br>
 
+<h4>Trial:</h4>
+<p>Email: aminulify1024@gmail.com</p>
+<p>Password: Aminulify1024@</p>
+
 <h4>Features:</h4>
 <p>Developed a task management platform for teams with features like task creation, date tracking, and status updates.</p>
 <ul type="square" style="display:flex; gap:5px; margin-bottom:10px;">
@@ -17,6 +21,7 @@
 <br/>
 <img src="cover-img.jpg"/>
 <img src="backend preview using eraser.svg"/>
+
 
 
 
