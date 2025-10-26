@@ -30,9 +30,10 @@ const Task = () => {
             const userRes = await axios.get('https://stepup-task-manager-api.aminulify.com/api/user-data');
             const userData = userRes.data;
             const findUser = userData.filter(data => data.email === user.email);
-            console.log(findUser);
+            // console.log(findUser);
     
             if (findUser.length > 0) {
+                // console.log("finduse",findUser)
                 setUserRole(findUser[0].role);
     
                 // Fetch tasks after getting user data
@@ -40,7 +41,7 @@ const Task = () => {
                 const taskData = taskRes.data;
                 // console.log(taskData);
                 const taskMatchWithAdmin = taskData.filter(data => data.adminEmail === findUser[0].adminEmail);
-
+                // console.log(taskMatchWithAdmin);
                 setTask(taskMatchWithAdmin);
                 
             }
@@ -53,7 +54,7 @@ const Task = () => {
     
     useEffect(() => {
         handleTask();
-    }, []);
+    }, [modal]);
 
     // const task = summary.last10Task;
     const taskData = task.filter(data => data.stage !== "delete");
