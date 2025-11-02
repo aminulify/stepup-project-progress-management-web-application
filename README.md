@@ -1,10 +1,9 @@
-﻿<h3>Project: StepUp – Project Progress Management Web Application</h3> <br>
+﻿<h3>Project: StepUp – Project Progress Management Web Application</h3>
 <small>StepUp is a full-stack, team-oriented project management web application inspired by Jira and ClickUp.
-It helps teams organize, track, and manage their projects efficiently — from task creation to completion — with role-based dashboards, team collaboration, and real-time progress tracking.</small> <br>
+It helps teams organize, track, and manage their projects efficiently from task creation to completion with role-based dashboards, team collaboration, and real-time progress tracking.</small> <br/>
 
 <p><b>Used Language/Library/Frameworks/Tools (Full Stack):</b> <span style="color:blue;">HTML5, CSS3, Tailwind CSS, React, React Router, Zustand, Axios, Node Js, Express Js, MongoDB, Mongoose, Vercel, Github, Git</span></p>
-<p>A full-stack, team-oriented project management web application inspired by Jira/ClickUp, designed to streamline task progress tracking, role-based access, and team collaboration.</p> <br>
-
+<p>A full-stack, team-oriented project management web application inspired by Jira/ClickUp, designed to streamline task progress tracking, role-based access, and team collaboration.</p> 
 ﻿<h3>Key Features:</h3>
 <b>👥 Team & Role Management</b>
 <ul>
@@ -63,6 +62,7 @@ It helps teams organize, track, and manage their projects efficiently — from t
 <br/>
 <img src="cover-img.jpg"/>
 <img src="backend preview using eraser.svg"/>
+
 
 
 
